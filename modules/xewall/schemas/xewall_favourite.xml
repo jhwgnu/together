@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	favourite_srl: 각 row의 고유 번호
+	member_srl: favourite 을 소유하는 소유자의 고유번호
+	target_srl: 소유자가 좋아하는 게시판의 고유번호
+-->
+<table name="xewall_favourite">
+	<column name="favourite_srl" type="number" size="11" notnull="notnull" primary_key="primary_key" />
+	<column name="member_srl" type="number" size="11" notnull="notnull" />
+	<column name="target_srl" type="number" size="11" notnull="notnull" />
+	<column name="regdate" type="date" index="idx_regdate" />
+</table>

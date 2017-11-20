@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="deleteFavouriteNull" action="delete">
+    <tables>
+        <table name="xewall_favourite"/>
+    </tables>
+    <conditions>
+        <condition operation="equal" column="target_srl" var="target_srl" default="0" />
+    </conditions>
+</query>

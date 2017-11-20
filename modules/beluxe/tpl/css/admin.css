@@ -1,0 +1,65 @@
+@charset "utf-8";
+.colRed{color:red !important}
+.colBlue{color:blue !important}
+.x .opt_bks input,
+.x .opt_bks select,
+.x .opt_bks textarea{border:1px solid #FFA8A8 !important;background:#ffe8e8 !important}
+.x .opt_bks label{color:#FFA8A8}
+.x .opt_cps input,
+.x .opt_cps select,
+.x .opt_cps textarea{border:1px solid #A8D1FF !important;background:#E8F3FF !important}
+.x .opt_cps label{color:#A8D1FF}
+.x .dxcStMap .default_title{padding-bottom:5px;border-bottom: 2px solid #ccc}
+.x .dxcStMap .lined ul{padding:0;margin:0;border-bottom:1px solid #eee;zoom:1}
+.x .dxcStMap .lined li{padding:0;margin:0;cursor:all-scroll;list-style:none;zoom:1}
+.x .dxcStMap .lined li li{border-top:1px solid #eee}
+.x .dxcStMap li li{text-indent:18px}
+.x .dxcStMap li li li{text-indent:36px}
+.x .dxcStMap li li li li{text-indent:54px}
+.x .dxcStMap li li li li li{text-indent:72px}
+.x .dxcStMap li li li li li li{text-indent:90px}
+.x .dxcStMap li li li li li li li{text-indent:108px}
+.x .dxcStMap li li li li li li li li{text-indent:126px}
+.x .dxcStMap li li li li li li li li li{text-indent:144px}
+.x .dxcStMap li li li li li li li li li li{text-indent:162px}
+.x .dxcStMap li li li li li li li li li li li{text-indent:180px}
+.x .dxcStMap li li li li li li li li li li li li{text-indent:198px}
+.x .dxcStMap li *{vertical-align:middle;text-indent:0}
+.x .dxcStMap li .moveTo+input{width:200px;border:0;padding:0 .5em}
+.x .dxcStMap li .moveTo+input:hover,
+.x .dxcStMap li .moveTo+input:active,
+.x .dxcStMap li .moveTo+input:focus{border:1px dotted #ccc;overflow:visible}
+.x .dxcStMap .moveTo{position:relative;z-index:2;width:22px;height:32px;padding:32px 0 0 0;margin:0 3px;overflow:hidden;background:#fff url(../img/iconMoveTo.gif) no-repeat center 0;border:0;cursor:move}
+.x .dxcStMap li.active,
+.x .dxcStMap li.active .moveTo{background-color:#f7f7f7}
+.x .dxcStMap li.active li,
+.x .dxcStMap li.active ul{border-top-color:#f7f7f7}
+.x .dxcStMap li.active .moveTo{background-position:center -32px}
+.x .dxcStMap .side{float:right;padding-top:0 !important;padding-bottom:0 !important;line-height:30px;background:transparent !important}
+.x .dxcStMap .side button{text-indent:0;line-height:1}
+.x .dxcStMap .side a._delete{margin-right:5px}
+.x .dxcStMap .placeholder{background:#bbb}
+.x .dxcStMap .draggable,
+.x .dxcStMap .draggable .moveTo{background-color:#ddd}
+.x .dxcStMap .draggable .summary{border-left:1px solid #ccc;padding-left:10px;margin-left:10px;font-size:11px;color:#999}
+.x .dxcStMap a.ms{text-decoration:underline}
+.x .dxcStMap .dxSmSelect{overflow:hidden;display:inline-block;border:1px solid #ddd;height:16px;zoom:1;padding:3px 13px 3px 5px;margin:0 3px 0 0;background:url(../img/iconArrow.gif) no-repeat right -158px}
+.x .dxcStMap .dxSmSelect:after{content:"";display:block;clear:both}
+.x .dxcStMap .dxSmSelect ._title{line-height:16px;text-indent:0;float:left}
+.x #dxiColumnFrm label.checked{font-weight:normal}
+.x #dxiColumnFrm label.x_inline{margin:0 0 0 8px}
+.x #dxiExtraKeyFrm input._extra_default{margin-top:1px}
+.x #dxiExtraKeyFrm label > select{width: auto}
+.jPicker.Container{z-index:999 !important}
+.x  .jPicker .Icon{top:-1px !important;margin-left:1px !important}
+.x  input.color-indicator{width:50px !important;margin-left:1px !important}
+.dxcSmLayer .jPicker .Icon{top:-6px !important}
+.dxcSmLayer input.color-indicator{width:71px !important}
+.dxcSmLayer{position:absolute;z-index:999;display:inline-block;border:2px solid #B7B7B7;min-width:74px;margin:0px;padding:2px;background-color:#f8f8f8;display:none;box-shadow:1px 1px 3px #B7B7B7;-moz-box-shadow:1px 1px 3px #B7B7B7;-webkit-box-shadow:1px 1px 3px #B7B7B7}
+.dxcSmLayer dt{white-space:nowrap;margin:0;padding:2px}
+.dxcSmLayer dt:hover,.dxcSmLayer dt:active,.dxcSmLayer dt:focus{background-color:#ddd}
+.dxcSmLayer dt.text select,.dxcSmLayer dt.text input{background: transparent;white-space:nowrap;width:70px;margin:1px}
+.dxcSmLayer dt.text select{;width:84px}
+.dxcSmLayer dt,.x .dxSmSelect,.x .dxSmSelect ._title{cursor:pointer !important}
+.x .dxSmSelect{border-radius:3px;-moz-border-radius:3px;-webkit-border-radius:3px}
+.x select[multiple] {height:60px !important}

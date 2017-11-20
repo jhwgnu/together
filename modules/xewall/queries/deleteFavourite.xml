@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="deleteFavourite" action="delete">
+    <tables>
+        <table name="xewall_favourite"/>
+    </tables>
+    <conditions>
+        <condition operation="in" column="target_srl" var="target_srl" notnull="notnull" />
+        <condition operation="equal" column="member_srl" var="member_srl" filter="number" pipe="and"/>
+    </conditions>
+</query>

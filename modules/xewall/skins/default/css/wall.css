@@ -1,0 +1,551 @@
+@CHARSET "EUC-KR";
+/******************************************************************************/
+/* 공용적인 부분이 오는 곳 */
+div.xewall {
+	font-size:11px;
+	font-family:inherit;
+}
+div.xewall .float_left {
+	float:left
+}
+div.xewall .float_right {
+	float:right;
+}
+div.xewall .clear {
+	clear:both;
+}
+div.xewall .loading {
+	width:100%;
+	text-align:center;
+}
+div.xewall .small_gray {
+	font-size:9px;
+	color:gray;
+}
+div.xewall .medium_gray {
+	color:gray;
+	font-size:1em;
+}
+div.xewall .nick_name {
+	font-weight:bold;
+	color:#3b5998;
+	cursor:pointer;
+}
+div.xewall .nick_name:hover {
+	text-decoration:underline;
+}
+div.xewall .underline:hover {
+	text-decoration:underline;
+}
+div.xewall .no_underline {
+	text-decoration:none;
+}
+div.xewall .cursor_pointer {
+	cursor:pointer;
+}
+div.xewall .readed_count {
+	color:black;
+	border: 1px solid #7E7E7E;
+	padding: 4px 14px 4px 14px;
+	background-color: white;
+	border-radius: 3px;
+	margin: 0 5px 0 5px;
+}
+div.xewall .voted_count {
+	color:#DF0101;
+	border: 1px solid #FE642E;
+	padding: 4px 12px 4px 4px;
+	background-color: #F1DFD7;
+	border-radius: 3px;
+	margin: 0 5px 0 5px;
+}
+div.xewall .voted_count:hover {
+	color:#FE642E;
+	background-color:#F7EDE8;
+}
+div.xewall .voted_count_num {
+	margin-left: 5px;
+}
+div.xewall .blamed_count {
+	color:#0101DF;
+	border: 1px solid #34A29E;
+	padding: 4px 12px 4px 4px;
+	background-color: #DEF1F5;
+	border-radius: 3px;
+	margin: 0 5px 0 5px;
+}
+div.xewall .blamed_count:hover {
+	color:#81F7F3;
+	background-color:#EFF8FA;
+}
+div.xewall .blamed_count_num {
+	margin-left:5px;
+}
+div.xewall div.ref .refresh {
+	cursor:pointer;
+}
+div.xewall .comm_delete {
+	padding: 4px 12px 4px 4px;
+}
+div.xewall .comm_modify {
+	padding: 4px 12px 4px 4px;
+}
+div.xewall .comm_reply {
+	padding: 4px 12px 4px 4px;
+}
+/* 에디터 박스 주위에 여유공간 좀 주기 */
+div .xewall .editor form {
+	margin:8px 0 0 0;
+}
+
+/******************************************************************************/
+/* 상단 게시판들의 리스트를 나열한 박스들 */
+div.xewall .board_list_box ul {
+	margin: 0 5px 8px 5px;
+	padding: 0;
+	overflow: hidden;
+}
+div.xewall .board_list_box ul li {
+	background-color: #FFFAEC;
+	position: relative;
+	list-style: none;
+	float: left;
+	white-space: nowrap;
+	margin: 5px 2px 0 0;
+	padding: 0;
+}
+div.xewall .board_list_box ul li:hover {
+	background-color:#FDFBF5;
+}
+div.xewall .board_list_box ul li.my_module_list {
+	background-color:#E9FFD2;
+}
+div.xewall .board_list_box ul li.my_module_list:hover {
+	background-color:#F3FFE7;
+}
+div.xewall .board_list_box ul li.my_settings {
+	background-color:#E5EEFF;
+}
+div.xewall .board_list_box ul li.refresh {
+	background-color:#EBFFEA;
+}
+div.xewall .board_list_box ul li.my_settings:hover {
+	background-color:#F5F9FF;
+}
+div.xewall .board_list_box ul li a {
+	text-decoration: none;
+	color: black;
+	border-color: silver;
+	border: 1px solid #AFAFAF;
+	float: left;
+	padding: 5px 10px 2px 10px;
+	height: 18px;
+	border-radius: 3px;
+}
+
+/******************************************************************************/
+/* 글쓰기 부분 */
+div.xewall .write_form {
+	border: #BDC7D8 solid 1px;
+	margin: 10px 5px 17px 5px;
+	padding: 10px 15px 10px 10px;
+	border-radius: 3px;
+	box-shadow: 0 3px 7px 1px #E4E4E4;
+}
+div.xewall .write_form .hidden_by_editor {
+	margin-bottom:7px;
+}
+div.xewall .write_form span.unselected {
+	color:black;
+	cursor:pointer;
+}
+div.xewall .write_form span.unselected:hover {
+	text-decoration:underline;
+}
+div.xewall .write_form span.selected {
+	color:#808080;
+	display:none;
+}
+div.xewall .write_form input.doc_title {
+	border:1px solid #c3c3c3;
+	width:50%;
+}
+div.xewall .write_form .btn_submit_enabled {
+	width:100%;
+	height:25px;
+	font-weight:bold;
+	color:#ffffff;
+	background-color:#5a74a8;
+	border:1px solid black;
+	margin-top:10px;
+	text-align:center;
+	line-height:25px;
+	cursor:pointer;
+}
+div.xewall .write_form .btn_submit_enabled:hover {
+	background-color:#7D9AD5;
+}
+div.xewall .write_form .btn_submit_disabled {
+	background-color:#acacac;
+}
+div.xewall .write_form .editor div.txt_area {
+	width:100%;
+	border:1px solid #c3c3c3;
+	cursor:text;
+	padding:5px 0 5px 7px;
+	margin:3px 0 3px 0;
+	background-color:white;
+}
+
+/******************************************************************************/
+/* 머릿말과 꼬릿말 부분 */
+div.xewall .hftext {
+	clear: both;
+	background: inherit;
+	padding: 10px 10px 12px 10px;
+	border: 1px solid #C3C3C3;
+	margin: 0px 5px 17px 5px;
+	border-radius: 3px;
+	box-shadow: 0 3px 7px 1px #E4E4E4;
+}
+
+/******************************************************************************/
+/* 문서 부분 */
+div.xewall .document {
+	display:block;
+	clear:both;
+    background: #F5F7F7;
+    padding: 10px 10px 12px 10px;
+    border: 1px solid #c3c3c3;
+    margin: 0px 5px 17px 5px;
+    border-radius: 3px;
+    box-shadow:0 3px 7px 1px #E4E4E4;
+}
+
+	div.xewall .document .go_modify {
+		height:30px;
+		background-color: #5A74A8;
+		margin-left:5px;
+		border: 1px solid black;
+		border-radius: 3px;
+		color: white;
+		cursor:pointer;
+		font-weight:bold;
+	}
+	div.xewall .document .go_modify:hover {
+		background-color:#5A84B8;
+	}
+	div.xewall .document .cancel_modify {
+		height:30px;
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 3px;
+		cursor:pointer;
+		color:black;
+	}
+	div.xewall .document .cancel_modify:hover {
+		color:#474747;
+	}
+	div.xewall .document .use_editor {
+		background-color: #FFFFD3;
+		margin-left:5px;
+		border: 1px solid black;
+		border-radius: 3px;
+		color: black;
+		cursor: pointer;
+	}
+	div.xewall .document .use_editor:hover {
+		background-color:#FFFFEC;
+	}
+	
+	/******************************************************************************/
+	/* 문서 좌측 부분: 프로파일 이미지 부분 */
+	div.xewall .document .left {
+		position:relative;
+		float:left;
+		margin:0 -98px 0 0;
+		background:white;
+		white-space:nowrap;
+		border:1px #c3c3c3 solid;
+		box-shadow:1px -1px -1px 1px #d1d1d1;
+		padding:5px 5px 5px 5px;
+		width:82px;
+		overflow:hidden;
+	}
+	
+	/******************************************************************************/
+	/* 문서 우측 부분: top, middle, bottom */
+	div.xewall .document .right {
+		position:relative;
+		margin-left:105px;
+	}
+	
+	/******************************************************************************/
+	/* .top: 문서에 대한 설명 부분 */
+	div.xewall .document .right .top {
+		margin-right:10px;
+	}
+	
+	/******************************************************************************/
+	/* div.title: 문서의 제목 부분 */
+	div.xewall .document .right div.title .browser_title {
+		color:#3b5998;
+	}
+	div.xewall .document .right div.title {
+		margin:5px 0 5px 0;
+		font-size:14px;
+		font-weight:bold;
+	}
+	div.xewall .document .right div.title span.category {
+		font-size:14px;
+		font-weight:normal;
+		color:#474747;
+	}
+	div.xewall .document .right div.title span.title {
+		line-height:1.2em;
+	}
+	
+	/******************************************************************************/
+	/* .middle 문서의 본문이 오는 곳 */
+	div.xewall .document .right .middle {
+		margin:0 0 10px 0;
+	}
+	div.xewall .document .right .middle .thumbnail {
+		margin:10px 15px 8px 10px;
+		width:82px;
+	}
+	div.xewall .document .right .middle .summary {
+		margin: 4px;
+		padding: 4px;
+	}
+	div.xewall .document .right .middle .summary:hover {
+		box-shadow: 2px 2px 2px 2px #DFDFDF;
+	}
+	div.xewall .document .right .middle .content {
+		background-color:white;
+		border:1px solid #c3c3c3;
+		padding:0 10px 10px 20px;
+		margin:10px 10px 10px 0px;
+	}
+	div.xewall .document .right .middle .modify_form .modify_title {
+		margin:7px 0 7px 0;
+		font-size:18px;
+		font-weight:bold;
+		background-color:white;
+		border:1px solid #c3c3c3;
+		width:98%;
+	}
+	
+	/******************************************************************************/
+	/* .bottom 문서의 조회수, 추천, 비추정보, 댓글 등의 정보가 오는 곳 */
+	div.xewall .document .right .bottom {
+		overflow:hidden;
+		padding-top:10px;
+		padding-bottom:18px;
+		border-top:1px dotted #ccc;
+	}
+		div.xewall .document .right .bottom .leave_comment {
+			margin:0 0 0 5px;
+		}
+		div.xewall .document .right .bottom .regdate_y {
+			margin:0 0 0 5px;
+		}
+		div.xewall .document .right .top .delete {
+			margin:0 0 0 5px;
+		}
+		div.xewall .document .right .top .modify {
+			margin:0 5px 0 10px;
+		}
+	div.xewall .document .right .more_page {
+		border:1px solid #c5c5c5;
+		background-color:#F4FFF4;
+	}
+	div.xewall .document .right .more_page:hover {
+		background-color:#F9FFFF;
+	}
+	
+	/******************************************************************************/
+	/* .comment_write_form 문서의 댓글 다는 창 */
+	div.xewall .document .right .comment_write_form  {
+		margin:15px 0 0 0;
+	}
+	div.xewall .document .right .comment_write_form .comment_write {
+		border:1px solid #c0c0c0;
+		width:98%;
+		color:black;
+		padding: 3px 5px 3px 5px;
+		margin: 2px 0 14px 0px;
+	}
+	
+	div.xewall .document .right .comment_write_form .comment_use_editor {
+		height:30px;
+		background-color: #FFFFD3;
+		border: 1px solid rgb(153, 153, 153);
+		border-radius: 3px;
+		color: rgb(70, 70, 70);
+		cursor: pointer;
+	}
+	div.xewall .document .right .comment_write_form .comment_use_editor:hover {
+		background-color: #FFFFEC;
+	}
+	
+	div.xewall .document .right .comment_write_form .comment_submit {
+		height:30px;
+		background-color: #5A74A8;
+		margin-left: 5px;
+		border: 1px solid rgb(153, 153, 153);
+		border-radius: 3px;
+		color: white;
+		cursor: pointer;
+		font-weight: bold;
+	}
+	div.xewall .document .right .comment_write_form .comment_submit:hover {
+		background-color:#5A84B8;;
+	}
+	
+	
+	
+	
+/* 댓글 부분 시작 */
+/******************************************************************************/
+/* 댓글 아이템 */
+div.xewall .comment {
+	border:1px solid #c9d5d5;
+	background-color:#eff8f8;
+	margin: 4px 0 0 0;
+	padding: 8px 10px 4px 10px;
+	clear:both;
+}
+div.xewall .comment:hover {
+	background-color:#f5fafa;
+}
+
+	/******************************************************************************/
+	/* 댓글 좌측: 프로필 사진 */
+	div.xewall .comment .comm_left {
+		width:35px;
+		height:35px;
+		padding: 2px 2px 2px 2px;
+		border: 1px solid #C1C1C1;
+	}
+	div.xewall .comment .comm_left img {
+		width:100%;
+		height:100%;
+	}
+	
+	/******************************************************************************/
+	/* 댓글 우측: 닉네임, 댓글 내용 등등 */
+	div.xewall .comment .comm_right {
+		margin-left:45px;
+	}
+	
+		/******************************************************************************/
+		/* 댓글 우측의 top: 닉네임 */
+		div.xewall .comment .comm_right .comm_top .comm_nick_name {
+			font-weight:bold;
+			color:#3b5998;
+			cursor:pointer;
+		}
+		
+		/******************************************************************************/
+		/* 댓글 우측의 middle: 댓글 내용 */
+		div.xewall .comment .comm_right .comm_middle {
+			border:1px solid #e4eaea;
+			background-color:#ffffff;
+			margin:2px 0 2px 0;
+			padding:2px 10px 4px 5px;
+		}
+		div.xewall .comment .comm_right .comm_middle .comm_summary {
+			overflow-y:auto;
+			color:#242424;
+		}
+		
+		/******************************************************************************/
+		/* 댓글 우측의 bottom: 댓글 내용 */
+		div.xewall .comment .comm_right .comm_bottom {
+			margin-top:7px;
+		}
+		
+		div.xewall .comment .comm_right .comm_bottom .comm_division {
+			padding:5px;
+		}
+		
+		div.xewall .comment .comm_right .comm_bottom .comm_reg_date {
+			padding-top:4px;
+		}
+		
+		
+		
+		
+		
+		
+		
+/******************************************************************************/
+/* 알림창 대한 정의 */		
+#xewallInform {
+	position:absolute;
+	z-index:999;
+	width:300px;
+	padding:5px;
+	background-color:white;
+	border:1px solid #C3C5A5;
+	cursor:pointer;
+	border-radius:3px;
+	box-shadow: 3px 3px 3px #c3c4a5;
+}
+#xewallInform:hover {
+	background-color:#FFFFF9;
+}
+#xewallInform .xewallInform_left {
+	float:left;
+	margin-right:8px;
+}
+#xewallInform .profile_img img {
+	width:35px;
+	height:35px;
+	padding:2px;
+	border:1px solid #c1c1c1;
+}
+#xewallInform .xewallInform_head {
+	line-height:1em;
+	margin-bottom:5px;
+}
+#xewallInform .xewallInform_body {
+	line-height:1em;
+}
+#xewallInform .xewallInform_right {
+	margin-left:50px;
+}
+#xewallInform .nick_name {
+	font-weight:bold;
+	color:#3B5998;
+}
+
+
+
+
+
+/******************************************************************************/
+/* popup menu의 삭제 확인에 대한 정의 */
+#popup_menu_area .del_confirm {
+	padding-bottom:5px;
+	margin-bottom:5px;
+	border-bottom:1px solid #E2E2E2;
+	border-radius:3px;
+}
+#popup_menu_area .delete_confirm_yes {
+	padding:5px;
+}
+#popup_menu_area .delete_confirm_no {
+	padding:5px;
+}
+#popup_menu_area .move_to {
+	padding:5px;
+}
+#popup_menu_area .move_new {
+	padding:5px;
+}
+#popup_menu_area .delete_confirm_yes:hover, .delete_confirm_no:hover, .move_to:hover, .move_new:hover {
+	cursor:pointer;
+	background-color:#E0E0E0;
+}

@@ -1,0 +1,124 @@
+{@
+	$sclms = array();
+
+	$ds_readed = $ci['readed_count']->display == 'Y';
+	$ds_voted = $ci['voted_count']->display == 'Y';
+
+	$ds_update = $ci['last_update']->display == 'Y';
+	$ds_updater = $ci['last_updater']->display == 'Y';
+	$ds_update && $ds_updater ? $ci['last_update']->display = 'N' : 0;
+
+	$ci['content']->display = 'N';
+	$ci['tag']->display = 'N';
+
+	$mi->star_style!='N' ? $ci['blamed_count']->display = 'N' : 0;
+	$mi->star_style!='N' && $ds_voted ? $ci['readed_count']->display = 'N' : 0;
+
+	$is_notice_widget = !$is_doc;
+	$a_lsttp = array('notice'=>&$notice_list,'best'=>&$best_list);
+}
+
+<block loop="$ci => $key,$val" cond="$val->display=='Y'">
+	{@
+		$colcnt += $val->idx<0?1:0;
+		$sclms[$key] = clone $val;
+		$_tmp = Context::getLang('short_'.$val->eid);
+		$_tmp !== 'short_'.$val->eid ? $sclms[$key]->name = $_tmp: 0;
+	}
+</block>
+
+{@ $mi->star_style!='N' ? $sclms['voted_count']->name = $lang->star_column : 0}
+
+<!-- LIST -->
+<include cond="$is_notice_widget && (count($notice_list) || count($best_list))" target="_etc.noticewidget.html" />
+
+<table cond="$mi->display_list_header != 'N'" id="siLst" class="widg" width="100%" border="0" cellspacing="0" summary="List of document" style="border:0">
+<thead class="scOneCol">
+	<tr>
+		<th scope="row" colspan="{$colcnt}">
+		<div>&nbsp;
+			<!--@if($mi->display_document_count!='N')-->
+			<span cond="$mi->display_document_count!='N'&&!$sotcnt" class="scHaDCnts">
+				<em>Today</em> <strong>{$oThis->getDocumentCountByDate(date("Ymd"))}</strong>,
+				<em>Yesterday</em> <strong>{$oThis->getDocumentCountByDate(date("Ymd",strtotime("-1 day", time())))}</strong>,
+				<em>Total</em> <strong>{$oThis->getDocumentCountByDate()}</strong>
+			</span>
+			<!--@else-->
+			<span loop="$sclms => $key,$val" cond="$val->sort == 'Y'" class="sort"> {@ $sotcnt++}
+				<a href="{getUrl('sort_index',$key,'order_type',($order_type!='asc'?'asc':'desc'))}">{$val->name}<em class="asc"|cond="$sort_index==$key&&$order_type=='asc'">&nbsp;</em></a>
+			</span>
+			<!--@endif-->
+		</div>
+		</th>
+		<td cond="$grant->manager" class="scCheck sort"><div><input type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true }); return false;" /></div></td>
+	</tr>
+</thead>
+</table>
+{@ $md_optstr = $us_vmodal?'type="example/modal" data-footer="__PID_MODAL_FOOTER__" data-header="__PID_MODAL_HEADER__"':'type="text/html"'}
+<div cond="count($document_list)" id="siDoc" class="widg">
+	{@
+		$ds_nick = $ci['nick_name']->display == 'Y';
+		$ds_user =	$ci['user_name']->display == 'Y';
+	}
+	<block loop="$document_list => $no,$document">
+	{@
+		$is_grant = $grant->view && (!$document->isSecret() || $document->isGranted());
+		$is_blind = $us_blind?$oThis->isBlind($document->document_srl):0;
+		$is_scrap = $ds_scrap?$oThis->isScrap($document->document_srl):0;
+		$purl = getUrl('','mid',$mid,'document_srl',$document->document_srl,'category_srl',$category_srl,'sort_index',$sort_index,'order_type',$order_type,'search_target',$search_target,'search_keyword',$search_keyword,'page',$spage);
+		$un_extra = ($pt_vtype!='N'||$pt_dtype!='N'||$ao_ppang||$ds_mtlng)?$document->get('extra_vars'):null;
+		$un_extra = is_string($un_extra)?unserialize($un_extra):$un_extra;
+	}
+	<div class="doct clearBar" {$us_hottrack?'data-hottrack="widg"':''}>
+		<strong class="scRibbon">
+			<dl class="regdate">
+				<dd class="y">{$document->getRegdate('Y')}</dd>
+				<dd class="caption m">{$document->getRegdate('F')}</dd>
+				<dd class="caption d">{$document->getRegdate('D (d)')}</dd>
+			</dl>
+		</strong>
+		<ul class="scFrm">
+			<li>
+				<div class="title scElps" data-active="true"|cond="$is_elips">
+					<a href="{$purl}" {$md_optstr}>{$is_blind?$lang->msg_is_blind:$document->getTitle($mi->title_length)}</a>
+					<span>
+						<block cond="$ao_ppang&&$un_extra->ppang&&$un_extra->ppang->d->p>0">
+							{@$ao_pppt = sprintf($lang->bonus_pang_pang, $un_extra->ppang->d->p)}
+							<img class="scIcoSet coin" src="img/common/blank.gif" title="{$ao_pppt}" alt="{$ao_pppt}" />
+						</block>
+						{$document->printExtraImages($mi->duration_new)}<img cond="$ds_mtlng&&count($un_extra->beluxe->langs)" class="scIcoSet world" src="img/common/blank.gif" alt="multilingual" title="multilingual" /><img cond="$is_scrap" class="scIcoSet scrap" src="img/common/blank.gif" alt="Scrap" title="Scrap" />
+						{@
+							$t_cmtn = $document->getCommentCount();
+							$t_tbkn = $document->getTrackbackCount();
+						}
+						<em cond="$t_cmtn" class="reply" title="Replies">+{$t_cmtn}</em><em cond="$t_tbkn" class="trackback" title="Trackbacks">.{$t_tbkn}</em>
+					</span>
+				</div>
+				<div class="nick_name clearBar">
+					<span class="fl">
+					<!--@if($ds_nick||$ds_user)-->
+					{@
+						$mbsl = $document->get('member_srl');
+						$home = $document->get('homepage');
+						$nick = cut_str((!$mbsl||$ds_nick||!$ds_user)?$document->getNickName():$document->getUserName(), $mi->nickname_length);
+					}
+					<i cond="!$mbsl && !$home">{$nick}</i>
+					<span cond="$mbsl" class="scHLink member_{$mbsl}">{$nick}</span>
+					<i cond="!$mbsl && $home" class="scHLink" data-href="{$home}">{$nick}</i>
+					<!--@else-->
+					<span>{$lang->readed_count}: {$document->get('readed_count')}</span>
+					<!--@endif-->
+					</span>
+					<span>{$document->getRegdate('A h:i:s')}</span>
+					<block cond="$is_cts">
+						{@ $cate = $cts[$document->get('category_srl')]}
+						[<span cond="!$cate">{$lang->none_category}</span><a cond="$cate" href="{getUrl('','mid',$mid,'category_srl',$cate->category_srl)}" title="{htmlspecialchars($cate->description)}" style="color:{$cate->color}"|cond="$cate->color">{$cate->title}</a>]
+					</block>
+				</div>
+			</li>
+		</ul>
+	</div>
+	</block>
+</div>
+<div cond="!count($document_list)" class="scNoDocs"><div>{$lang->no_documents}</div></div>
+<!-- /LIST -->

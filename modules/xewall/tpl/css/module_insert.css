@@ -1,0 +1,18 @@
+div.module_select_box table tr th {
+	padding:10px;
+}
+div.module_select_box table tr td {
+	border:1px solid black;
+	padding:10px;
+	width:33%;
+}
+div.module_select_box table tr td .connectedSortable {
+	padding:13px 0 13px 0;
+	margin: 0 10px 0 10px;
+	background-color:rgb(252, 255, 221);
+}
+div.module_select_box table tr td ul li.items {
+	cursor:move;
+	list-style:none;
+	padding:7px;
+}

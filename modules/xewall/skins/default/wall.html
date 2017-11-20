@@ -1,0 +1,315 @@
+<load target="js/MyMethodCall.js" />
+<load target="js/wall.XewallSharedResources.js" />
+<load target="js/model/XewallDocument.js" />
+<load target="js/model/XewallComment.js" />
+<load target="js/model/ResultGetTitleAndContentOfDocument.js" />
+<load target="js/wall.XewallFunctions.js" />
+<load target="js/wall.XewallEventHandler.js" />
+<load target="js/wall.XewallCommonFunctions.js" />
+<load target="js/wall.js" />
+
+<load target="css/wall.css" />
+
+<!--// 에디터 관련 CSS, JS 파일 로드 -->
+<load target="../../../editor/skins/xpresseditor/css/default.css" />
+<load target="../../../editor/tpl/js/editor_common.js" />
+<load target="../../../editor/skins/xpresseditor/js/Xpress_Editor.js" />
+<load target="../../../editor/skins/xpresseditor/js/xe_interface.js" />
+<load target="../../../editor/tpl/js/uploader.js" />
+<load target="../../../editor/tpl/js/swfupload.js" />
+<load target="../../../editor/skins/xpresseditor/js/xe_textarea.js" />
+
+<!--// font-awesome -->
+<load target="lib/font-awesome/css/font-awesome.min.css" />
+
+<script type="text/javascript">
+	// 언어 팩
+	var xewall_lang = {
+			please_wait: "{$lang->writing}",
+			write: "{$lang->write}",
+			use_editor: "{$lang->use_editor1}",
+			use_simple: "{$lang->use_simple}",
+			xmpp_connected: "{$lang->xmpp_connected}",
+			xmpp_disconnected: "{$lang->xmpp_disconnected}",
+			xmpp_connecting: "{$lang->xmpp_connecting}",
+			confirm_cancel: " {$lang->cancel}"
+	};
+	
+	// XEwall 에서 사용하는 상수, 변수들
+	var xewall = {
+			refresh_freq_0 : <!--@if($module_info->refresh_rate)-->{$module_info->refresh_rate}<!--@else-->30<!--@end-->,
+			refresh_freq_1 : <!--@if($module_info->refresh_rate)-->{$module_info->refresh_rate}<!--@else-->30<!--@end-->,
+			def_url : "{getUrl()}",
+			list_count_doc : "{$module_info->doc_list_count}",
+			list_count_com : "50",
+			sample_comment_count : 3,
+			comments_display_policy : "{$module_info->comments_display_policy}",
+			sortBy : "regdate",
+			module_srl : "{$module_info->module_srl}",
+			mid : "{$module_info->mid}"
+	};
+	
+	// 게시판의 배경 색깔들을 저장할 수 있는 전역변수들 
+	xewall.colors = new Array();
+	<!--@foreach($xewall_color_config as $key=>$val)-->
+		<!--@if($key)-->
+		xewall.colors[{$key}] ="<!--@if($val)-->{$val}<!--@else-->F5F7F7<!--@end-->";
+		<!--@end-->
+	<!--@end-->
+	
+</script>
+
+<!--//<div class="test">test</div>-->
+
+<div class="dummies" style="display:none;">
+	
+	<div class="document_ori" style="display:none;" module_srl="" document_srl="">
+		<div class="left" align="center">
+			<img class="profile_image" src="img/anonymous.jpg"/><br/>
+			<span class="nick_name"></span>
+		</div>
+		<div class="right">
+			<div class="top">
+				<span class="nick_name"></span> {$lang->has_written_article1} <span class="browser_title underline cursor_pointer"></span>{$lang->has_written_article2}&nbsp;<span class="extraImages"></span>
+				<span class="delete cursor_pointer float_right" title="{$lang->cmd_delete}"><i class="fa fa-times"></i></span>
+				<span class="modify cursor_pointer float_right" title="{$lang->cmd_modify}"><i class="fa fa-pencil-square-o"></i></span>
+				<span class="clear"></span>
+			</div>
+			<div class="title" module_srl="">
+				<span class="bracket_open">[</span>
+				<span class="browser_title underline cursor_pointer"></span>
+				<span class="category" style="display:none;">| {$lang->category}</span>
+				<span class="bracket_close">]</span>
+				<span class="title underline cursor_pointer">{$lang->title}</span>
+				<span class="bracket_open small_gray">[</span>
+				<span class="comment_count small_gray"></span>
+				<span class="bracket_close small_gray">]</span>
+			</div>
+			<div class="middle">
+				<div class="summary cursor_pointer">
+					<div class="thumbnail float_left" style="display:block"><img src="img/anonymous.jpg"/></div>
+					<div class="summary_inner"></div>
+				</div>
+				<div class="content" style="display:none;z-index:999"></div>
+				<div class="see_simple small_gray underline cursor_pointer" style="display:none;">{$lang->simple_view}</div>
+				<div class="clear"></div>
+				<div class="modify_form" style="display:none">
+					<div class="editor">
+						<input type="text" name="title" class="modify_title" value=""/><br/>
+						<select name="board_list" class="board_list">
+							<option loop="$def_module_info=>$val" value="{$val->module_srl}">{$val->browser_title}</option>
+							<option loop="$my_module_list=>$val" value="{$val->module_srl}">{$val->browser_title}</option>
+						</select>
+						<select name="category_list" class="category_list">
+							<option></option>
+						</select>
+						<form>
+							<input type="hidden" name="document_srl"/>
+							<input type="hidden" name="comment_srl"/>
+							<input type="hidden" name="content"/>
+						</form>
+						<div class="clear"></div>
+						<input type="button" class="go_modify float_right" value="{$lang->cmd_modify}"/>
+						<input type="button" class="cancel_modify float_right" value="{$lang->cancel_modify}"/>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<span class="readed_count" title="{$lang->readed_count}"></span>&nbsp;
+				<span class="voted_count cursor_pointer" title="{$lang->voted_count}">
+					<i class="fa fa-thumbs-o-up"></i>
+					<span class="voted_count_num"></span>
+				</span>&nbsp;
+				<span class="blamed_count cursor_pointer" title="{$lang->blamed_count}">
+					<i class="fa fa-thumbs-o-down"></i>
+					<span class="blamed_count_num"></span>
+				</span>&nbsp;
+				<span class="toggle_comment cursor_pointer underline">{$lang->cmd_reply}</span>&nbsp;
+				<span class="medium_gray">[<span class="comment_count"></span>]</span>
+				<span class="regdate"></span>
+			</div>
+			<div class="more_page cursor_pointer" align="center" style="display:none;" total_count="-1" total_page="-1" cur_page="-1" page_count="-1" first_page="-1" last_page="-1" next_page="-1">{$lang->see_more_comments}</div>
+			<div class="comment_box" style="display:none;"></div>
+			
+			<div class="comment_write_form" cond="$is_logged">
+				<div class="editor">
+					<form>
+						<input type="hidden" name="document_srl" value=""/>
+						<input type="hidden" name="comment_srl" value=""/>
+						<input type="hidden" name="content" value=""/>
+						<textarea class="comment_write"></textarea>
+					</form>
+				</div>
+				<div class="clear"></div>
+				<input type="button" class="comment_submit float_right" value="{$lang->cmd_comment_registration}" />
+				<input type="button" class="comment_use_editor float_right" value="{$lang->use_editor1}" />
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div><!--// end of .document_ori -->
+	
+	<div class="comment_ori" module_srl="" document_srl="" parent_srl="" comment_srl="">
+		<div class="comm_left float_left">
+			<img class="comm_profile_image" src="img/anonymous.jpg"/>
+		</div>
+		<div class="comm_right">
+			<div class="comm_top">
+				<span class="comm_nick_name underline">{$lang->nick_name}</span>&nbsp;
+			</div>
+			<div class="comm_middle">
+				<div class="comm_summary cursor_pointer">
+					<div class="comm_thumbnail float_left">
+						<img src="" />
+					</div>
+					<div class="summary">{$lang->summary}</div>
+				</div>
+				<div class="comm_content" style="display:none">{$lang->content}</div>
+				<div class="comm_see_summary cursor_pointer small_gray underline" style="display:none">{$lang->simple_view}</div>
+				<div class="editor" style="display:none">
+					<form>
+						<input type="hidden" name="document_srl"/>
+						<input type="hidden" name="comment_srl"/>
+						<input type="hidden" name="content"/>
+					</form>
+					<div class="clear"></div>
+					<input type="button" class="go_modify float_right" value="{$lang->cmd_modify}" />
+					<input type="button" class="cancel_modify float_right" value="{$lang->cancel_modify}" />
+					<div class="clear"></div>
+				</div>
+			</div>
+			<div class="comm_bottom">
+				<div class="comm_reply float_right cursor_pointer" title="{$lang->cmd_comment_registration}"><i class="fa fa-reply"></i></div>
+				<div class="comm_division float_right">&nbsp;</div>
+				<div class="comm_modify float_right cursor_pointer" title="{$lang->cmd_modify}"><i class="fa fa-pencil-square-o"></i></div>
+				<div class="comm_division float_right">&nbsp;</div>
+				<div class="comm_delete float_right cursor_pointer" title="{$lang->cmd_delete}"><i class="fa fa-times"></i></div>
+				<div class="comm_division float_right">&nbsp;</div>
+				<div class="comm_reg_date float_right"></div>
+				<div class="comm_division float_right">&nbsp;</div>
+				<div class="comm_blamed_count blamed_count float_right cursor_pointer" title="{$lang->cmd_vote_down}"><i class="fa fa-thumbs-o-down"></i><span class="blamed_count_num"></span></div>
+				<div class="comm_division float_right">&nbsp;</div>
+				<div class="comm_voted_count voted_count float_right cursor_pointer" title="{$lang->cmd_vote}"><i class="fa fa-thumbs-o-up"></i><span class="voted_count_num"></span></div>
+				<div class="clear"></div>
+			</div>
+			<div class="comm_reply_box" style="display:none">
+				<div class="editor">
+					<form>
+						<input type="hidden" name="document_srl" />
+						<input type="hidden" name="comment_srl" />
+						<input type="hidden" name="parent_srl" />
+						<input type="hidden" name="content" />
+					</form>
+					<div class="clear"></div>
+					<input type="button" class="go_modify float_right" value="{$lang->cmd_write}" />
+					<input type="button" class="use_editor float_right" value="{$lang->use_editor1}" />
+					<input type="button" class="cancel_modify float_right" value="{$lang->cmd_cancel}" />
+					<div class="clear"></div>
+					
+				</div>
+			</div>
+			<div class="comm_children"></div>
+		</div>
+	</div><!--// end of .comment_ori -->
+	
+	<div class="delete_confirm">
+		<ul>
+			<li class="del_confirm">{$lang->confirm_delete}</li>
+			<li class="delete_confirm_yes" document_srl="">{$lang->cmd_yes}</li>
+			<li class="delete_confirm_no">{$lang->cmd_no}</li>
+		</ul>
+	</div>
+	
+	<div class="move_to">
+		<ul>
+			<li class="move_to cursor_pointer" document_srl="">{$lang->move_to}</li>
+			<li class="move_new cursor_pointer" document_srl="">{$lang->move_new}</li>
+		</ul>
+	</div>
+	
+</div>
+
+
+
+<div class="xewall" sort_index="{$module_info->doc_sort_index}" order_type="{$module_info->doc_order_type}" list_count="{$module_info->doc_list_count}" default_listen="{$default_listen}">
+	<div class="header_text">
+		{$module_info->header_text}
+	</div>
+	
+	<div class="board_list_box">
+		<ul class="board_list_ul">
+			<!--// 기본으로 듣는 게시판들 -->
+			<li class="all_board" style="background-color:white;" value="1"><a href="./"><b>{$lang->board_list}</b></a></li>
+			<li class="default_listen_array" loop="$def_module_info=>$val" value="{$val->module_srl}">
+				<a href="{getUrl('', 'mid', $val->mid)}">{$val->browser_title}</a>
+			</li>
+			
+			<!--// 사용자가 듣기로 선택한 게시판들 -->
+			<li class="my_module_list" loop="$my_module_list=>$val" value="{$val->module_srl}">
+				<a href="{getUrl('', 'mid', $val->mid)}">{$val->browser_title}</a>
+			</li>
+			
+			<!--// 설정 버튼-->
+			<li class="my_settings" value="2"><a href="{getUrl('act', 'dispXewallPersonalConfig', 'mid', $module_info->mid)}"><i class="fa fa-cogs" title="{$lang->feed_configuration}"></i></a></li>
+			<li class="refresh" value="3" onclick="return false;"|cond="$module_info->use_xmpp=='Y'"><a href="#" onclick="return false;"><i class="fa fa-refresh" title="{$lang->refresh_feed}"></i></a></li>
+		</ul>
+	</div>
+	
+	<div class="write_form" cond="$is_logged">
+		<div class="hidden_by_editor" style="display:none">
+			<input type="text" name="title" class="doc_title"/> <i class="fa fa-chevron-right"></i>
+			<select id="default_listen_array" class="default_listen_array">
+				<option loop="$def_module_info=>$val" value="{$val->module_srl}">{$val->browser_title}</option>
+				<option loop="$my_module_list=>$val" value="{$val->module_srl}">{$val->browser_title}</option>
+			</select>
+			<select id="board_category" style="display:none"></select>
+			<span class="simple_form selected underline cursor_pointer">{$lang->use_simple}</span><span class="spaces"></span><span class="use_editor unseleted underline cursor_pointer">{$lang->use_editor1}</span>
+		</div>
+		<div class="txt_area" style="display:none">{$lang->cmd_write}</div>
+		<div class="editor">
+			<form>
+				<input type="hidden" name="document_srl"/>
+				<input type="hidden" name="comment_srl"/>
+				<input type="hidden" name="content" value=""/>
+				<div class="txt_area">{$lang->cmd_write}</div>
+			</form>
+		</div>
+		<div class="btn_submit btn_submit_enabled">{$lang->cmd_submit}</div>
+	</div>
+	
+	<!--//<div class="loading" align="center"><img src="img/loading.gif"/></div>-->
+	
+	<!--// 게시판의 머릿말이 들어갈 부분 -->
+	<div class="module_header_text hftext" style="display:none;"></div>
+	
+	<div class="list">
+		<!--// 이 곳에 문서들이 복사되어 들어옵니다. -->
+	</div>
+	
+	<!--// 게시판의 꼬릿말이 들어갈 부분 -->
+	<div class="module_footer_text hftext" style="display:none;"></div>
+	
+	<div class="loading" align="center"><img src="img/loading.gif"/></div>
+	
+	<div class="more_page">
+		{$lang->end_of_page}
+	</div>
+</div>
+
+<div id="xewallInform" class="inform" style="display:none;position:absolute;z-index:999;">
+	<div class="xewallInform_left">
+		<div class="profile_img">
+			<img alt="" src="img/anonymous.jpg" />
+		</div>
+	</div>
+	<div class="xewallInform_right">
+		<div class="xewallInform_head">
+			<span class="nick_name"></span> {$lang->has_written_article1} <span class="where"></span> {$lang->has_written_article4} <span class="what"></span>{$lang->has_written_article3}
+		</div>
+		<div class="xewallInform_body"></div>
+		<div class="xewallInform_tail"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<div id="xewallLog" style="display:none;position:absolute;z-index:999;"></div>

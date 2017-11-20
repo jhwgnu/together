@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getCommentDepth" action="select">
+    <tables>
+        <table name="comments_list" />
+    </tables>
+    <columns>
+        <column name="depth" />
+    </columns>
+    <conditions>
+		<condition operation="equal" column="comment_srl" var="comment_srl" />
+    </conditions>
+</query>

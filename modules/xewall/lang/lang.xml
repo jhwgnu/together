@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lang>
+    <item name="settings">
+        <value xml:lang="ko"><![CDATA[설정]]></value>
+        <value xml:lang="en"><![CDATA[Configuration]]></value>
+    </item>
+    <item name="settings_desc">
+        <value xml:lang="ko"><![CDATA[선택한 게시판의 글들이 XE 담벼락으로 피드 됩니다.]]></value>
+        <value xml:lang="en"><![CDATA[Selected board's documents are fed to xewall.]]></value>
+    </item>
+    <item name="browser_name">
+        <value xml:lang="ko"><![CDATA[게시판 이름]]></value>
+        <value xml:lang="en"><![CDATA[Browser name]]></value>
+    </item>
+    <item name="mid">
+        <value xml:lang="ko"><![CDATA[게시판 ID]]></value>
+        <value xml:lang="en"><![CDATA[Board ID]]></value>
+    </item>
+    <item name="feed2xewall">
+        <value xml:lang="ko"><![CDATA[이 게시판의 소식을 피드 받습니다.]]></value>
+        <value xml:lang="en"><![CDATA[I want to get this board's feed.]]></value>
+    </item>
+    <item name="return">
+        <value xml:lang="ko"><![CDATA[돌아가기]]></value>
+        <value xml:lang="en"><![CDATA[Return]]></value>
+    </item>
+    <item name="refresh_feed">
+        <value xml:lang="ko"><![CDATA[피드 새로 불러오기]]></value>
+        <value xml:lang="en"><![CDATA[Refresh feed]]></value>
+    </item>
+    <item name="writing">
+        <value xml:lang="ko"><![CDATA[게시중... 잠시만 기다려 주세요...]]></value>
+        <value xml:lang="en"><![CDATA[Submitting... Please wait...]]></value>
+    </item>
+    <item name="write">
+        <value xml:lang="ko"><![CDATA[게시]]></value>
+        <value xml:lang="en"><![CDATA[Submit]]></value>
+    </item>
+    <item name="use_editor1">
+        <value xml:lang="ko"><![CDATA[에디터 사용]]></value>
+        <value xml:lang="en"><![CDATA[Use editor]]></value>
+    </item>
+    <item name="use_simple">
+        <value xml:lang="ko"><![CDATA[간단히 글쓰기]]></value>
+        <value xml:lang="en"><![CDATA[Simple Editor]]></value>
+    </item>
+    <item name="xmpp_connected">
+        <value xml:lang="ko"><![CDATA[실시간 알림 활성됨]]></value>
+        <value xml:lang="en"><![CDATA[XMPP is connected]]></value>
+    </item>
+    <item name="xmpp_disconnected">
+        <value xml:lang="ko"><![CDATA[실시간 알림 꺼짐]]></value>
+        <value xml:lang="en"><![CDATA[XMPP is disconnected]]></value>
+    </item>
+    <item name="xmpp_connecting">
+        <value xml:lang="ko"><![CDATA[실시간 알림과 연결중...]]></value>
+        <value xml:lang="en"><![CDATA[Connecting to XMPP...]]></value>
+    </item>
+    <item name="board_list">
+        <value xml:lang="ko"><![CDATA[게시판 리스트]]></value>
+        <value xml:lang="en"><![CDATA[Board List]]></value>
+    </item>
+    <item name="cancel">
+        <value xml:lang="ko"><![CDATA[취소합니다.]]></value>
+        <value xml:lang="en"><![CDATA[Cancel.]]></value>
+    </item>
+    <item name="has_written_article1">
+        <value xml:lang="ko"><![CDATA[님께서]]></value>
+        <value xml:lang="en"><![CDATA[has written on]]></value>
+    </item>
+    <item name="has_written_article2">
+        <value xml:lang="ko"><![CDATA[에 글을 올리셨습니다.]]></value>
+        <value xml:lang="en"><![CDATA[.]]></value>
+    </item>
+    <item name="has_written_article3">
+        <value xml:lang="ko"><![CDATA[을 남기셨습니다.]]></value>
+        <value xml:lang="en"><![CDATA[.]]></value>
+    </item>
+    <item name="has_written_article4">
+        <value xml:lang="ko"><![CDATA[에]]></value>
+        <value xml:lang="en"><![CDATA[:]]></value>
+    </item>
+    <item name="category">
+        <value xml:lang="ko"><![CDATA[카테고리 이름]]></value>
+        <value xml:lang="en"><![CDATA[Category]]></value>
+    </item>
+    <item name="title">
+        <value xml:lang="ko"><![CDATA[타이틀]]></value>
+        <value xml:lang="en"><![CDATA[Title]]></value>
+    </item>
+    <item name="simple_view">
+        <value xml:lang="ko"><![CDATA[간단히 보기]]></value>
+        <value xml:lang="en"><![CDATA[Simple view]]></value>
+    </item>
+    <item name="cancel_modify">
+        <value xml:lang="ko"><![CDATA[수정 취소]]></value>
+        <value xml:lang="en"><![CDATA[Cancel modify]]></value>
+    </item>
+    
+    <item name="see_more_comments">
+        <value xml:lang="ko"><![CDATA[댓글 더 보기]]></value>
+        <value xml:lang="en"><![CDATA[See more comments]]></value>
+    </item>
+    <item name="summary">
+        <value xml:lang="ko"><![CDATA[요약]]></value>
+        <value xml:lang="en"><![CDATA[Summary]]></value>
+    </item>
+    <item name="move_to">
+        <value xml:lang="ko"><![CDATA[문서로 바로 이동]]></value>
+        <value xml:lang="en"><![CDATA[Move to the document]]></value>
+    </item>
+    <item name="move_new">
+        <value xml:lang="ko"><![CDATA[새 창으로 이동]]></value>
+        <value xml:lang="en"><![CDATA[Use new window]]></value>
+    </item>
+    <item name="board_list">
+        <value xml:lang="ko"><![CDATA[게시판 목록]]></value>
+        <value xml:lang="en"><![CDATA[Board List]]></value>
+    </item>
+    <item name="personal_config">
+        <value xml:lang="ko"><![CDATA[개인 설정]]></value>
+        <value xml:lang="en"><![CDATA[Personal Configuration]]></value>
+    </item>
+    <item name="end_of_page">
+        <value xml:lang="ko"><![CDATA[페이지의 끝입니다.]]></value>
+        <value xml:lang="en"><![CDATA[End of Page]]></value>
+    </item>
+    <item name="module_config">
+        <value xml:lang="ko"><![CDATA[모듈 설정]]></value>
+        <value xml:lang="en"><![CDATA[Module Configuration]]></value>
+    </item>
+    <item name="module_config_desc">
+        <value xml:lang="ko"><![CDATA[XE에 등록되어있는 Xewall의 기본적인 모듈 설정을 하실 수 있습니다.]]></value>
+        <value xml:lang="en"><![CDATA[You can do basic module configuration registered to XE.]]></value>
+    </item>
+    <item name="general_config">
+        <value xml:lang="ko"><![CDATA[일반 설정]]></value>
+        <value xml:lang="en"><![CDATA[General Configuration]]></value>
+    </item>
+    <item name="general_config_desc">
+        <value xml:lang="ko"><![CDATA[xewall 의 기본적인 동작 설정을 하실 수 있습니다.]]></value>
+        <value xml:lang="en"><![CDATA[You can configure the basic xewall actions.]]></value>
+    </item>
+    <item name="feed_configuration">
+        <value xml:lang="ko"><![CDATA[피드 설정]]></value>
+        <value xml:lang="en"><![CDATA[Feed Configuration]]></value>
+    </item>
+    <item name="feed_configuration_help">
+        <value xml:lang="ko">
+<![CDATA[
+<p class="x_help-inline">이 모듈에서 피드 받을 게시판들을 설정합니다.</p>
+<p class="x_help-inline">XE게시판에 설정된 모든 게시판을 Xewall 에서 출력할 수 있습니다.</p>
+<p class="x_help-inline">각 게시판을 마우스로 이동하여 적절한 위치로 이동하세요.</p>
+<p class="x_help-inline">xewall에서 사용자들에게 노출시키고 싶지 않은 게시판들은 <b>"비사용 게시판"</b>으로 이동하세요.</p>
+<p class="x_help-inline">xewall에서 사용자들이 노출여부를 선택할 수 있는 게시판들은 <b>"선택 게시판"</b>으로 이동하세요.</p>
+<p class="x_help-inline">xewall에서 사용자에게 반드시 노출하려는 게시판들은 <b>"필수 게시판"</b>으로 이동하세요.</p>
+<p class="x_help-inline">각 게시판의 색을 변경하시려면 게시판을 클릭하세요.</p>
+]]>
+		</value>
+        <value xml:lang="en">
+<![CDATA[
+<p class="x_help-inline">Which XE board would you like to feed to the users?</p>
+<p class="x_help-inline">You can integrate all the XE boards into the Xewall.</p>
+<p class="x_help-inline">You can sort the boards by dragging the boxes.</p>
+<p class="x_help-inline">Move boards to the <b>"No use boards"</b> if you do not want it to be exposed to the xewall users.</p>
+<p class="x_help-inline">Move boards to the <b>"Available boards"</b> if you want the xewall users to decide its exposure.</p>
+<p class="x_help-inline">Move boards to the <b>"Default boards"</b> if you want it to be exposed to the xewall users by default.</p>
+<p class="x_help-inline">If you want to change the colord of the boards, click it.</p>
+]]>
+		</value>
+    </item>
+    <item name="no_use_boards">
+    	<value xml:lang="ko">비사용게시판</value>
+    	<value xml:lang="en">No feed boards</value>
+    </item>
+    <item name="available_boards">
+    	<value xml:lang="ko">사용자 선택 가능한 게시판</value>
+    	<value xml:lang="en">Feed available boards</value>
+    </item>
+    <item name="default_boards">
+    	<value xml:lang="ko">필수 게시판</value>
+    	<value xml:lang="en">Default feed boards</value>
+    </item>
+    <item name="no_use_boards_desc">
+    	<value xml:lang="ko">xewall에서 사용자들에게 노출시키고 싶지 않은 게시판들은 여기로 이동하세요.</value>
+    	<value xml:lang="en">Move boards to here if you do not want it to be exposed to the xewall users.</value>
+    </item>
+    <item name="available_boards_desc">
+    	<value xml:lang="ko">xewall에서 사용자들이 노출여부를 선택할 수 있는 게시판들은 여기로 이동하세요.</value>
+    	<value xml:lang="en">Move boards to here if you want it to be exposed to the xewall users by default.</value>
+    </item>
+    <item name="default_boards_desc">
+    	<value xml:lang="ko">xewall에서 사용자에게 반드시 노출하려는 게시판들은 여기로 이동하세요.</value>
+    	<value xml:lang="en">Move boards to here if you want it to be exposed to the xewall users by default.</value>
+    </item>
+    <item name="navigation_configuration">
+    	<value xml:lang="ko"><![CDATA[네비게이션 설정]]></value>
+    	<value xml:lang="en"><![CDATA[Navigation Configuration]]></value>
+    </item>
+    <item name="sorting_configuration">
+    	<value xml:lang="ko"><![CDATA[정렬기준]]></value>
+    	<value xml:lang="en"><![CDATA[Sort by]]></value>
+    </item>
+    <item name="sorting_configuration_help">
+    	<value xml:lang="ko"><![CDATA[피드를 받을 때 피드들의 정렬 기준을 설정합니다.]]></value>
+    	<value xml:lang="en"><![CDATA[Configures the feed sort.]]></value>
+    </item>
+    <item name="sort_by_document_srl">
+    	<value xml:lang="ko"><![CDATA[document_srl 순(기본)]]></value>
+    	<value xml:lang="en"><![CDATA[Sort by document_srl(default)]]></value>
+    </item>
+    <item name="sort_by_regdate">
+    	<value xml:lang="ko"><![CDATA[등록 일자 순]]></value>
+    	<value xml:lang="en"><![CDATA[Sort by register date]]></value>
+    </item>
+    <item name="sort_by_update">
+    	<value xml:lang="ko"><![CDATA[마지막 변경 일자 순 (댓글이 달리면 변경으로 인식합니다.)]]></value>
+    	<value xml:lang="en"><![CDATA[Sort by modified date (When commented, it's modified.)]]></value>
+    </item>
+    <item name="sort_order">
+    	<value xml:lang="ko"><![CDATA[정렬순서]]></value>
+    	<value xml:lang="en"><![CDATA[Sort order]]></value>
+    </item>
+    <item name="sort_order_help">
+    	<value xml:lang="ko"><![CDATA[피드들의 정렬 순서를 결정합니다.]]></value>
+    	<value xml:lang="en"><![CDATA[Configures the feed sort order.]]></value>
+    </item>
+    <item name="ascending">
+    	<value xml:lang="ko"><![CDATA[오름차순]]></value>
+    	<value xml:lang="en"><![CDATA[Ascending]]></value>
+    </item>
+    <item name="decending">
+    	<value xml:lang="ko"><![CDATA[내림차순]]></value>
+    	<value xml:lang="en"><![CDATA[Decending]]></value>
+    </item>
+    
+    <item name="list_count">
+    	<value xml:lang="ko"><![CDATA[출력 개수]]></value>
+    	<value xml:lang="en"><![CDATA[List count]]></value>
+    </item>
+    <item name="list_count_help">
+    	<value xml:lang="ko"><![CDATA[한 번에 불러들일 피드들의 개수를 설정합니다. (기본 20 개)]]></value>
+    	<value xml:lang="en"><![CDATA[Configures the number of feed for each call. (Default 20)]]></value>
+    </item>
+    <item name="allow">
+    	<value xml:lang="ko"><![CDATA[허용함]]></value>
+    	<value xml:lang="en"><![CDATA[Allow]]></value>
+    </item>
+    <item name="not_allow">
+    	<value xml:lang="ko"><![CDATA[허용하지 않음]]></value>
+    	<value xml:lang="en"><![CDATA[Do not allow]]></value>
+    </item>
+    <item name="editor_configuration">
+    	<value xml:lang="ko"><![CDATA[에디터 설정]]></value>
+    	<value xml:lang="en"><![CDATA[Editor Configuration]]></value>
+    </item>
+    <item name="file_upload">
+    	<value xml:lang="ko"><![CDATA[파일 업로드]]></value>
+    	<value xml:lang="en"><![CDATA[File upload]]></value>
+    </item>
+    <item name="auto_save">
+    	<value xml:lang="ko"><![CDATA[자동저장]]></value>
+    	<value xml:lang="en"><![CDATA[Auto save]]></value>
+    </item>
+    <item name="default_component">
+    	<value xml:lang="ko"><![CDATA[기본 컴포넌트]]></value>
+    	<value xml:lang="en"><![CDATA[Default component]]></value>
+    </item>
+    <item name="extended_component">
+        <value xml:lang="ko"><![CDATA[확장 컴포넌트]]></value>
+        <value xml:lang="en"><![CDATA[Extended component]]></value>
+    </item>
+    <item name="editor_size_change">
+        <value xml:lang="ko"><![CDATA[에디터 크기 변환]]></value>
+        <value xml:lang="en"><![CDATA[Editor size change]]></value>
+    </item>
+    <item name="html_disable">
+        <value xml:lang="ko"><![CDATA[HTML 비활성화]]></value>
+        <value xml:lang="en"><![CDATA[HTML disable]]></value>
+    </item>
+    <item name="height">
+        <value xml:lang="ko"><![CDATA[높이]]></value>
+        <value xml:lang="en"><![CDATA[Height]]></value>
+    </item>
+    <item name="skin">
+        <value xml:lang="ko"><![CDATA[스킨]]></value>
+        <value xml:lang="en"><![CDATA[Skin]]></value>
+    </item>
+    <item name="action_configuration">
+        <value xml:lang="ko"><![CDATA[동작 설정]]></value>
+        <value xml:lang="en"><![CDATA[Action Configuration]]></value>
+    </item>
+    <item name="timer_frequency">
+        <value xml:lang="ko"><![CDATA[타이머 동작 주기]]></value>
+        <value xml:lang="en"><![CDATA[Timer frequency]]></value>
+    </item>
+    <item name="sec">
+        <value xml:lang="ko"><![CDATA[초]]></value>
+        <value xml:lang="en"><![CDATA[sec]]></value>
+    </item>
+    <item name="sec_desc">
+        <value xml:lang="ko"><![CDATA[xewall 은 기본적으로 주기적인 타이머가 돌아가도록 되어있으며 설정된 초마다 새 피드들을 불러옵니다.]]></value>
+        <value xml:lang="en"><![CDATA[Xewall has timer frequency, and feeds will be refreshed every after the set sec.]]></value>
+    </item>
+    <item name="document_summary">
+        <value xml:lang="ko"><![CDATA[문서 요약]]></value>
+        <value xml:lang="en"><![CDATA[Document summary]]></value>
+    </item>
+    <item name="letter_amount">
+        <value xml:lang="ko"><![CDATA[자]]></value>
+        <value xml:lang="en"><![CDATA[Letters]]></value>
+    </item>
+    <item name="document_summary_desc">
+        <value xml:lang="ko"><![CDATA[문서의 내용을 설정된 길이만큼 잘라서 요약합니다. 기본: 500자]]></value>
+        <value xml:lang="en"><![CDATA[Document will be summarized by this value. Default : 500 letters]]></value>
+    </item>
+    <item name="document_see_more_content">
+        <value xml:lang="ko"><![CDATA[문서 요약시 더 보기 내용]]></value>
+        <value xml:lang="en"><![CDATA[Document see more content]]></value>
+    </item>
+    <item name="document_see_more_content_desc">
+        <value xml:lang="ko"><![CDATA[문서의 내용을 자릴 시 덧붙일 내용을 설정합니다. 기본: (more...)]]></value>
+        <value xml:lang="en"><![CDATA[Will add this contents after the document summary. Default: (more...)]]></value>
+    </item>
+    <item name="comment_summary">
+        <value xml:lang="ko"><![CDATA[댓글 요약]]></value>
+        <value xml:lang="en"><![CDATA[Comment summary]]></value>
+    </item>
+    <item name="comment_summary_desc">
+        <value xml:lang="ko"><![CDATA[댓글의 내용을 대략 이 길이만큼 잘라서 요약합니다. 기본: 500자]]></value>
+        <value xml:lang="en"><![CDATA[Comment will be summarized by this value. Default : 500 letters]]></value>
+    </item>
+    <item name="comment_see_more_content">
+        <value xml:lang="ko"><![CDATA[댓글 요약시 더 보기 내용]]></value>
+        <value xml:lang="en"><![CDATA[Comment see more content]]></value>
+    </item>
+    <item name="comment_see_more_content_desc">
+        <value xml:lang="ko"><![CDATA[댓글의 내용을 자릴 시 덧붙일 내용을 설정합니다. 기본: (more...)]]></value>
+        <value xml:lang="en"><![CDATA[Will add this contents after the comment summary. Default: (more...)]]></value>
+    </item>
+</lang>

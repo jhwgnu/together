@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getModuleInfoByModuleSrl" action="select">
+    <tables>
+        <table name="modules"/>
+    </tables>
+    <columns>
+    	<column name="module_srl" />
+    	<column name="module" />
+    	<column name="mid" />
+    	<column name="browser_title" />
+    </columns>
+    <conditions>
+        <condition operation="equal" column="module_srl" var="module_srl" notnull="notnull" />
+    </conditions>
+    <navigation />
+</query>

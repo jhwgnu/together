@@ -1,0 +1,242 @@
+<!--@if($mi->addon_socialxe=='Y')-->
+	{@ $ao_sxeop = $mi->addon_socialxe_option?$mi->addon_socialxe_option:'list_count="20"'}
+	<div id="siFbk" class="cmt sns clearBar" style="margin:0"|cond="$is_modal"><a name="comment" data-modal-scrollinto="true"|cond="$comment_srl"></a>
+	<img class="zbxe_widget_output" widget="socialxe_comment" skin="default" colorset="white" document_srl="{$doc_srl}" content_link="{getFullUrl('', 'document_srl', $doc_srl, 'dummy', '1')}" content_title="{htmlspecialchars($oDocument->getTitleText())}" {$ao_sxeop} />
+	</div>
+<!--@else-->
+	{@
+		$is_wcmt = $grant->write_comment && $oDocument->isEnableComment() && $oDocument->allowComment();
+		$ds_nick = $ci['nick_name']->display == 'Y';
+		$ds_user =	$ci['user_name']->display == 'Y';
+
+		$ds_cvoteup = $is_logged&&strpos($mi->use_c_vote, 'up')!==false;
+		$ds_cvotedown = $is_logged&&strpos($mi->use_c_vote, 'down')!==false;
+		$ds_cdeclare = $is_logged&&strpos($mi->use_c_vote, 'declare')!==false;
+		$adm_id = $ds_cdeclare ? $oThis->getAdminId() : array();
+
+		$cmts = $comment_list?$comment_list:$oThis->getCommentList($doc_srl, $cpage, $cmt_lstcnt);
+		$bscmts = $mi->use_c_best=='Y' ? $oThis->getBestCommentList($doc_srl) : array();
+		$a_clsttp = array('best'=>&$bscmts,''=>&$cmts->data);
+
+		$adopt_grade = explode(',', $lang->adopt_grade);
+	}
+
+	<block cond="$mi->display_recommender != 'N'">
+		{@ $voted_lst = $oThis->getDocumentVotedLogs($doc_srl, 1)}
+	</block>
+
+	<div id="siFbk" class="cmt clearBar" style="margin:0"|cond="$is_modal"><a name="comment" data-modal-scrollinto="true"|cond="$comment_srl"></a>
+		<div class="scFbH scToggle" data-target="#siFbk .scClst.d{$doc_srl}">
+			<h2>
+				{$lang->comment} <em>{$oDocument->getCommentcount()}</em>
+				<span cond="count($voted_lst)" class="fr">
+					{@
+						$_tmp2 = 0;
+						$cmMember = &getModel('member');
+					}
+					<block loop="$voted_lst=>$mb">
+						{@
+							$_tmp2++;
+							$_tmp = $cmMember->getMemberInfoByMemberSrl($mb->member_srl);
+						}
+						<img cond="$_tmp->profile_image" src="{$_tmp->profile_image->src}" class="profile" title="{htmlspecialchars($_tmp->nick_name)}" />
+						<span cond="!$_tmp->profile_image" class="profile" title="{htmlspecialchars($_tmp->nick_name)}"></span>
+						<!--@if($_tmp2 > 9)-->{@ break;}<!--@endif-->
+					</block>
+				</span>
+				<span cond="!count($voted_lst) || count($voted_lst)>10" class="fr <!--@if(count($voted_lst))-->recommender_count<!--@endif-->">{count($voted_lst)?sprintf($lang->e_recommender_count, count($voted_lst)-10):'...'}</span>
+			</h2>
+		</div>
+
+		<div cond="count($cmts->data)" class="scClst d{$doc_srl}" data-flash-fix="true"|cond="$us_modal||$is_modal">
+			<ul loop="$a_clsttp => $tlk,$p_list" cond="count($p_list)" class="scFrm {$tlk}">
+			<block loop="$p_list=>$key,$comment">
+				{@
+					$cmt_srl = $comment->comment_srl;
+					$cmb_srl = $comment->get('member_srl');
+					$depth = $comment->get('depth');
+					$depth = $depth > 10 ? 10 : $depth;
+				}
+				<li class="{$depth?'indent':''} {($mi->display_profile!='N'&&$mi->display_profile!='D')?'':'noPfile'} clearBar" style="padding-left:{((int)$depth*17+3)}px;background-position:{((int)$depth*17-10)}px -375px"|cond="$depth"><a name="comment_{$cmt_srl}" data-modal-scrollinto="true"|cond="$comment_srl&&$comment_srl==$cmt_srl"></a>
+					{@
+						$isc_locked = $is_ckclok?$oThis->isLocked($cmt_srl, 'cmt'):0;
+						$isc_granted = $grant->view && $comment->isGranted();
+						$isc_secret = $comment->isSecret();
+						$isc_blind = $mi->use_c_blind=='Y'?$oThis->isBlind($cmt_srl, 'cmt'):0;
+						$show_btnAdopt = $pt_vtype=='A'&&!$isc_blind&&(!$cmb_srl||$cmb_srl!=$dmb_srl)&&($grant->manager||$is_doc_owner||$adopt_srl==$cmt_srl);
+					}
+					<div class="scFbt">
+						<img cond="$tlk=='best'" src="img/common/label_best.gif" />
+						<block cond="($mi->display_profile!='N'&&$mi->display_profile!='D')">
+							<img cond="$comment->getProfileImage()" src="{$comment->getProfileImage()}" alt="Profile" class="profile" />
+							<span cond="!$comment->getProfileImage()" class="profile"></span>
+						</block>
+						<h3 class="author">
+							{@
+								$home = $comment->get('homepage');
+								$nick = cut_str((!$cmb_srl||$ds_nick||!$ds_user)?$comment->getNickName():$comment->getUserName(), $mi->nickname_length);
+							}
+							<i cond="!$cmb_srl && !$home">{$nick}</i>
+							<span cond="$cmb_srl" class="scHLink member_{$cmb_srl}">{$nick}</span>
+							<i cond="!$cmb_srl && $home" class="scHLink" data-href="{$home}">{$nick}</i>
+						</h3>
+						{@
+							$_tmp2 = $pt_vtype=='A'&&$cmb_srl?$oThis->getCommentCountByAdopted($cmb_srl):0;
+							$_tmp = $_tmp2?round(sqrt($_tmp2 / 10), 2):0;
+						}
+						<p class="time"><!--@if($_tmp)--><strong class="author" title="{$lang->adopt}: {$_tmp2}">{$adopt_grade[$_tmp>10?10:floor($_tmp)]}</strong> <span>({$_tmp2})</span><br /><!--@endif-->{$comment->getRegdate('Y.m.d H:i')}<!--@if($ds_ipaddr)--><br /><span class="ipAddress">(IP: {$comment->getIpaddress()})</span><!--@endif--></p>
+						<span cond="$mi->addon_pang_pang == 'Y' && $un_extra->ppang && $un_extra->ppang->c[$cmt_srl]->p > 0" class="scIcoArea">
+							{@$ao_pppt = sprintf($lang->bonus_pang_pang, $un_extra->ppang->c[$cmt_srl]->p)}
+							<img class="scIcoSet coin" src="img/common/blank.gif" title="{$ao_pppt}" alt="{$ao_pppt}">
+						</span>
+					</div>
+
+					<div class="scCmtCon clearBar {$isc_blind?'blind':($isc_secret?'secret':($show_btnAdopt?'adopt':''))}" data-link-fix="true"|cond="$is_modal">
+						<!--@if($isc_secret && !$isc_granted)-->
+							<form ruleset="checkPassword" action="./" method="post" class="conSecret">
+								<input type="hidden" name="comment_srl" value="{$cmt_srl}" />
+								<input type="hidden" name="act" value="procBoardVerificationPassword" />
+								<div class="btnArea">
+									<span class="scBtn black"><input type="password" name="password" placeholder="{$lang->password}" /></span>
+									<span class="scBtn black"><input type="submit" value="{$lang->cmd_input}" /></span>
+								</div>
+							</form>
+						<!--@elseif($show_btnAdopt)-->
+							<div class="btnArea btnAdopt">
+								<!--@if(!$adopt_srl)-->
+								<span class="scBtn"><button type="button" data-adopt-srl="{$cmt_srl}" data-adopt-name="{$comment->get('nick_name')}">{$lang->cmd_adopt}</button></span>
+								<!--@elseif($adopt_srl==$cmt_srl)-->
+								<span class="scBtn blue"><button type="button" onclick="return false">{$lang->adopted_comment}</button></span>
+								<!--@else-->
+									{@ $show_btnAdopt = 0}
+								<!--@endif-->
+							</div>
+						<!--@endif-->
+
+						{$isc_blind&&!$grant->manager?$lang->msg_is_blind:$comment->getContent(false)}
+					</div>
+
+					{@
+						$votedp = (int)$comment->get('voted_count');
+						$blamedp = (int)$comment->get('blamed_count');
+					}
+					<!--@if($ds_cvoteup||$ds_cvotedown||$ds_cdeclare)-->
+					<div class="scVoteArea clearBar">
+						<span cond="$ds_cvoteup||$ds_cvotedown" class="scBtn small group"><a cond="$ds_cvoteup" href="#recommend" data-type="comment" data-srl="{$cmt_srl}" title="{$lang->cmd_like}"><em class="vote cnt">{$votedp}</em></a><a cond="$ds_cvotedown" href="#not_recommend" data-type="comment" data-srl="{$cmt_srl}" title="{$lang->cmd_dislike}"><em class="blame cnt">{$blamedp}</em></a></span>
+						<span cond="$ds_cdeclare" class="scBtn small group"><a href="#declare" data-type="comment" data-srl="{$cmt_srl}" data-rec="{count($adm_id)?$adm_id[0]->member_srl:$cmb_srl}" title="{$lang->cmd_declare}"><em class="declare">*</em></a></span>
+					</div>
+					<!--@elseif($votedp || $blamedp)-->
+					<div class="scVoteArea clearBar">
+						<span class="vote">{$lang->cmd_vote}: {$votedp} / {$blamedp}</span>
+					</div>
+					<!--@endif-->
+
+					<div cond="!$isc_blind&&$comment->hasUploadedFiles()" class="scFiles c{$cmt_srl}">
+						<button type="button" class="scToggle" data-target="#siFbk .scFiles.c{$cmt_srl} ul">{$lang->uploaded_file} <strong>[{$comment->get('uploaded_count')}]</strong></button>
+						<ul>
+							<li loop="$comment->getUploadedFiles()=>$key,$file"><a href="{$file->isvalid=='Y'?getUrl('').$file->download_url:'#'}">{$file->source_filename}<span class="fsize">({FileHandler::filesize($file->file_size)}/{number_format($file->download_count)})</span></a></li>
+						</ul>
+					</div>
+
+					<div class="action">
+						<a cond="$is_logged&&$mi->display_document_do!='N'" class="comment_{$cmt_srl} this" href="#popup_menu_area" onclick="return false">{$lang->cmd_comment_do}</a>
+						<block cond="$is_wcmt">
+							<a href="{getUrl('act','dispBoardWriteComment','comment_srl','','parent_srl',$cmt_srl,'document_srl',$doc_srl)}" type="example/modal"|cond="$us_modal&&!$is_modal" title="{$lang->new_comment}" class="reply">{$lang->cmd_reply}</a>
+						</block>
+						<block cond="$grant->manager||(!$isc_locked&&!$isc_blind&&$comment->isEditable()&&!($show_btnAdopt&&$adopt_srl==$cmt_srl))">
+							<a href="{getUrl('act','dispBoardWriteComment','comment_srl',$cmt_srl,'document_srl',$doc_srl)}" type="example/modal"|cond="$us_modal&&!$is_modal" title="{$lang->modify_comment}" class="modify">{$lang->cmd_modify}</a>
+							<a href="{getUrl('act','dispBoardDeleteComment','comment_srl',$cmt_srl,'document_srl',$doc_srl)}" type="example/modal"|cond="$us_modal&&!$is_modal" title="{$lang->delete_comment}" class="delete">{$lang->cmd_delete}</a>
+						</block>
+					</div>
+				</li>
+			</block>
+			</ul>
+
+			<div cond="$cmts->total_page > 1" class="scPageArea">
+				<span class="scPage">
+					<a href="{getUrl('comment_srl','','cpage','1')}#comment" class="direction prev"><span></span><span></span> {$lang->first_page}</a>
+					<block loop="$page_no=$cmts->page_navigation->getNextPage()">
+						<strong cond="$cpage==$page_no">{$page_no}</strong>
+						<a cond="$cpage!=$page_no" href="{getUrl('comment_srl','','cpage',$page_no)}#comment">{$page_no}</a>
+					</block>
+					<a href="{getUrl('comment_srl','','cpage',$cmts->page_navigation->last_page)}#comment" class="direction next">{$lang->last_page} <span></span><span></span></a>
+				</span>
+			</div>
+		</div>
+
+<!--@if($is_wcmt && $mi->use_input_comment_writer != 'N')-->
+		<div id="pidModalTarget" class="scFbWt">
+			<form ruleset="insertComment" action="./" method="post">
+				<input cond="$is_modal" type="hidden" name="is_modal" value="{$us_vmodal?2:1}" />
+				<input cond="$is_modal&&$us_vmodal" type="hidden" name="success_return_act" value="dispBoardContentCommentList" />
+				<input type="hidden" name="module_srl" value="{$mi->module_srl}" />
+				<input type="hidden" name="document_srl" value="{$document_srl}" />
+				<input type="hidden" name="act" value="procBoardInsertComment" />
+				<input type="hidden" name="text_editor" value="Y" />
+
+				{@
+					$t_dstus = explode(',', $mi->use_c_status);
+					$status = 'PUBLIC';
+				}
+				<input cond="count($t_dstus) === 1 && $t_dstus[0]" type="hidden" name="status" value="{$t_dstus[0]}" />
+				<div class="scWopts clearBar">
+					<label class="wrtTxt fl" for="siComContent">
+						<em>Text Editor</em>
+					</label>
+					<label cond="$mi->use_input_comment_writer != 'T'"> <input type="checkbox" name="use_html" value="Y" /> HTML </label>
+					<label cond="$is_logged">
+						<input type="checkbox" name="notify_message" value="Y" />
+						{$lang->notify}
+					</label>
+					<label cond="$mi->use_anonymous=='S'">
+						<input type="checkbox" name="anonymous" value="Y" />
+						{$lang->anonymous}
+					</label>
+					<select cond="count($t_dstus) > 1" name="status" style="margin-left:8px">
+						<option loop="$t_dstus => $value" value="{$value}" selected="selected"|cond="$status == $value">{Context::getLang(strtolower($value))}</option>
+					</select>
+				</div>
+
+				<div class="scWcont clearBar">
+					<textarea name="content" id="siComContent"></textarea>
+					<span class="cmtbtns fr">
+						<span class="scBtn small" cond="$mi->use_input_comment_writer != 'T'">
+							<a href="{getUrl('act','dispBoardWriteComment','comment_srl','','parent_srl','','document_srl', $doc_srl)}" type="example/modal/pidModalTarget"|cond="$us_modal&&!$is_modal" title="{$lang->new_document}" accesskey="y" tabindex="-1">{$lang->use_wysiwyg}</a>
+						</span>
+						<span class="scBtn blue big"><button type="submit">{$lang->comment_write}</button></span>
+					</span>
+				</div>
+
+				<!--@if(!$is_logged)-->
+					<div class="scWusr clearBar">
+						{@ $is_guestinfo = $mi->use_input_guest_info == 'N' ? $oThis->getIpaddress(1) : ''}
+						<label class="scLaEt">
+							<span>Name</span>
+							<input type="text" name="nick_name" maxlength="80" value="{$is_guestinfo?$is_guestinfo:''}" readonly="readonly"|cond="$is_guestinfo" />
+						</label>
+						<label class="scLaEt">
+							<span>Pass</span>
+							<input type="password" name="password" />
+						</label>
+						<block cond="$mi->use_input_guest_info != 'N' && $mi->use_input_guest_info != 'S'">
+							<label class="scLaEt">
+								<span>Mail</span>
+								<input type="text" name="email_address" maxlength="250" />
+							</label>
+							<label class="scLaEt">
+								<span>Home</span>
+								<input type="text" name="homepage" maxlength="250" />
+							</label>
+						</block>
+					</div>
+				<!--@else-->
+					<input type="hidden" name="nick_name" value="0" />
+					<input type="hidden" name="password" value="0" />
+				<!--@endif-->
+			</form>
+		</div>
+<!--@else-->
+		<div cond="!$is_modal" class="scFbWt nowrt">{$oDocument->getPermanentUrl()}</div>
+<!--@endif-->
+	</div>
+<!--@endif-->

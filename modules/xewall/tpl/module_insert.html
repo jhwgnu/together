@@ -1,0 +1,312 @@
+<!--// plug in insert -->
+<load target="js/spectrum/spectrum.js" />
+<load target="js/spectrum/spectrum.css" />
+
+<load target="js/module_insert.js" />
+<load target="css/module_insert.css" />
+
+<include target="header.html" />
+
+<div id="module_config_dialog_box">
+</div>
+
+<div cond="$XE_VALIDATOR_MESSAGE" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form ruleset="insertXewallModule" class="x_form-horizontal" action="./" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="module" value="xewall" />
+	<input type="hidden" name="act" value="procXewallAdminInsertModule" />
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="module_srl" value="{$module_info->module_srl}" />
+	<input cond="$mid || $module_srl" type="hidden" name="success_return_url" value="{getNotEncodedUrl('', 'module', 'admin', 'act', 'dispXewallAdminModuleList')}" />
+	<section class="section">
+		<h1>{$lang->subtitle_primary}</h1>
+		<div cond="$logged_info->is_admin == 'Y'" class="x_control-group">
+			<label class="x_control-label" for="module_mid">{$lang->mid}</label>
+			<div class="x_controls">
+				<input type="text" name="module_mid" id="module_mid" value="{$module_info->mid}" />
+				<a href="#module_name_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="module_name_help" class="x_help-block" hidden>{$lang->about_mid}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_browser_title">{$lang->browser_title}</label>
+			<div class="x_controls">
+				<input type="text" name="browser_title" id="browser_title" value="<!--@if(strpos($module_info->browser_title, '$user_lang->') === false)-->{$module_info->browser_title}<!--@else-->{htmlspecialchars($module_info->browser_title)}<!--@end-->" class="lang_code" />
+				<a href="#browser_title_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="browser_title_help" class="x_help-block" hidden>{$lang->about_browser_title}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="layout_srl">{$lang->layout}</label>
+			<div class="x_controls">
+				<select name="layout_srl" id="layout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$layout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->layout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="skin">{$lang->skin}</label>
+			<div class="x_controls">
+				<select name="skin" id="skin" style="width:auto">
+					<option loop="$skin_list=> $key, $val" value="{$key}" selected="selected"|cond="$module_info->skin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_header_text">{$lang->header_text}</label>
+			<div class="x_controls">
+				<textarea name="header_text" id="header_text" class="lang_code" rows="8" cols="42" placeholder="{$lang->about_header_text}"><!--@if(strpos($module_info->header_text, '$user_lang->') === false)-->{$module_info->header_text}<!--@else-->{htmlspecialchars($module_info->header_text)}<!--@end--></textarea>
+				<a href="#header_text_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="header_text_help" class="x_help-block" hidden>{$lang->about_header_text}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="lang_footer_text">{$lang->footer_text}</label>
+			<div class="x_controls">
+				<textarea name="footer_text" id="footer_text" class="lang_code" rows="8" cols="42" placeholder="{$lang->about_footer_text}"><!--@if(strpos($module_info->footer_text, '$user_lang->') === false)-->{$module_info->footer_text}<!--@else-->{htmlspecialchars($module_info->footer_text)}<!--@end--></textarea>
+				<a href="#footer_text_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="footer_text_help" class="x_help-block" hidden>{$lang->about_footer_text}</p>
+			</div>
+		</div>
+	</section>
+	<section class="section">
+		<h1>{$lang->mobile_settings}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->mobile_view}</label>
+			<div class="x_controls">
+				<label class="x_inline" for="use_mobile"><input type="checkbox" name="use_mobile" id="use_mobile" value="Y" checked="checked"|cond="$module_info->use_mobile == 'Y'" /> {$lang->about_mobile_view}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mlayout_srl">{$lang->mobile_layout}</label>
+			<div class="x_controls">
+				<select name="mlayout_srl" id="mlayout_srl">
+					<option value="0">{$lang->notuse}</option>
+					<option loop="$mlayout_list => $key, $val" value="{$val->layout_srl}" selected="selected"|cond="$module_info->mlayout_srl== $val->layout_srl">{$val->title} ({$val->layout})</option>
+				</select>
+				<a href="#mobile_layout_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_layout_help" class="x_help-block" hidden>{$lang->about_layout}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="mskin">{$lang->mobile_skin}</label>
+			<div class="x_controls">
+				<select name="mskin" id="mskin">
+					<option loop="$mskin_list=> $key, $val" value="{$key}" selected="selected"|cond="$module_info->mskin== $key || (!$module_info->skin && $key=='default')">{$val->title}</option>
+				</select>
+				<a href="#mobile_skin_help" class="x_icon-question-sign" data-toggle>{$lang->help}</a>
+				<p id="mobile_skin_help" class="x_help-block" hidden>{$lang->about_skin}</p>
+			</div>
+		</div>
+	</section>
+	
+	<section clsss="section">
+		<h1>{$lang->feed_configuration}</h1>
+		<input type="hidden" id="str_available_module_list" name="str_available_module_list" value="{$module_info->str_available_module_list}" />
+		<input type="hidden" id="str_available_module_list_color_code" name="str_available_module_list_color_code" value="{$module_info->str_available_module_list_color_code}" />
+		<input type="hidden" id="str_default_module_list" name="str_default_module_list" value="{$module_info->str_default_module_list}" />
+		<input type="hidden" id="str_default_module_list_color_code" name="str_default_module_list_color_code" value="{$module_info->str_default_module_list_color_code}" />
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->feed_configuration}</label>
+			<div class="x_controls">
+				{$lang->feed_configuration_help}
+				<div class="module_select_box" align="center">
+					<table>
+						<tr>
+							<th><b>{$lang->no_use_boards}</b></th>
+							<th><b>{$lang->available_boards}</b></th>
+							<th><b>{$lang->default_boards}</b></th>
+						</tr>
+						<tr>
+							<td>{$lang->no_use_boards_desc}</td>
+							<td>{$lang->available_boards_desc}</td>
+							<td>{$lang->default_boards_desc}</td>
+						</tr>
+						<tr>
+							<td>
+								<ul id="sortable1" class="connectedSortable">
+									<li loop="$module_list=>$module"
+										class="items item_{$module->module_srl}"
+										color-code="{$xewall_color_config[$module->module_srl]}"|cond="$xewall_color_config[$module->module_srl]"
+										color-code="F5F7F7"|cond="!$xewall_color_config[$module->module_srl]"
+										module_srl="{$module->module_srl}">{$module->browser_title} ({$module->mid}) </li>
+								</ul>
+							</td>
+							<td>
+								<ul id="sortable2" class="connectedSortable">
+									<li loop="$available_module_list=>$module"
+										class="items item_{$module->module_srl}"
+										color-code="{$xewall_color_config[$module->module_srl]}"|cond="$xewall_color_config[$module->module_srl]"
+										color-code="F5F7F7"|cond="!$xewall_color_config[$module->module_srl]"
+										module_srl="{$module->module_srl}">{$module->browser_title} ({$module->mid}) </li>
+								</ul>
+							</td>
+							<td>
+								<ul id="sortable3" class="connectedSortable">
+									<li loop="$default_module_list=>$module"
+										class="items item_{$module->module_srl}"
+										color-code="{$xewall_color_config[$module->module_srl]}"|cond="$xewall_color_config[$module->module_srl]"
+										color-code="F5F7F7"|cond="!$xewall_color_config[$module->module_srl]"
+										module_srl="{$module->module_srl}">{$module->browser_title} ({$module->mid}) </li>
+								</ul>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section class="section">
+		<h1>{$lang->navigation_configuration}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->sorting_configuration}</label>
+			<div class="x_controls">
+				<p class="x_help-inline">{$lang->sorting_configuration_help}</p>
+				<label for="document_srl"><input type="radio" name="doc_sort_index" id="document_srl" value="document_srl" checked="checked"|cond="!$module_info->doc_sort_index||$module_info->doc_sort_index=='document_srl'" /> {$lang->sort_by_document_srl}</label>
+				<label for="regdate"><input type="radio" name="doc_sort_index" id="regdate" value="regdate" checked="checked"|cond="$module_info->doc_sort_index=='regdate'" /> {$lang->sort_by_regdate}</label>
+				<label for="last_update"><input type="radio" name="doc_sort_index" id="last_update" value="last_update" checked="checked"|cond="$module_info->doc_sort_index=='last_update'" /> {$lang->sort_by_update}</label>
+				<label for="list_order"><input type="radio" name="doc_sort_index" id="list_order" value="list_order" checked="checked"|cond="$module_info->doc_sort_index=='list_order'" /> list_order</label>
+				<label for="update_order"><input type="radio" name="doc_sort_index" id="update_order" value="update_order" checked="checked"|cond="$module_info->doc_sort_index=='update_order'" /> update_order</label>
+			</div>
+		</div>
+		
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->sort_order}</label>
+			<div class="x_controls">
+				<p class="x_help-inline">{$lang->sort_order_help}</p>
+				<label for="doc_order_type_asc"><input type="radio" name="doc_order_type" id="doc_order_type_asc" value="asc" checked="checked"|cond="!$module_info->doc_order_type||$module_info->doc_order_type=='asc'" /> {$lang->ascending}</label>
+				<label for="doc_order_type_desc"><input type="radio" name="doc_order_type" id="doc_order_type_desc" value="desc" checked="checked"|cond="$module_info->doc_order_type=='desc'" /> {$lang->decending}</label>
+			</div>
+		</div>
+		
+		<div class="x_control-group">
+			<label for="doc_list_count" class="x_control-label">{$lang->list_count}</label>
+			<div class="x_controls">
+				<p class="x_help-inline">{$lang->list_count_help}</p>
+				<input type="text" name="doc_list_count" id="doc_list_count" value="{$module_info->doc_list_count?$module_info->doc_list_count:20}" style="width:30px" />
+			</div>
+		</div>
+	</section>
+	
+	
+	<section class="section">
+		<h1>{$lang->editor_configuration}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->file_upload}</label>
+			<div class="x_controls">
+				<label for="allow_fileupload_Y"><input type="radio" id="allow_fileupload_Y" name="allow_fileupload" value="Y" checked="checked"|cond="$module_info->allow_fileupload=='Y'" /> {$lang->allow}</label>
+				<label for="allow_fileupload_N"><input type="radio" id="allow_fileupload_N" name="allow_fileupload" value="N" checked="checked"|cond="$module_info->allow_fileupload=='N'||!$module_info->allow_fileupload" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->auto_save}</label>
+			<div class="x_controls">
+				<label for="enable_autosave_Y"><input type="radio" id="enable_autosave_Y" name="enable_autosave" value="Y" checked="checked"|cond="$module_info->enable_autosave=='Y'" /> {$lang->allow}</label>
+				<label for="enable_autosave_N"><input type="radio" id="enable_autosave_N" name="enable_autosave" value="N" checked="checked"|cond="$module_info->enable_autosave=='N'||!$module_info->enable_autosave" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->default_component}</label>
+			<div class="x_controls">
+				<label for="enable_default_component_Y"><input type="radio" id="enable_default_component_Y" name="enable_default_component" value="Y" checked="checked"|cond="$module_info->enable_default_component=='Y'||!$module_info->enable_default_component" /> {$lang->allow}</label>
+				<label for="enable_default_component_N"><input type="radio" id="enable_default_component_N" name="enable_default_component" value="N" checked="checked"|cond="$module_info->enable_default_component=='N'" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->extended_component}</label>
+			<div class="x_controls">
+				<label for="enable_component_Y"><input type="radio" id="enable_component_Y" name="enable_component" value="Y" checked="checked"|cond="$module_info->enable_component=='Y'" /> {$lang->allow}</label>
+				<label for="enable_component_N"><input type="radio" id="enable_component_N" name="enable_component" value="N" checked="checked"|cond="$module_info->enable_component=='N'||!$module_info->enable_component" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->editor_size_change}</label>
+			<div class="x_controls">
+				<label for="resizable_Y"><input type="radio" id="resizable_Y" name="resizable" value="Y" checked="checked"|cond="$module_info->resizable=='Y'" /> {$lang->allow}</label>
+				<label for="resizable_N"><input type="radio" id="resizable_N" name="resizable" value="N" checked="checked"|cond="$module_info->resizable=='N'||!$module_info->resizable" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label">{$lang->html_disable}</label>
+			<div class="x_controls">
+				<label for="disable_html_Y"><input type="radio" id="disable_html_Y" name="disable_html" value="Y" checked="checked"|cond="$module_info->disable_html=='Y'" /> {$lang->allow}</label>
+				<label for="disable_html_N"><input type="radio" id="disable_html_N" name="disable_html" value="N" checked="checked"|cond="$module_info->disable_html=='N'||!$module_info->disable_html" /> {$lang->not_allow}</label>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="height">{$lang->height}</label>
+			<div class="x_controls">
+				<input type="text" id="height" name="height" value="95"|cond="!$module_info->height" value="{$module_info->height}"|cond="$module_info->height" style="width:30px" /> <span>px</span>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="editor_skin">{$lang->skin}</label>
+			<div class="x_controls">
+				<select type="checkbox" id="editor_skin" name="editor_skin">
+					<block cond="$module_info->editor_skin">
+						<option loop="$editor_skin_list=>$val" value="{$val}" selected="selected"|cond="$module_info->editor_skin==$val">{$val}</option>
+					</block>
+					<block cond="!$module_info->editor_skin">
+						<option loop="$editor_skin_list=>$val" value="{$val}" selected="selected"|cond="$val=='xpresseditor'">{$val}</option>
+					</block>
+				</select>
+			</div>
+		</div>
+	</section>
+	
+	
+	
+	<section class="section">
+		<h1>{$lang->action_configuration}</h1>
+		<div class="x_control-group">
+			<label class="x_control-label" for="refresh_rate">{$lang->timer_frequency}</label>
+			<div class="x_controls">
+				<input type="text" id="refresh_rate" name="refresh_rate" value="{$module_info->refresh_rate}"|cond="$module_info->refresh_rate" value="60"|cond="!$module_info->refresh_rate" style="width:30px" /> <span>{$lang->sec}</span>
+				<p>{$lang->sec_desc}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="doc_summary">{$lang->document_summary}</label>
+			<div class="x_controls">
+				<input type="text" id="doc_summary" name="doc_summary" value="{$module_info->doc_summary}"|cond="$module_info->doc_summary" value="500"|cond="!$module_info->doc_summary" style="width:30px" /> <span>{$lang->letter_amount}</span>
+				<p>{$lang->document_summary_desc}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="doc_more">{$lang->document_see_more_content}</label>
+			<div class="x_controls">
+				<input type="text" id="doc_more" name="doc_more" value="{$module_info->doc_more}"|cond="$module_info->doc_more" value="(more...)"|cond="!$module_info->doc_more" /></span>
+				<p>{$lang->document_see_more_content_desc}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="com_summary">{$lang->comment_summary}</label>
+			<div class="x_controls">
+				<input type="text" id="com_summary" name="com_summary" value="{$module_info->com_summary}"|cond="$module_info->com_summary" value="500"|cond="!$module_info->com_summary" style="width:30px" /> <span>{$lang->letter_amount}</span>
+				<p>{$lang->comment_summary_desc}</p>
+			</div>
+		</div>
+		<div class="x_control-group">
+			<label class="x_control-label" for="com_more">{$lang->comment_see_more_content}</label>
+			<div class="x_controls">
+				<input type="text" id="com_more" name="com_more" value="{$module_info->com_more}"|cond="$module_info->com_more" value="(more...)"|cond="!$module_info->com_more" />
+				<p>{$lang->comment_see_more_content_desc}</p>
+			</div>
+		</div>
+	</section>
+
+	<div class="x_clearfix btnArea">
+		<div class="x_pull-left">
+			<a href="{getUrl('', 'module', 'admin', 'act', 'dispXewallAdminModuleList')}" type="button" class="x_btn">{$lang->cmd_cancel}</a>
+		</div>
+		<div class="x_pull-right">
+			<button class="x_btn x_btn-primary" type="submit">{$lang->cmd_registration}</button>
+		</div>
+	</div>
+</form>
+<style>.g11n{vertical-align:top !important}</style>

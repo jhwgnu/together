@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+    <grants/>
+    <permissions/>
+    <actions>
+		<action name="dispXewallAdminModuleList" type="view" standalone="true" admin_index="true" />
+		<action name="dispXewallAdminModuleInsert" type="view" standalone="true" />
+		<action name="dispXewallAdminInitDB" type="view" standalone="true" />
+		
+		<action name="procXewallAdminInsertModule" type="controller" standalone="true" />
+		<action name="procXewallAdminInitDB" type="controller" standalone="true" />
+		
+		<action name="dispXewallWall" type="view" standalone="true" index="true" />
+		<action name="dispXewallPersonalConfig" type="view" standalone="false" />
+		
+		<action name="getXewallDocumentList" type="model" standalone="true" />
+		<action name="getXewallDocument" type="model" standalone="true" />
+		<action name="getXewallDocumentContent" type="model" standalone="true" />
+		<action name="procXewallUpdateReadedCount" type="controller" standalone="true" />
+		<action name="getXewallNextSequence" type="model" standalone="true" />
+		<action name="getXewallEditor" type="model" standalone="true" />
+		<action name="procXewallInsertDocument" type="controller" standalone="true" />
+		<action name="procXewallDocumentVoteUp" type="controller" standalone="true" />
+		<action name="procXewallDocumentVoteDown" type="controller" standalone="true" />
+		<action name="getXewallUpdateList" type="model" standalone="true" />
+		<action name="getXewallCommentList" type="model" standalone="true" />
+		<action name="getXewallComment" type="model" standalone="true" />
+		<action name="procXewallInsertComment" type="controller" standalone="true" />
+		<action name="procXewallDeleteDocument" type="controller" standalone="true" />
+		<action name="procXewallDeleteComment" type="controller" standalone="true" />
+		<action name="procXewallVoteComment" type="controller" standalone="true" />
+		<action name="procXewallBlameComment" type="controller" standalone="true" />
+		<action name="procXewallSaveMyBoard" type="controller" standalone="true" />
+		<action name="procXewallInsertMyFavourite" type="controller" standalone="true" />
+		<action name="procXewallDeleteMyFavourite" type="controller" standalone="true" />
+		<action name="getXewallCategoryList" type="model" standalone="true" />
+		<action name="getXewallHeaderFooterText" type="model" standalone="true" />
+		
+    	<action name="getXewallTest" type="model" standalone="true" />
+    </actions>
+    <menus>
+		<menu name="xewall">
+			<title xml:lang="ko">xewall</title>
+		</menu>
+	</menus>
+</module>

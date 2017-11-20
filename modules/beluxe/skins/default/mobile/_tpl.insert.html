@@ -1,0 +1,239 @@
+
+<!--@if($not_permitted)-->
+	<form ruleset="checkPassword" action="./" method="post" class="co ff">
+		<input type="hidden" name="success_return_url" value="{getUrl('mid',$mid)}" />
+		<input type="hidden" name="document_srl" value="{$document_srl}" />
+		<input type="hidden" name="act" value="procBoardVerificationPassword" />
+		<div class="message {$XE_VALIDATOR_MESSAGE_TYPE}">{$XE_VALIDATOR_MESSAGE}</div>
+		<ul>
+			<li>
+				<label for="cpw">{$lang->password}</label>
+				<input type="password" name="password" placeholder="{$lang->password}" id="cpw" />
+			</li>
+		</ul>
+		<div class="bna">
+			<a class="bn white" href="{getUrl('','mid',$mid,'act','','document_srl',$document_srl,'comment_srl','','parent_srl','','page',$page)}">{$lang->cmd_back}</a>
+			<input type="submit" value="{$lang->cmd_input}" class="bn dark" />
+		</div>
+	</form>
+<!--@else-->
+	<block cond="$mi->use_mobile_uploader == 'Y'">
+	{@
+		$editor_sequence = '1';
+		$upload_target_srl = $is_doc?$oDocument->document_srl:0;
+		$oFileController = &getController('file');
+		$oFileController->setUploadInfo($editor_sequence, $upload_target_srl);
+		$_SESSION['upload_info'][$editor_sequence]->enabled = true;
+		$_SESSION['upload_info'][$editor_sequence]->upload_target_srl = $upload_target_srl;
+	}
+	</block>
+	{@
+		$oThis->addExtraKeyJsFilter();
+		$un_extra = ($pt_vtype!='N'||$pt_dtype!='N')?$oDocument->get('extra_vars'):null;
+		$un_extra = is_string($un_extra)?unserialize($un_extra):$un_extra;
+		$us_point = is_array($un_extra)?$un_extra->beluxe->use_point:0;
+	}
+	<form ruleset="insertDocument" action="./" method="post" id="siFf" class="co ff">
+		<input type="hidden" name="module_srl" value="{$mi->module_srl}" />
+		<input type="hidden" name="act" value="procBoardInsertDocument" />
+		<input type="hidden" name="document_srl" value="{$is_doc?$oDocument->document_srl:''}" />
+		<input cond="!$is_cts" type="hidden" name="category_srl" value="0" />
+		<ul>
+			<li cond="$is_cts">
+				{@
+					$t_ctsrl = (int)($category_srl?$category_srl:$oDocument->get('category_srl'));
+					$cts[$t_ctsrl]->grant ? 0 : $t_ctsrl = 0;
+				}
+				<label for="nCategory">{$lang->category}</label>
+				<select name="category_srl" id="nCategory">
+					<option cond="!$category_srl" value="">{$lang->none_category}</option>
+					<option loop="$cts=>$val" cond="$val->grant" value="{$val->category_srl}" disabled="disabled"|cond="$mi->use_step_category!='N'&&$val->child_count" selected="selected"|cond="$val->grant&&$val->selected||$val->category_srl==$t_ctsrl">
+					{str_repeat("&nbsp;&nbsp;",$val->depth)} {$val->title} ({$val->document_count})
+					</option>
+				</select>
+			</li>
+			<li>
+				<label for="nTitle">{$lang->title}</label>
+				<input name="title" type="text" id="nTitle" value="{htmlspecialchars($is_doc?$oDocument->getTitleText():$mi->document_default_title)}" />
+			</li>
+			<li class="cb" style="margin:7px 0 0">
+				<block cond="$grant->manager||$mi->use_title_color=='Y'">
+					<input type="hidden" name="title_color" value="{$is_doc?$oDocument->get('title_color'):''}" />
+					<input type="hidden" name="title_bold" value="{$is_doc?$oDocument->get('title_bold'):''}" />
+				</block>
+				<label cond="$grant->manager">
+					<input type="checkbox" name="is_notice" value="Y" checked="checked"|cond="$oDocument->isNotice()" />
+					{$lang->notice}
+				</label>
+				<label cond="$grant->manager || ($mi->allow_comment!='N' && $mi->allow_comment!='Y')">
+					<input type="checkbox" name="allow_comment" value="Y" checked="checked"|cond="!$is_doc&&(!$grant->manager||($grant->manager&&$mi->allow_comment!='N')) || $oDocument->allowComment()" />
+					{$lang->allow_comment}
+				</label>
+				<label cond="$grant->manager || ($mi->allow_trackback!='N' && $mi->allow_trackback!='Y')">
+					<input type="checkbox" name="allow_trackback" value="Y" checked="checked"|cond="!$is_doc&&(!$grant->manager||($grant->manager&&$mi->allow_trackback!='N')) || $oDocument->allowTrackback()" />
+					{$lang->allow_trackback}
+				</label>
+				<label cond="$grant->manager && count($cstus)" class="fr">
+					{$lang->status}
+					<select name="custom_status">
+						<option loop="$cstus => $key,$value" value="{$key}" selected="selected"|cond="(int)$oDocument->get('is_notice') == $key">{$value}</option>
+					</select>
+				</label>
+			</li>
+			<block cond="$is_logged && ($pt_vtype!='N'||$pt_dtype!='N')">
+				<li><hr /></li>
+				<li class="exvar">
+					<label>
+						{$lang->point}
+						{@
+							$my_point = $oThis->getPoint();
+							$point_list = explode(',',$mi->use_point_list?$mi->use_point_list:'10,50,100,500,1000');
+						}
+						<block cond="!$us_point||$us_point>0">
+							<select name="use_point">
+								<option cond="$us_point" value="{$us_point}">{$us_point}</option>
+								<option loop="$point_list => $value" cond="$value<=$my_point" value="{$value}">{$value}</option>
+							</select> {sprintf($lang->my_point,$my_point)}
+						</block>
+						<block cond="$us_point<0">
+							<strong>{abs($us_point)}</strong> - {sprintf($lang->my_point,$my_point)}
+						</block>
+					</label>
+					<p>{$pt_vtype=='A'?sprintf($lang->about_use_adopt,(100-$mi->use_point_percent).'%'):sprintf($lang->about_use_point,$mi->use_point_percent.'%')}</p>
+				</li>
+			</block>
+			<block cond="$is_logged&&!$is_doc&&$mi->schedule_document_register==='Y'">
+				<li><hr /></li>
+				<li class="exvar">
+				<label class="exnm">{$lang->reserve}</label>
+				<input type="hidden" name="schedule_regdate" value="" />
+				Date. <input type="text" id="date_schedule_regdate" class="date" value="" style="margin-bottom:5px" /><br />
+				Time. <input type="text" id="date_schedule_regdate_hour" class="date" value="" placeholder="0~23" maxlength="2" style="width:35px!important" />H&nbsp;&nbsp;
+				<input type="text" id="date_schedule_regdate_minute" class="date" value="" placeholder="0~59" maxlength="2" style="width:35px!important" />M&nbsp;&nbsp;
+				<input type="button" value="{$lang->cmd_delete}" class="btn" id="dateRemover_schedule_regdate" />
+				<p>{$lang->about_schedule_document_register}</p>
+				{@ Context::loadJavascriptPlugin('ui.datepicker')}
+				<script>
+				//<![CDATA[
+				(function($){
+				$(function(){
+					var option = {
+						 dateFormat: "yy-mm-dd", changeMonth: true, changeYear: true, gotoCurrent: true,yearRange:'-100:+10',
+						onSelect:function(){
+							$('#date_schedule_regdate_hour').change();
+						}
+					};
+					$.extend(option, $.datepicker.regional["{Context::getLangType()?Context::getLangType():'ko'}"]);
+					$('#date_schedule_regdate').datepicker(option);
+					$("#dateRemover_schedule_regdate").click(function(){
+						$(this).siblings("input").val("");
+						$('#date_schedule_regdate_hour,#date_schedule_regdate_minute').val('');
+						return false;
+					});
+					$('#date_schedule_regdate_hour, #date_schedule_regdate_minute').change(function(){
+						var dd = $('#date_schedule_regdate')[0].value.replace(/[-:\s]/g,''),
+							dh = $('#date_schedule_regdate_hour').val()||'0',
+							dm = $('#date_schedule_regdate_minute').val()||'0';
+						if(dh.length === 1) dh = '0' + dh;
+						if(dm.length === 1) dm = '0' + dm;
+						$('#date_schedule_regdate').prev('input[name=schedule_regdate]').val(dd+dh+dm);
+					});
+				});
+				})(jQuery);
+				//]]>
+				</script>
+				</li>
+			</block>
+			{@ $extra_keys = $oThis->getDocumentExtraVars($is_doc?$oDocument->document_srl:0)}
+			<block cond="count($extra_keys)">
+				<li><hr /></li>
+				<li loop="$extra_keys => $key,$val" class="exvar">
+					<label for="ex_{$val->name}" class="exnm">{$val->name} <span cond="$val->is_required=='Y'" class="required">*</span></label>
+					{$val->getFormHTML()}
+				</li>
+			</block>
+			<block cond="!$is_logged">
+				<li><hr /></li>
+				<li cond="$mi->use_input_guest_info != 'N'">
+					<label for="uName">{$lang->writer}</label>
+					<input name="nick_name" type="text" id="uName" maxlength="80" value="{htmlspecialchars($oDocument->get('nick_name'))}" />
+				</li>
+				<li>
+					<block cond="$mi->use_input_guest_info == 'N'">
+						<input type="hidden" name="nick_name" value="{$oThis->getIpaddress(1)}" />
+					</block>
+					<label for="uPw">{$lang->password}</label>
+					<input name="password" type="password" id="uPw" />
+				</li>
+				<block cond="$mi->use_input_guest_info != 'N' && $mi->use_input_guest_info != 'S'">
+					<li>
+						<label for="uMail">{$lang->email_address}</label>
+						<input name="email_address" type="email" id="uMail" maxlength="250" value="{htmlspecialchars($oDocument->get('email_address'))}" />
+					</li>
+					<li>
+						<label for="uSite">{$lang->homepage}</label>
+						<input name="homepage" type="url" id="uSite" maxlength="250" value="{htmlspecialchars($oDocument->get('homepage'))}" />
+					</li>
+				</block>
+			</block>
+			<block cond="$is_logged">
+				<input type="hidden" name="nick_name" value="1" />
+				<input type="hidden" name="password" value="1" />
+			</block>
+			<li><hr /></li>
+			<li style="text-align:right;margin:0 0 5px">
+				<label for="nText" class="fl">{$lang->content}</label>
+				<label><input type="checkbox" name="use_html" value="Y" checked="checked" /> HTML</label>
+				<label cond="$is_logged">
+					<input type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oDocument->useNotify()" />
+					{$lang->notify}
+				</label>
+				<label cond="$mi->use_anonymous=='S'">
+					<input type="checkbox" name="anonymous" value="Y" checked="checked"|cond="($oDocument->get('member_srl')<0)&&(($oDocument->get('nick_name').$oDocument->get('user_name')) == 'anonymousanonymous')" />
+					{$lang->anonymous}
+				</label>
+				{@ $t_dstus = explode(',', $mi->use_status)}
+				<label cond="count($t_dstus) > 1">
+					<select name="status">
+						<option loop="$t_dstus => $value" value="{$value}" selected="selected"|cond="$oDocument->get('status') == $value">{Context::getLang(strtolower($value))}</option>
+					</select>
+				</label>
+				<input cond="count($t_dstus) === 1 && $t_dstus[0]" type="hidden" name="status" value="{$t_dstus[0]}" />
+			</li>
+			<li><textarea name="content" cols="20" rows="12" id="nText">{$is_doc?preg_replace('/<br[^>]*>[\r\n]/i','',$oDocument->get('content')):htmlspecialchars($mi->document_default_content)}</textarea></li>
+			<li cond="$mi->use_mobile_uploader == 'Y'" style="margin-right:0">
+				{@
+					$oFileModel = getModel('file');
+					$file_config = $oFileModel->getUploadConfig();
+					$file_config->allowed_filesize = $file_config->allowed_filesize;
+				}
+				<div id="fUloader" class="cb">
+					<span class="fif">{sprintf($lang->file_uploader_info, sprintf("%.2f", $file_config->allowed_filesize).'MB', $file_config->allowed_filetypes)}</span>
+					<a class="bn white fr flc">File upload (0)</a>
+				</div>
+				<div id="fUpreview">
+					<div class="fpv" data-set-cover="1"|cond="version_compare(__XE_VERSION__, '1.8.4', '>')"></div>
+					<div class="fls"><select id="siFiles" class="fl"></select></div>
+					<div class="fct"><a href="#" class="bn scFin">Insert</a><br /><a href="#" class="bn scFcl">Delete</a></div>
+				</div>
+			</li>
+			<li cond="$mi->use_input_tag!='N'">
+				<label for="nTitle">{$lang->tag}</label>
+				<input name="tags" type="text" value="{htmlspecialchars($oDocument->get('tags'))}" placeholder="{htmlspecialchars($lang->about_tag)}" />
+			</li>
+		</ul>
+		<div class="bna">
+			<a class="bn white" href="{getUrl('','mid',$mid,'act','','document_srl',$document_srl,'comment_srl','','parent_srl','','page',$page)}" onclick="history.back(-1);return false;"|cond="!$is_doc">{$lang->cmd_back}</a>
+			<button type="submit" accesskey="s" class="bn dark">{$is_doc?'':$lang->document.' '}{Context::getLang('cmd_'.($is_doc?'update':'registration'))}</button>
+		</div>
+	</form>
+	<div cond="$mi->use_mobile_uploader == 'Y'" class="fd">
+		<form id="uploaderForm" action="./index.php" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="act" value="procFileIframeUpload" />
+			<input type="hidden" name="editor_sequence" value="1" />
+			<input type="hidden" name="uploadTargetSrl" value="{$document_srl}" />
+			<input type="file" name="Filedata">
+		 </form>
+	</div>
+<!--@endif-->

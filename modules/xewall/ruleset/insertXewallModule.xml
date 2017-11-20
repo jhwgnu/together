@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset version="1.5.0">
+	<customrules>
+		<rule name="rule_doc_sort_index" type="regex" test="/^(document_srl|regdate|last_update|list_order|update_order)$/" />
+		<rule name="rule_doc_order_type" type="regex" test="/^(asc|desc)$/" />
+		<rule name="rule_yes_or_no" type="regex" test="/^(Y|N)$/" />
+		<rule name="rule_comments_display_policy" type="regex" test="/^(display_none|display_partial|display_all)$/" />
+	</customrules>
+	<fields>
+		<field name="module" required="true"  />
+		<field name="module_mid" required="true" length="1:40" rule="alpha_number" />
+		<field name="browser_title" required="true" length="1:250" />
+		<field name="list_count" required="true" rule="number" />
+		<field name="search_list_count" required="true" rule="number" />
+		<field name="page_count" required="true" rule="number" />
+		<field name="doc_sort_index" required="true" rule="rule_doc_sort_index" />
+		<field name="doc_order_type" required="true" rule="rule_doc_order_type" />
+		<field name="doc_list_count" required="true" rule="number" />
+		<field name="user_board" required="true" rule="rule_yes_or_no" />
+		<field name="comments_display_policy" required="true" rule="rule_comments_display_policy" />
+		<field name="comments_display_policy_amount" required="true" rule="number" />
+		<field name="refresh_rate" required="true" rule="number" />
+		<field name="doc_summary" required="true" rule="number" />
+		<field name="doc_more" length=":20" />
+		<field name="com_summary" required="true" rule="number" />
+		<field name="com_more" length=":20" />
+	</fields>
+</ruleset>

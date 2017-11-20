@@ -1,0 +1,70 @@
+@CHARSET "EUC-KR";
+p.desc {
+	margin: 10px 0 10px 0;
+}
+div.description {
+	padding: 10px 10px 12px 10px;
+	border: 1px solid #C3C3C3;
+	margin: 0px 5px 4px 5px;
+	border-radius: 3px;
+	box-shadow: 0 3px 7px 1px #E4E4E4;
+}
+div.available_list {
+	background: #F5F7F7;
+	padding: 10px 10px 12px 10px;
+	border: 1px solid #C3C3C3;
+	margin: 0px 5px 17px 5px;
+	border-radius: 3px;
+	box-shadow: 0 3px 7px 1px #E4E4E4;
+}
+div.available_list input[type="checkbox"] {
+	cursor:pointer;
+}
+div.available_list .configTable {
+	width:100%;
+	border-collapse: collapse;
+}
+div.available_list .highlight:hover {
+	background-color:#FDFDF5;
+}
+div.available_list .configTable th {
+	border-bottom: 2px solid #DDD;
+}
+div.available_list .configTable td {
+	padding:3px 5px 3px 5px;
+}
+div.available_list .configTable .browser_name {
+	width: 35%;
+}
+div.available_list .configTable .mid {
+	width: 35%;
+}
+div.available_list .configTable .feed2wall {
+	width: 15%;
+}
+div.available_list .configTable .xmpp_alarm {
+	width:15%;
+}
+div.available_list tr.default {
+	background-color: #D8D8D8;
+}
+div.available_list .center {
+	
+}
+div.available_list td.breaker {
+	border-top:1px dotted #cdcdcd;
+	border-bottom:1px dotted #cdcdcd;
+}
+div.available_list tfoot td.buttons {
+	border-top: 2px solid #DDD;
+	padding: 5px 5px 5px 5px;
+}
+div.available_list tfoot td.buttons input[type="button"] {
+	margin:10px;
+	padding:3px 10px 3px 10px;
+	border:1px solid black;
+	cursor:pointer;
+	border-radius: 3px;
+	background-color: white;
+}
+}

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+일본어 번역: 감로수
+영어 번역: 썬
+-->
+<lang>
+	<item name="cmd_agree">
+		<value xml:lang="ko"><![CDATA[찬성]]></value>
+		<value xml:lang="jp"><![CDATA[賛成]]></value>
+		<value xml:lang="en"><![CDATA[Agree]]></value>
+	</item>
+	<item name="cmd_disagree">
+		<value xml:lang="ko"><![CDATA[반대]]></value>
+		<value xml:lang="jp"><![CDATA[反対]]></value>
+		<value xml:lang="en"><![CDATA[Disagree]]></value>
+	</item>
+	<item name="cmd_like">
+		<value xml:lang="ko"><![CDATA[좋아요]]></value>
+		<value xml:lang="jp"><![CDATA[좋아요]]></value>
+		<value xml:lang="en"><![CDATA[좋아요]]></value>
+	</item>
+	<item name="cmd_dislike">
+		<value xml:lang="ko"><![CDATA[싫어요]]></value>
+		<value xml:lang="jp"><![CDATA[싫어요]]></value>
+		<value xml:lang="en"><![CDATA[싫어요]]></value>
+	</item>
+	<item name="new_document">
+		<value xml:lang="ko"><![CDATA[새로운 문서를 작성합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[새로운 문서를 작성합니다.]]></value>
+		<value xml:lang="en"><![CDATA[새로운 문서를 작성합니다.]]></value>
+	</item>
+	<item name="modify_document">
+		<value xml:lang="ko"><![CDATA[이 문서를 수정합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[이 문서를 수정합니다.]]></value>
+		<value xml:lang="en"><![CDATA[이 문서를 수정합니다.]]></value>
+	</item>
+	<item name="delete_document">
+		<value xml:lang="ko"><![CDATA[이 문서를 삭제합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[이 문서를 삭제합니다.]]></value>
+		<value xml:lang="en"><![CDATA[이 문서를 삭제합니다.]]></value>
+	</item>
+	<item name="new_comment">
+		<value xml:lang="ko"><![CDATA[새로운 댓글을 작성합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[새로운 댓글을 작성합니다.]]></value>
+		<value xml:lang="en"><![CDATA[새로운 댓글을 작성합니다.]]></value>
+	</item>
+	<item name="modify_comment">
+		<value xml:lang="ko"><![CDATA[이 댓글을 수정합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[이 댓글을 수정합니다.]]></value>
+		<value xml:lang="en"><![CDATA[이 댓글을 수정합니다.]]></value>
+	</item>
+	<item name="delete_comment">
+		<value xml:lang="ko"><![CDATA[이 댓글을 삭제합니다.]]></value>
+		<value xml:lang="jp"><![CDATA[이 댓글을 삭제합니다.]]></value>
+		<value xml:lang="en"><![CDATA[이 댓글을 삭제합니다.]]></value>
+	</item>
+	<item name="search_my_document">
+		<value xml:lang="ko"><![CDATA[내 글]]></value>
+		<value xml:lang="jp"><![CDATA[내 글]]></value>
+		<value xml:lang="en"><![CDATA[내 글]]></value>
+	</item>
+	<item name="search_my_comment">
+		<value xml:lang="ko"><![CDATA[내 답변]]></value>
+		<value xml:lang="jp"><![CDATA[내 답변]]></value>
+		<value xml:lang="en"><![CDATA[내 답변]]></value>
+	</item>
+	<item name="bonus_pang_pang">
+		<value xml:lang="ko"><![CDATA[보너스 : %s포인트]]></value>
+		<value xml:lang="jp"><![CDATA[ボーナス : % sポイント]]></value>
+		<value xml:lang="en"><![CDATA[Bonus: %spoint]]></value>
+	</item>
+	<item name="my_point">
+		<value xml:lang="ko"><![CDATA[내 포인트: %s]]></value>
+		<value xml:lang="jp"><![CDATA[私のポイント: %s]]></value>
+		<value xml:lang="en"><![CDATA[My point: %s]]></value>
+	</item>
+	<item name="about_use_point">
+		<value xml:lang="ko"><![CDATA[내 포인트를 걸고 사용자에게 포인트의 %s씩 받을 수 있습니다.]]></value>
+		<value xml:lang="jp"><![CDATA[私のポイントをかけて使用者にポイントの %sづつ貰うことができます.]]></value>
+		<value xml:lang="en"><![CDATA[use your points to get user's %s points.]]></value>
+	</item>
+	<item name="about_use_adopt">
+		<value xml:lang="ko"><![CDATA[사용된 포인트는 채택시에 %s를 돌려 받을 수 있습니다. 꼭! 채택해 주세요.]]></value>
+		<value xml:lang="jp"><![CDATA[사용된 포인트는 채택시에 %s를 돌려 받을 수 있습니다. 꼭! 채택해 주세요.]]></value>
+		<value xml:lang="en"><![CDATA[사용된 포인트는 채택시에 %s를 돌려 받을 수 있습니다. 꼭! 채택해 주세요.]]></value>
+	</item>
+	<item name="about_author_adopt_info">
+		<value xml:lang="ko"><![CDATA[<strong>%s</strong>님의 채택율은 <strong>%s</strong>입니다.<br />채택된 답변은 <strong>%s</strong>포인트를 받습니다.]]></value>
+		<value xml:lang="jp"><![CDATA[<strong>%s</strong>님의 채택율은 <strong>%s</strong>입니다.<br />채택된 답변은 <strong>%s</strong>포인트를 받습니다.]]></value>
+		<value xml:lang="en"><![CDATA[<strong>%s</strong>님의 채택율은 <strong>%s</strong>입니다.<br />채택된 답변은 <strong>%s</strong>포인트를 받습니다.]]></value>
+	</item>
+	<item name="nav_caption">
+		<value xml:lang="ko"><![CDATA[%s의 다른 글]]></value>
+		<value xml:lang="jp"><![CDATA[%sの他の文書]]></value>
+		<value xml:lang="en"><![CDATA[%s의 다른 글]]></value>
+	</item>
+	<item name="file_uploader_info">
+		<value xml:lang="ko"><![CDATA[파일 크기 제한: %s<br />허용 확장자 : %s]]></value>
+		<value xml:lang="jp"><![CDATA[파일 크기 제한: %s<br />허용 확장자 : %s]]></value>
+		<value xml:lang="en"><![CDATA[파일 크기 제한: %s<br />허용 확장자 : %s]]></value>
+	</item>
+	<item name="confirm_declare">
+		<value xml:lang="ko"><![CDATA[%s에게 이유를 설명해주십시오.]]></value>
+		<value xml:lang="jp"><![CDATA[Please describe the reasons to %s.]]></value>
+		<value xml:lang="en"><![CDATA[Please describe the reasons to %s.]]></value>
+	</item>
+</lang>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getModulesByModuleName" action="select">
+    <tables>
+        <table name="modules" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="in" column="module" var="modules" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="browser_title" order="asc" />
+    </navigation>
+</query>

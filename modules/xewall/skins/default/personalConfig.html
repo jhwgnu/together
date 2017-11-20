@@ -1,0 +1,58 @@
+<load target="js/MyMethodCall.js" />
+<load target="js/personalConfig.js" />
+
+<load target="css/personalConfig.css" />
+
+<script type="text/javascript">
+	var my_lang = {
+			connected: '{$lang->xmpp_connected}',
+			connecting: '{$lang->xmpp_connecting}',
+			authenticating: '{$lang->xmpp_authenticating}',
+			confail: '{$lang->xmpp_conn_fail}',
+			authfail: '{$lang->auth_fail}',
+			disconnected: '{$lang->disconnected}'
+	};
+</script>
+
+<h1 class="h1">{$lang->settings}</h1>
+
+<div class="available_list">
+	
+	<table class="configTable">
+		<thead>
+			<tr>
+				<th class="browser_name">{$lang->browser_name}</th>
+				<th class="mid">{$lang->mid}</th>
+				<th class="feed2wall">{$lang->feed2xewall}</th>
+			</tr>
+		</thead>
+		
+		<tfoot>
+			<tr>
+				<td class="buttons" align="center" colspan="3">
+					<input id="cancel" type="button" value="{$lang->return}"/>
+				</td>
+			</tr>
+		</tfoot>
+		
+		<tbody>
+			<tr loop="$def_module_info=>$val" class="highlight">
+				<td>{$val->browser_title}</td>
+				<td align="center">{$val->mid}</td>
+				<td align="center"><input type="checkbox" value="none" checked="checked" disabled="disabled" /></td>
+			</tr>
+			
+			<tr cond="count($def_module_info)&&count($available_module_list)">
+				<td class="breaker" colspan="3" cond="$module_config->use_xmpp!='Y'"></td>
+			</tr>
+			
+			<tr loop="$available_module_list=>$val" class="available highlight">
+				<td>{$val->browser_title}</td>
+				<td align="center">{$val->mid}</td>
+				<td align="center"><input type="checkbox" class="check_available" value="{$val->module_srl}" checked="checked"|cond="$my_module_list[$val->module_srl]" /></td>
+			</tr>
+		</tbody>
+		
+		
+	</table>
+</div>

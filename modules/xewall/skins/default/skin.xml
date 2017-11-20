@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">xewall 기본 스킨</title>
+    <description xml:lang="ko">
+        xewall의 기본 스킨입니다.
+    </description>
+    <description xml:lang="en"></description>
+    <version>0.1</version>
+    <date>2012-05-26</date>
+
+    <author email_address="wndflwr@gmail.com" link="http://www.cyworld.com/krifle">
+        <name xml:lang="ko">바람꽃</name>
+        <name xml:lang="en">WindFlower</name>
+    </author>
+</skin>

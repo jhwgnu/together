@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="insertFavourite" action="insert">
+	<tables>
+		<table name="xewall_favourite" />
+	</tables>
+	<columns>
+		<column name="favourite_srl" var="favourite_srl" filter="number" notnull="notnull" default="sequence()" />
+		<column name="member_srl" var="member_srl" filter="number" notnull="notnull" />
+		<column name="target_srl" var="target_srl" filter="number" notnull="notnull" />
+		<column name="regdate" var="regdate" default="curdate()" />
+	</columns>
+</query>

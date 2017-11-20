@@ -1,0 +1,62 @@
+
+<!--@if($not_permitted)-->
+<form ruleset="checkPassword" action="./" method="post" class="pid_ajax-form">
+<input cond="$is_modal" type="hidden" name="is_modal" value="2" />
+<input type="hidden" name="success_return_url" value="{getUrl('is_modal',$is_modal?2:'')}" />
+<input type="hidden" name="comment_srl" value="{$comment_srl}" />
+<input type="hidden" name="act" value="procBoardVerificationPassword" />
+
+	<div>
+		<span class="scBtn black"><input type="password" name="password" placeholder="{$lang->password}" /></span>
+		<span class="scBtn black"><input type="submit" value="{$lang->cmd_input}" /></span>
+		<span class="scBtn"><a href="{getUrl('act',!$is_modal||($is_modal&&!$us_vmodal)?'':'dispBoardContentCommentList')}" data-modal-hide|cond="$is_modal&&!$us_vmodal">{$lang->cmd_back}</a></span>
+	</div>
+</form>
+<!--@else-->
+<form ruleset="deleteComment" action="./" method="post" class="pid_ajax-form">
+<input cond="$is_modal" type="hidden" name="is_modal" value="{$us_vmodal?2:1}" />
+<input cond="$is_modal&&$us_vmodal" type="hidden" name="success_return_act" value="dispBoardContentCommentList" />
+<input type="hidden" name="module_srl" value="{$mi->module_srl}" />
+<input type="hidden" name="document_srl" value="{$document_srl}" />
+<input type="hidden" name="comment_srl" value="{$comment_srl}" />
+<input type="hidden" name="act" value="procBoardDeleteComment" />
+	{@
+		$ds_nick = $ci['nick_name']->display == 'Y';
+		$ds_user =	$ci['user_name']->display == 'Y';
+	}
+
+	<div id="siWrt">
+		<div class="scCpar clearBar">
+			<div class="author">
+				<block cond="($mi->display_profile!='N'&&$mi->display_profile!='D')">
+					<img cond="$oComment->getProfileImage()" src="{$oComment->getProfileImage()}" alt="Profile" class="profile" />
+					<span cond="!$oComment->getProfileImage()" class="profile"></span>
+				</block>
+				<h3>
+					{@
+						$mbsl = $oComment->get('member_srl');
+						$home = $oComment->get('homepage');
+						$nick = (!$mbsl||$ds_nick||!$ds_user)?$oComment->getNickName():'';
+						$nick .= ($mbsl&&$ds_user)?($nick?' (':'').$oComment->getUserName().($nick?')':''):'';
+					}
+					<i cond="!$mbsl && !$home">{$nick}</i>
+					<span cond="$mbsl" class="scHLink member_{$mbsl}">{$nick}</span>
+					<i cond="!$mbsl && $home" class="scHLink" data-href="{$home}">{$nick}</i>
+				</h3>
+				<p class="time">{$oComment->getRegdate('Y.m.d H:i')}</p>
+			</div>
+			<div class="scPvCon clearBar">
+				{preg_replace(array('!(<[A-Za-z]+\s+[^>]*)name\s*=\s*(\"|\')?([^>\"\']+)(\"|\')?!is','!<(iframe|embed|object)([^>]*)>(.*?)<\/(iframe|embed|object)>!is'), array('$1','<div class="message"><p>$1 $2</p></div>'), $oComment->getContent(false))}
+			</div>
+		</div>
+		<div class="btnArea" style="margin-bottom:0"|cond="$is_modal">
+			<span class="scBtn"><a href="{getUrl('act',!$is_modal||($is_modal&&!$us_vmodal)?'':'dispBoardContentCommentList')}" data-modal-hide|cond="$is_modal&&!$us_vmodal">
+				{$is_modal&&!$us_vmodal?$lang->cmd_close:$lang->cmd_back}
+			</a></span>
+			<span class="scBtn black"><button type="submit" accesskey="s">{$lang->comment} {$lang->cmd_delete}</button></span>
+		</div>
+	</div>
+
+
+</form>
+<!--@endif-->

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<query id="getDocumentList" action="select">
+    <tables>
+        <table name="documents" />
+    </tables>
+    <columns>
+        <column name="*" />
+    </columns>
+    <conditions>
+        <condition operation="in" column="documents.module_srl" var="module_srl" filter="number" notnull="notnull" pipe="and" />
+		<condition operation="equal" column="documents.category_srl" var="category_srl" pipe="and" />
+		<condition operation="in" column="status" var="statusList" pipe="and" />
+    </conditions>
+    <navigation>
+        <index var="sort_index" default="documents.list_order" order="order_type" />
+        <list_count var="list_count" default="20" />
+        <page_count var="page_count" default="20" />
+        <page var="page" default="1"/>
+    </navigation>
+</query>
