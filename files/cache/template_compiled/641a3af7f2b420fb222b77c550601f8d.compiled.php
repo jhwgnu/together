@@ -320,7 +320,7 @@ if($__Context->key!= $__Context->lang_type){ ?>
 } ?>
 	   			</ul>
 			</li><?php } ?>
-			<?php if($__Context->li->premium != 'Y'){ ?><li><i class="fa fa-user-o" area-hidden="true"></i>창의융합프로젝트 2017 </br>훈지태</li><?php } ?>
+			<?php if($__Context->li->premium != 'Y'){ ?><li><i class="fa fa-user-o" area-hidden="true"></i> 창의융합프로젝트 2017 </br>훈지태</li><?php } ?>
 		</ul>
 	</div>
 	<?php if($__Context->li->footer_bottom){ ?><div class="footer_bottom"><?php echo $__Context->li->footer_bottom ?></div><?php } ?>
