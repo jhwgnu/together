@@ -1,4 +1,4 @@
-/* 
+/*
 	Simplestrap for XE
 	by Wincomi (https://www.wincomi.com)
 */
@@ -89,7 +89,7 @@ img{max-width:100%;height:auto;}/* .img-responsive */
 #jumbotron h1{font-weight:100}
 #jumbotron h1 a:hover{text-decoration:none}
 #jumbotron .icon-jumbotron-left,
-#jumbotron .icon-jumbotron-right{position:absolute;top:0;opacity:.2;filter:alpha(opacity=20);bottom:50px;font-size:180px;line-height:180px;display:block;}
+#jumbotron .icon-jumbotron-right{position:absolute;top:0;opacity:.2;filter:alpha(opacity=20);bottom:50px;font-size:60px;line-height:180px;display:block;}
 #jumbotron .icon-jumbotron-left{left:50px}
 #jumbotron .icon-jumbotron-right{right:50px}
 #jumbotron .btn-lg+.tooltip{font-size:12px;z-index:1029}
@@ -217,10 +217,10 @@ img{max-width:100%;height:auto;}/* .img-responsive */
 	#main-row.row-offcanvas-right.active{margin-right:-15px;margin-right:0;}
 	#main-row.row-offcanvas-left #sidebar{left: -50%;padding-right:0;}
 	#main-row.row-offcanvas-right #sidebar{right: -50%;z-index:1;padding-left:0}
-	
+
 	#main-row.row-offcanvas-right.active {right: 50%}
 	#main-row.row-offcanvas-left.active {left: 50%}
-	
+
 	#main-row.row-offcanvas #sidebar {position: absolute;top: 0;width: 50%;}
 }
 
@@ -279,7 +279,7 @@ button.close{transition:opacity .2s ease;-webkit-transition:opacity .2s ease;-mo
 }
 /* XE Fix */
 body .xe_content{font-size:14px}
-/* 
+/*
 #sidebar .panel>div[style]>div[style]>.list-group-flush>.list-group-item{border-left:0;border-right:0;border-radius:0}
 #sidebar .panel>div[style]>div[style]>.list-group-flush>.list-group-item:first-child{border-top:0}
 #sidebar .panel>div[style]>div[style]>.list-group-flush>.list-group-item:last-child{border-bottom:0}
