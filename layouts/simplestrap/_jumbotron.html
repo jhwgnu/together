@@ -4,7 +4,9 @@
 	<div class="container">
 		<button type="button" id="jumbotron-hide" class="close" data-toggle="tooltip" data-title="{$lang->ss_hide_show}" data-placement="left"><i class="fa fa-angle-up" area-hidden="true"></i></button>
 		<div class="jumbotron-title-wrap">
-			<h1><a href="{getUrl('','mid',$mid)}">{$module_info->browser_title}</a></h1>
+			<h1><a href="{getUrl('','mid',$mid)}">교내 행사에 대한 정보를 교환해요:)
+				<br/>자신이 참석한 행사에 대한 정보를 공유하고,
+				<br/>가고 싶었으나 가지 못했던 행사에 대한 정보를 요청해보세요!</a></h1>
 			<block loop="$main_menu->list=>$key1,$val1">
 				<p cond="$val1['selected'] && !$val1['list']">{$val1['desc']}{@ break; }</p>
 				<block loop="$val1['list']=>$key2,$val2">
@@ -61,7 +63,7 @@
 					<div class="col-sm-6">
 						<select name="search_target" class="form-control">
 							<option loop="$search_option=>$key,$val" value="{$key}" selected="selected"|cond="$search_target==$key">{$val}</option>
-						</select>					
+						</select>
 					</div>
 					<div class="col-sm-6">
 				<!--@end-->
@@ -93,7 +95,7 @@
 		<h1>
 			<block loop="$logged_info->menu_list=>$key,$val" cond="$key==$act">
 				<a href="{getUrl('', 'act',$key, 'mid', $mid, 'vid', $vid)}">{Context::getLang($val)}</a>
-			</block>	
+			</block>
 		</h1>
 	</div>
 </header>
