@@ -95,7 +95,7 @@ img{max-width:100%;height:auto;}/* .img-responsive */
 #jumbotron .btn-lg+.tooltip{font-size:12px;z-index:1029}
 #jumbotron .btn-lg.btn-default{border-color:transparent}
 #jumbotron .btn-lg.btn-default:hover{background-color:;border-color:#fff;color:#fff}
-#jumbotron .jumbotron-title-wrap{transition:max-height .25s ease, opacity .25s ease;-webkit-transition:max-height .25s ease, opacity .25s ease;-moz-transition:max-height .25s ease, opacity .25s ease;max-height:300px;overflow:hidden;font-size:15px;}
+#jumbotron .jumbotron-title-wrap{transition:max-height .25s ease, opacity .25s ease;-webkit-transition:max-height .25s ease, opacity .25s ease;-moz-transition:max-height .25s ease, opacity .25s ease;max-height:300px;overflow:hidden;}
 #jumbotron.jumbotron-hide .jumbotron-title-wrap{opacity:0}
 #jumbotron .popover .btn{margin-bottom:0}
 #jumbotron.jumbotron-hide{padding:20px 0}
