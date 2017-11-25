@@ -1,0 +1,634 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+	<title xml:lang="ko">J Flex</title>
+	<description xml:lang="ko">J 플렉스 레이아웃</description>
+	<version>1.4</version>
+	<date>2017-10-13</date>
+	<author email_address="jbirdweb@naver.com" link="https://www.jbirdweb.com/">
+		<name xml:lang="ko">JBIRDWEB</name>
+	</author>
+	<menus>
+    <menu name="GNB" maxdepth="2" default="true">
+      <title xml:lang="ko">메인 메뉴</title>
+    </menu>
+	</menus>
+	<extra_vars>
+		<group>
+      <title xml:lang="ko">기본 설정</title>
+      <var name="layout_type" type="select" default="auto">
+        <title xml:lang="ko">레이아웃 타입</title>
+        <options value="main">
+          <title xml:lang="ko">메인페이지</title>
+        </options>
+        <options value="sub">
+          <title xml:lang="ko">서브페이지</title>
+        </options>
+      </var>
+      <var name="logo_text" type="text">
+        <title xml:lang="ko">로고 텍스트</title>
+      </var>
+      <var name="logo_image" type="image">
+        <title xml:lang="ko">로고 이미지</title>
+        <description xml:lang="ko">로고 이미지 사용시 로고 텍스트를 비워주세요.</description>
+      </var>
+      <var name="logo_url" type="text">
+        <title xml:lang="ko">로고 Url</title>
+      </var>
+      <var name="menu_size" type="text">
+        <title xml:lang="ko">메인메뉴 크기</title>
+        <description xml:lang="ko">0.1 ~ 1</description>
+      </var>
+      <var name="menu_color" type="text">
+        <title xml:lang="ko">메인메뉴 색상</title>
+        <description xml:lang="ko">기본값 #fff</description>
+      </var>
+    </group>
+    <group>
+      <title xml:lang="ko">메인 이미지 설정</title>
+      <var name="main_top" type="text">
+        <title xml:lang="ko">메인 텍스트 상단 위치</title>
+        <description xml:lang="ko">기본값 : 15</description>
+      </var>
+      <var name="main_left" type="text">
+        <title xml:lang="ko">메인 텍스트 좌측 위치</title>
+        <description xml:lang="ko">기본값 : 15</description>
+      </var>
+      <var name="main_txt_color" type="text">
+        <title xml:lang="ko">메인 텍스트 색상</title>
+        <description xml:lang="ko">기본값 #fff</description>
+      </var>
+      <var name="sub_txt_color" type="text">
+        <title xml:lang="ko">서브 텍스트 색상</title>
+        <description xml:lang="ko">기본값 #fff</description>
+      </var>
+      <var name="main_img_01" type="image">
+        <title xml:lang="ko">이미지 01</title>
+      </var>
+      <var name="main_txt_01" type="text">
+        <title xml:lang="ko">메인 텍스트 01</title>
+      </var>
+      <var name="sub_txt_01" type="textarea">
+        <title xml:lang="ko">서브 텍스트 01</title>
+      </var>
+      <var name="main_img_02" type="image">
+        <title xml:lang="ko">이미지 02</title>
+      </var>
+      <var name="main_txt_02" type="text">
+        <title xml:lang="ko">메인 텍스트 02</title>
+      </var>
+      <var name="sub_txt_02" type="textarea">
+        <title xml:lang="ko">서브 텍스트 02</title>
+      </var>
+      <var name="main_img_03" type="image">
+        <title xml:lang="ko">이미지 03</title>
+      </var>
+      <var name="main_txt_03" type="text">
+        <title xml:lang="ko">메인 텍스트 03</title>
+      </var>
+      <var name="sub_txt_03" type="textarea">
+        <title xml:lang="ko">서브 텍스트 03</title>
+      </var>
+      <var name="main_img_04" type="image">
+        <title xml:lang="ko">이미지 04</title>
+      </var>
+      <var name="main_txt_04" type="text">
+        <title xml:lang="ko">메인 텍스트 04</title>
+      </var>
+      <var name="sub_txt_04" type="textarea">
+        <title xml:lang="ko">서브 텍스트 04</title>
+      </var>
+      <var name="main_img_05" type="image">
+        <title xml:lang="ko">이미지 05</title>
+      </var>
+      <var name="main_txt_05" type="text">
+        <title xml:lang="ko">메인 텍스트 05</title>
+      </var>
+      <var name="sub_txt_05" type="textarea">
+        <title xml:lang="ko">서브 텍스트 05</title>
+      </var>
+    </group>
+    <group>
+      <title xml:lang="ko">플렉스 박스 설정</title>
+      <var name="flex_top" type="text">
+        <title xml:lang="ko">상단 여백</title>
+        <description xml:lang="ko">단위 : % (숫자만 입력하세요)</description>
+      </var>
+      <var name="flex_pwr_01" type="radio" default="N">
+        <title xml:lang="ko">1번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_01" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_01" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_01" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_01" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_02" type="radio" default="N">
+        <title xml:lang="ko">2번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_02" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_02" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_02" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_02" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_03" type="radio" default="N">
+        <title xml:lang="ko">3번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_03" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_03" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_03" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_03" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_04" type="radio" default="N">
+        <title xml:lang="ko">4번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_04" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_04" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_04" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_04" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_05" type="radio" default="N">
+        <title xml:lang="ko">5번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_05" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_05" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_05" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_05" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_06" type="radio" default="N">
+        <title xml:lang="ko">6번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_06" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_06" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_06" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_06" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_07" type="radio" default="N">
+        <title xml:lang="ko">7번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_07" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_07" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_07" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_07" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_08" type="radio" default="N">
+        <title xml:lang="ko">8번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_08" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_08" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_08" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_08" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_09" type="radio" default="N">
+        <title xml:lang="ko">9번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_09" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_09" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_09" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_09" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_10" type="radio" default="N">
+        <title xml:lang="ko">10번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_10" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_10" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_10" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_10" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_11" type="radio" default="N">
+        <title xml:lang="ko">11번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_11" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_11" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_11" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_11" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_12" type="radio" default="N">
+        <title xml:lang="ko">12번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_12" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_12" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_12" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_12" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_13" type="radio" default="N">
+        <title xml:lang="ko">13번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_13" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_13" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_13" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_13" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_14" type="radio" default="N">
+        <title xml:lang="ko">14번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_14" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_14" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_14" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_14" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_15" type="radio" default="N">
+        <title xml:lang="ko">15번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_15" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_15" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_15" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_15" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_16" type="radio" default="N">
+        <title xml:lang="ko">16번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_16" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_16" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_16" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_16" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_17" type="radio" default="N">
+        <title xml:lang="ko">17번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_17" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_17" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_17" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_17" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_18" type="radio" default="N">
+        <title xml:lang="ko">18번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_18" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_18" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_18" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_18" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_19" type="radio" default="N">
+        <title xml:lang="ko">19번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_19" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_19" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_19" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_19" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_20" type="radio" default="N">
+        <title xml:lang="ko">20번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_20" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_20" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_20" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_20" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+      <var name="flex_pwr_21" type="radio" default="N">
+        <title xml:lang="ko">21번 플렉스 박스</title>
+        <options value="Y">
+          <title xml:lang="ko">켜기</title>
+        </options>
+        <options value="N">
+          <title xml:lang="ko">끄기</title>
+        </options>
+      </var>
+      <var name="flex_bg_21" type="text">
+        <title xml:lang="ko">배경색</title>
+        <description xml:lang="ko">색상값을 입력하세요.</description>
+      </var>
+      <var name="flex_icon_21" type="text">
+        <title xml:lang="ko">아이콘</title>
+        <description xml:lang="ko">http://fontawesome.io/icons (아이콘의 class명을 입력하세요)</description>
+      </var>
+      <var name="flex_text_21" type="text">
+        <title xml:lang="ko">텍스트</title>
+      </var>
+      <var name="flex_url_21" type="text">
+        <title xml:lang="ko">Url</title>
+      </var>
+    </group>
+    <group>
+      <title xml:lang="ko">서브페이지 설정</title>
+      <var name="sub_title" type="text">
+        <title xml:lang="ko">서브 타이틀</title>
+      </var>
+      <var name="sub_text" type="textarea">
+        <title xml:lang="ko">서브 텍스트</title>
+      </var>
+    </group>
+    <group>
+      <title xml:lang="ko">하단 설정</title>
+      <var name="facebook" type="text">
+        <title xml:lang="ko">페이스북 주소</title>
+      </var>
+      <var name="twitter" type="text">
+        <title xml:lang="ko">트위터 주소</title>
+      </var>
+      <var name="instargram" type="text">
+        <title xml:lang="ko">인스타그램 주소</title>
+      </var>
+      <var name="youtube" type="text">
+        <title xml:lang="ko">유튜브 주소</title>
+      </var>
+      <var name="google_plus" type="text">
+        <title xml:lang="ko">구글 Plus 주소</title>
+      </var>
+      <var name="address" type="textarea">
+        <title xml:lang="ko">주소</title>
+      </var>
+      <var name="copyright" type="text">
+        <title xml:lang="ko">카피라이트</title>
+      </var>
+    </group>
+	</extra_vars>
+</layout>

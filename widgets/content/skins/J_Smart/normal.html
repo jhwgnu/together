@@ -1,0 +1,19 @@
+
+    <ul class="divided">
+    {@$_idx=0}
+    <!--@foreach($widget_info->content_items as $key => $item)-->
+        <li<!--@if($_idx >= $widget_info->list_count)--> style="display:none"<!--@end-->>
+
+            <!--@foreach($widget_info->option_view_arr as $k => $v)-->
+                <!--@if($v=='title')-->
+                    <article class="tweet">
+                        <h3><a href="{$item->getLink()}" class="title" target="_self" |cond="$widget_info->new_window">{$item->getTitle($widget_info->subject_cut_size)}</a></h3>
+                        <a <!--@if($item->getMemberSrl())-->href="#" onclick="return false;" class="timestamp"<!--@elseif($item->getAuthorSite())-->href="{$item->getAuthorSite()}" onclick="window.open(this.href); return false;" class="timestamp"<!--@else-->href="#" onclick="return false;" class="timestamp"<!--@end--> >{$item->getNickName($widget_info->nickname_cut_size)}</a>
+                        <span class="timestamp">{$item->getRegdate("Y-m-d")}</span> <span class="timestamp">{$item->getRegdate("H:i")}</span>
+                    </article>
+                <!--@end-->
+            <!--@end-->
+        </li>
+    {@$_idx++}
+    <!--@end-->
+    </ul>

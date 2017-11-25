@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">J_Smart 위젯스킨</title>
+    <version>1.0</version>
+    <date>2017-9-29</date>
+    <link>http://jbirdweb.com/</link>
+
+    <author email_address="jbirdweb@naver.com" link="http://jbirdweb.com/">
+        <name xml:lang="ko">JBIRD</name>
+    </author>
+
+    <colorset>
+        <color name="white">
+            <title xml:lang="ko">흰색 바탕용</title>
+        </color>
+    </colorset>
+</skin>

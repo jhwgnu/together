@@ -39,14 +39,14 @@ $lang->histories='역사';
 $lang->wiki_search_title='위키 검색';
 $lang->write_form_title='제목:';
 $lang->write_form_alias='단축주소:';
-$lang->create_first_page_title='XpressEngine 위키에 오신 것을 환영합니다!';
+$lang->create_first_page_title='학과 위키에 오신 것을 환영합니다!';
 $lang->create_first_page_description='생성된 문서가 없습니다. 새로운 페이지를 생성하세요.';
 $lang->create_first_page_markdown_help='
 You haven\'t created any pages yet so here\'s a few tips to get you started.
 
-You should now that XpressEngine Wiki now uses [Markdown](http://daringfireball.net/projects/markdown/) as its default syntax for adding content.  
+You should now that XpressEngine Wiki now uses [Markdown](http://daringfireball.net/projects/markdown/) as its default syntax for adding content.
 
-### What is Markdown? 
+### What is Markdown?
 
 Here\'s how it\'s presented on its website:
 
@@ -64,7 +64,7 @@ For headings, like the one above use
 
 \# Heading 1
 
-\## Heading 2 
+\## Heading 2
 
 \#\#\# Heading 3
 
@@ -100,7 +100,7 @@ You can also link to pages inside the same wiki, but instead of using an url you
 This page was just a quick intro to get you started. For more help, take a look at:
 
 + PHP Markdown extra - http://michelf.com/projects/php-markdown/extra/
-+ Markdown\'s official reference - http://daringfireball.net/projects/markdown/syntax		
++ Markdown\'s official reference - http://daringfireball.net/projects/markdown/syntax
 		';
 $lang->top_of_page='상단으로';
 $lang->comment='댓글';
@@ -115,17 +115,17 @@ $lang->markdown_help='
 		# Heading 1 #
 		## Heading 2 ##
 		### Heading 3 ##############
-		
+
 		*italic*, **bold**
 		escape \*
-		
+
 		- Use a minus sign for a bullet list
 		+ Or plus sign
 		* Or an asterisk
 		1. Numbered lists are easy
 		2. Markdown keeps track of the numbers for you
 		7. So this will be item 3.
-		
+
 		Links:
 		&nbsp;&nbsp;  http://site/page
 		&nbsp;&nbsp;  Add description: [Page description](http://site/page)
@@ -140,7 +140,7 @@ $lang->markdown_help='
         Line breaks
         - Add an empty line
 		- Add two spaces the end of a line
-		
+
 		For more help, take a look at:
 		<ul>
 		<li> PHP Markdown extra - <a href=http://michelf.com/projects/php-markdown/extra/ target=_blank>http://michelf.com/projects/php-markdown/extra/</a>
@@ -165,14 +165,14 @@ $lang->googlecode_markup_help='
 		}}}
 
 		Horizontal rule
-		---- 
+		----
 
 		WikiWordLink
 		[http://domain/page label]
 		http://domain/page
 
-		|| table || cells ||		
-		
+		|| table || cells ||
+
 		For more help, take a look at <a href=http://code.google.com/p/support/wiki/WikiSyntax target=_blank>http://code.google.com/p/support/wiki/WikiSyntax</a>
 		';
 $lang->mediawiki_markup_help='
@@ -184,19 +184,19 @@ $lang->mediawiki_markup_help='
 
 		Lists
 		* bullet item
-		** deeper level	
+		** deeper level
 		# numbered list
 
 		Horizontal rule
-		---- 
+		----
 
 		Links
 		[[Internal_link]]
 		[[Internal_link | You should use page alias]]
-		
+
 		http://domain/page
 		[http://domain/page label]
-		
+
 		Table:
 		{|
 		|Orange
@@ -206,9 +206,9 @@ $lang->mediawiki_markup_help='
 		|Pie
 		|-
 		|Butter
-		|Ice cream 
+		|Ice cream
 		|}
-		
+
 		For more help, take a look at <a href=http://www.mediawiki.org/wiki/Help:Formatting target=_blank>http://www.mediawiki.org/wiki/Help:Formatting</a>
 		';
 $lang->xe_wiki_markup_help='XE 위키 마크업은 XE HTML 편집기를 사용합니다. XE 위키의 지난 버전에 존재하던 방식입니다.';

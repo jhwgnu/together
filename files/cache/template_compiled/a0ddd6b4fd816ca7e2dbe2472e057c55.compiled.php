@@ -1,20 +1,20 @@
 <?php if(!defined("__XE__"))exit;?><div style="background-image:url('<?php echo $__Context->layout_info->path ?>img/slider_img.jpg');" class="swiper-slide">
 	<div>
 		<div>
-			<h1>SHARING, PUBLISHING.<br />&amp; PLEASURE.</h1>
-			<p>지식을 나누고 컨텐츠를 출판하며 즐거움을 함께합니다.</p>
+			<h1>SHARING<br />&amp; PLEASURE.</h1>
+			<p>지식을 정보를 공유하며 함께 발전해 나갑니다.</p>
 		</div>
 	</div>
 </div>
 <div style="background-image:url('<?php echo $__Context->layout_info->path ?>img/slider_img2.jpg');" class="swiper-slide">
 	<div>
 		<div>
-			<h1>MAKING<br />WEB CULTURES</h1>
-			<p>올바른 웹 문화를 지향합니다.</p>
+			<h1>LET'S GO<br />TOGETHER</h1>
+			<p>더 이상 외로워하지 마세요.</p>
 		</div>
 	</div>
 </div>
-<div style="background-image:url('<?php echo $__Context->layout_info->path ?>img/slider_img3.jpg');" class="swiper-slide">
+<!-- <div style="background-image:url('<?php echo $__Context->layout_info->path ?>img/slider_img3.jpg');" class="swiper-slide">
 	<div>
 		<div>
 			<h1>EVOLUTION &amp; INNOVATION<br />TOGETHER</h1>
@@ -29,4 +29,4 @@
 			<p>기술의 가능성을 발굴하고 좋은 디자인을 만들어 갑니다.</p>
 		</div>
 	</div>
-</div>
+</div> -->

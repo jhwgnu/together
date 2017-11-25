@@ -1,0 +1,64 @@
+<!--//
+	Design by TEMPLATED
+	http://templated.co
+	Released for free under the Creative Commons Attribution License
+	
+	Name       : Undeviating 
+	Description: A two-column, fixed-width design with dark color scheme.
+	Version    : 1.0
+	Released   : 20140322
+-->
+<!--//
+	Converted by Wincomi (https://www.wincomi.com)
+--> 
+<load target="css/default.css" />
+<div id="header-wrapper">
+	<div id="header" class="container">
+		<div id="logo">
+			<h1>
+				<a href="#">
+					<!--@if($layout_info->logo_title)-->
+						{$layout_info->logo_title}
+					<!--@else-->
+						Undeviating
+					<!--@end-->
+				</a>
+			</h1>
+		</div>
+		<div id="menu">
+			<ul>
+				<li class="active"|cond="$val1['selected']" loop="$global_menu->list=>$key1,$val1">
+					<a href="{$val1['href']}" target="_blank"|cond="$val1['open_window']=='Y'">
+						{$val1['link']}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+	<div class="container">
+		{$content}
+	</div>
+</div>
+<div id="copyright">
+	<p cond="$layout_info->login_link == 'Y2' || $logged_info->is_admin == 'Y'">
+		<block cond="$layout_info->login_link == 'Y2' ">
+			<a cond="!$is_logged" href="{getUrl('','act','dispMemberLoginForm')}">
+				<i class="fa fa-sign-in" area-hidden="true"></i> {$lang->cmd_login}
+			</a>
+			<a cond="$is_logged" href="{getUrl('','act','dispMemberLogout')}">
+				<i class="fa fa-sign-out" area-hidden="true"></i> {$lang->cmd_logout}
+			</a>
+		</block>
+		<a cond="$logged_info->is_admin == 'Y'" href="{getUrl('','module','admin')}" target="_blank">
+			<i class="fa fa-cog" area-hidden="true"></i> {$lang->cmd_management}
+		</a>
+	</p>
+	<p cond="$layout_info->copyright">
+		{$layout_info->copyright}
+	</p>
+	<p>
+		Design by <a href="http://templated.co" rel="nofollow">TEMPLATED</a> | Converted by <a href="https://www.wincomi.com">Wincomi</a>
+	</p>
+</div>

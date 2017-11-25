@@ -316,13 +316,10 @@ $__Context->_subheader_img = 'sub_banner_xeicon.jpg';
 			<h1><?php echo $__Context->sub_header_title ?></h1>
 		</div>
 	</div><?php } ?>
-    <!-- Swiper -->
+    <!--
     <?php if($__Context->layout_info->layout_type === 'main' && $__Context->_enable_slide){ ?><div class="visual swiper-container">
-		<!-- 슬라이드 -->
 		<div class="swiper-wrapper">
-		<?php if($__Context->_sample_slide){ ?>
 			<?php $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('layouts/xedition/demo','slide.html') ?>
-		<?php }else{ ?>
 			<?php if($__Context->layout_info->slide_img1){ ?><div style="background-image:url('<?php echo $__Context->layout_info->slide_img1 ?>');" class="swiper-slide">
 				<?php if($__Context->layout_info->slide_text1){ ?><div>
 					<div>
@@ -358,16 +355,12 @@ $__Context->_subheader_img = 'sub_banner_xeicon.jpg';
 					</div>
 				</div><?php } ?>
 			</div><?php } ?>
-		<?php } ?>
 		</div>
-		<!-- END:슬라이드 -->
-        <!-- Add Pagination -->
         <div class="swiper-pagination"></div>
         <div class="swiper-button left"><button type="button" class="swiper-button-prev"><i class="xi-angle-left"></i></button></div>
-		<div class="swiper-button right"><button type="button" class="swiper-button-next"><i class="xi-angle-right"></i></button></div>
+        <div class="swiper-button right"><button type="button" class="swiper-button-next"><i class="xi-angle-right"></i></button></div>
     </div><?php } ?>
-	<!-- /VISUAL -->
-	<!-- BODY -->
+ -->
 	<div class="body <?php echo $__Context->_body_class ?>">
 		<!-- LNB -->
 		<?php if($__Context->_selected_menu['list'] && $__Context->layout_info->layout_type === 'sub' && $__Context->layout_info->sidebar_position !== 'none'){ ?><nav class="lnb">
@@ -538,7 +531,7 @@ echo $__Context->layout_info->footer_logo_url;
 	});
 	</script>
 </section><?php } ?>
-<!-- /Login widget -->    
+<!-- /Login widget -->
 <?php if($__Context->_enable_slide){ ?><script>
 jQuery(document).ready(function () {
 	var swiper = new Swiper('.swiper-container', {

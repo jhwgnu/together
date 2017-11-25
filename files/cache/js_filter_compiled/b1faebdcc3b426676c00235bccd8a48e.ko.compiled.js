@@ -1,7 +1,7 @@
 function insert(form){ return legacy_filter('insert', form, 'board', 'procBoardInsertDocument', completeDocumentInserted, ['error','message','mid','document_srl','category_srl'], '', {}) };
 (function($){
 	var v=xe.getApp('validator')[0];if(!v)return false;
-	v.cast("ADD_FILTER", ["insert", {'nick_name': {required:true,maxlength:20},'password': {required:true},'email_address': {maxlength:250},'homepage': {maxlength:250},'title': {required:true,minlength:1,maxlength:250},'content': {required:true},'category_srl': {required:true}}]);
+	v.cast("ADD_FILTER", ["insert", {'nick_name': {required:true,maxlength:20},'password': {required:true},'email_address': {maxlength:250,rule:'email'},'homepage': {maxlength:250,rule:'url'},'title': {required:true,minlength:1,maxlength:250},'content': {required:true},'category_srl': {required:true}}]);
 	
 	v.cast('ADD_MESSAGE',['nick_name','닉네임']);
 	v.cast('ADD_MESSAGE',['password','비밀번호']);

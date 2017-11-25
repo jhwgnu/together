@@ -1,0 +1,44 @@
+
+<style type="text/css">
+   
+
+    #gall {
+        width: 100%;
+    }
+
+    #gall li{
+        width: 50%; 
+        display: block; 
+        list-style: none; 
+        float: left;
+    }
+
+    @media screen and (max-width: 480px) {
+
+        #gall {
+        width: 100%;
+    }
+
+        #gall li{
+            width: 100%; 
+        }
+    }
+
+</style>
+
+<ul id="gall">
+{@$_idx=0}
+<!--@foreach($widget_info->content_items as $key => $item)-->
+<!--@foreach($widget_info->option_view_arr as $k => $v)-->
+
+    <li>
+        <a href="{$item->getLink()}" class="image fit" target="_self">
+            <img src="{$item->getThumbnail()}"/>
+        </a>
+    </li>
+
+<!--@end-->
+{@$_idx++}
+<!--@end-->
+</ul>
+

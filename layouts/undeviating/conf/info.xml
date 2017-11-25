@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.2">
+	<title xml:lang="ko">Undeviating</title>
+	<description xml:lang="ko">Design by TEMPLATED / Converted by Wincomi</description>
+	<version>1.0.1</version>
+	<date>2017-10-31</date>
+	<author email_address="admin@wincomi.com" link="https://www.wincomi.com/">
+		<name xml:lang="ko">윈컴이</name>
+	</author>
+	<menus>
+		<menu name="global_menu" maxdepth="1" default="true">
+			<title xml:lang="ko">메인 메뉴</title>
+		</menu>
+	</menus>
+	<extra_vars>
+		<title xml:lang="ko">기본</title>
+		<var name="logo_title" type="text">
+			<title xml:lang="ko">홈페이지 제목</title>
+			<description xml:lang="ko">홈페이지 제목을 입력하세요.</description>
+		</var>
+		<var name="logo_url" type="text">
+			<title xml:lang="ko">홈페이지 URL</title>
+			<description xml:lang="ko">홈페이지 제목을 누를 경우 이동할 URL를 입력하세요.</description>
+		</var>
+		<var name="copyright" type="textarea">
+			<title xml:lang="ko">저작권</title>
+			<description xml:lang="ko">하단에 표시될 저작권을 입력하세요.</description>
+		</var>
+		
+		<var name="login_link" type="select">
+			<title xml:lang="ko">로그인 링크</title>
+			<description xml:lang="ko">로그인 링크를 표시합니다.</description>
+			<options value="Y2">
+				<title xml:lang="ko">네, 푸터에 표시합니다.</title>
+			</options>
+			<options value="N">
+				<title xml:lang="ko">아니오</title>
+			</options>
+		</var>
+	</extra_vars>
+</layout>

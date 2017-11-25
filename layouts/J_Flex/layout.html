@@ -1,0 +1,362 @@
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<load target="assets/css/main.css"/>
+		<load target="assets/css/font-awesome.min.css" />
+	</head>
+	<style>
+		.slide_ul>li{
+			padding: {$layout_info->main_top}em 0 0 {$layout_info->main_left}em;
+		}
+		#flexbox{
+			margin-top: {$layout_info->flex_top}%;
+		}
+		#flexbox div:first-child{
+			background:#{$layout_info->flex_bg_01};
+		}
+		#flexbox div:nth-child(2){
+			background:#{$layout_info->flex_bg_02};
+		}
+		#flexbox div:nth-child(3){
+			background:#{$layout_info->flex_bg_03};
+		}
+		#flexbox div:nth-child(4){
+			background:#{$layout_info->flex_bg_04};
+		}
+		#flexbox div:nth-child(5){
+			background:#{$layout_info->flex_bg_05};
+		}
+		#flexbox div:nth-child(6){
+			background:#{$layout_info->flex_bg_06};
+		}
+		#flexbox div:nth-child(7){
+			background:#{$layout_info->flex_bg_07};
+		}
+		#flexbox div:nth-child(8){
+			background:#{$layout_info->flex_bg_08};
+		}
+		#flexbox div:nth-child(9){
+			background:#{$layout_info->flex_bg_09};
+		}
+		#flexbox div:nth-child(10){
+			background:#{$layout_info->flex_bg_10};
+		}
+		#flexbox div:nth-child(11){
+			background:#{$layout_info->flex_bg_11};
+		}
+		#flexbox div:nth-child(12){
+			background:#{$layout_info->flex_bg_12};
+		}
+		#flexbox div:nth-child(13){
+			background:#{$layout_info->flex_bg_13};
+		}
+		#flexbox div:nth-child(14){
+			background:#{$layout_info->flex_bg_14};
+		}
+		#flexbox div:nth-child(15){
+			background:#{$layout_info->flex_bg_15};
+		}
+		#flexbox div:nth-child(16){
+			background:#{$layout_info->flex_bg_16};
+		}
+		#flexbox div:nth-child(17){
+			background:#{$layout_info->flex_bg_17};
+		}
+		#flexbox div:nth-child(18){
+			background:#{$layout_info->flex_bg_18};
+		}
+		#flexbox div:nth-child(19){
+			background:#{$layout_info->flex_bg_19};
+		}
+		#flexbox div:nth-child(20){
+			background:#{$layout_info->flex_bg_20};
+		}
+		#flexbox div:nth-child(21){
+			background:#{$layout_info->flex_bg_21};
+		}		
+	</style>
+
+	<!--@if($layout_info->layout_type == main)-->
+	<body class="landing">
+		<div id="page-wrapper">
+				<header id="header" class="alt">
+					<h1>
+						<a href="{$layout_info->logo_url}" cond="$layout_info->logo_text">{$layout_info->logo_text}</a>
+						<a href="{$layout_info->logo_image}" cond="$layout_info->logo_image"><img src="{$layout_info->logo_image}" alt="" /></a>
+					</h1>
+					<nav id="nav" cond="$GNB->list">
+		                <ul>
+		                    <li loop="$GNB->list => $key1, $val1">
+		                        <a href="{$val1['href']}" style="font-size: {$layout_info->menu_size}em; color : {$layout_info->menu_color};" target="_self" |cond="$val1['open_window'] == 'Y'">{$val1['link']}</a>
+		                        <block cond="$val1['selected']">{@ $_selected_menu = $val1}</block>
+		                        <ul cond="$val1['list']">
+		                            <li loop="$val1['list'] => $key2, $val2" |cond="$val2['list']">
+		                                <a href="{$val2['href']}" style="font-size: {$layout_info->menu_size}em;" target="_self" |cond="$val2['open_window'] == 'Y'">{$val2['link']}</a>
+		                            </li>
+		                        </ul>
+		                    </li>
+		                </ul>
+		            </nav>
+				</header>
+
+				<style>
+					.slide_ul>li>h2{
+						color: {$layout_info->main_txt_color};
+					}
+					.slide_ul>li>p{
+						color: {$layout_info->sub_txt_color};
+					}
+				</style>
+
+				<div class="slide">
+					<ul class="slide_ul">
+						<li style="background: url({$layout_info->main_img_01}) no-repeat center top;">
+							<h2>{$layout_info->main_txt_01}</h2>
+							<p>{$layout_info->sub_txt_01}</p>
+						</li>
+						<li style="background: url({$layout_info->main_img_02}) no-repeat center top">
+							<h2>{$layout_info->main_txt_02}</h2>
+							<p>{$layout_info->sub_txt_02}</p>
+						</li>
+						<li style="background: url({$layout_info->main_img_03}) no-repeat center top">
+							<h2>{$layout_info->main_txt_03}</h2>
+							<p>{$layout_info->sub_txt_03}</p>
+						</li>
+						<li style="background: url({$layout_info->main_img_04}) no-repeat center top">
+							<h2>{$layout_info->main_txt_04}</h2>
+							<p>{$layout_info->sub_txt_04}</p>
+						</li>
+						<li style="background: url({$layout_info->main_img_05}) no-repeat center top">
+							<h2>{$layout_info->main_txt_05}</h2>
+							<p>{$layout_info->sub_txt_05}</p>
+						</li>
+					</ul>
+				</div>
+
+
+				<div id="flexbox">
+					<div>
+						<!--@if($layout_info->flex_pwr_01 === Y)-->
+						<a href="{$layout_info->flex_url_01}" class="icon {$layout_info->flex_icon_01}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_01}">{$layout_info->flex_text_01}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_02 === Y)-->
+						<a href="{$layout_info->flex_url_02}" class="icon {$layout_info->flex_icon_02}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_02}">{$layout_info->flex_text_02}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_03 === Y)-->
+						<a href="{$layout_info->flex_url_03}" class="icon {$layout_info->flex_icon_03}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_03}">{$layout_info->flex_text_03}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_04 === Y)-->
+						<a href="{$layout_info->flex_url_04}" class="icon {$layout_info->flex_icon_04}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_04}">{$layout_info->flex_text_04}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_05 === Y)-->
+						<a href="{$layout_info->flex_url_05}" class="icon {$layout_info->flex_icon_05}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_05}">{$layout_info->flex_text_05}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_06 === Y)-->
+						<a href="{$layout_info->flex_url_06}" class="icon {$layout_info->flex_icon_06}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_06}">{$layout_info->flex_text_06}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_07 === Y)-->
+						<a href="{$layout_info->flex_url_07}" class="icon {$layout_info->flex_icon_07}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_07}">{$layout_info->flex_text_07}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_08 === Y)-->
+						<a href="{$layout_info->flex_url_08}" class="icon {$layout_info->flex_icon_08}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_08}">{$layout_info->flex_text_08}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_09 === Y)-->
+						<a href="{$layout_info->flex_url_09}" class="icon {$layout_info->flex_icon_09}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_09}">{$layout_info->flex_text_09}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_10 === Y)-->
+						<a href="{$layout_info->flex_url_10}" class="icon {$layout_info->flex_icon_10}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_10}">{$layout_info->flex_text_10}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_11 === Y)-->
+						<a href="{$layout_info->flex_url_11}" class="icon {$layout_info->flex_icon_11}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_11}">{$layout_info->flex_text_11}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_12 === Y)-->
+						<a href="{$layout_info->flex_url_12}" class="icon {$layout_info->flex_icon_12}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_12}">{$layout_info->flex_text_12}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_13 === Y)-->
+						<a href="{$layout_info->flex_url_13}" class="icon {$layout_info->flex_icon_13}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_13}">{$layout_info->flex_text_13}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_14 === Y)-->
+						<a href="{$layout_info->flex_url_14}" class="icon {$layout_info->flex_icon_14}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_14}">{$layout_info->flex_text_14}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_15 === Y)-->
+						<a href="{$layout_info->flex_url_15}" class="icon {$layout_info->flex_icon_15}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_15}">{$layout_info->flex_text_15}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_16 === Y)-->
+						<a href="{$layout_info->flex_url_16}" class="icon {$layout_info->flex_icon_16}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_16}">{$layout_info->flex_text_16}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_17 === Y)-->
+						<a href="{$layout_info->flex_url_17}" class="icon {$layout_info->flex_icon_17}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_17}">{$layout_info->flex_text_17}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_18 === Y)-->
+						<a href="{$layout_info->flex_url_18}" class="icon {$layout_info->flex_icon_18}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_18}">{$layout_info->flex_text_18}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_19 === Y)-->
+						<a href="{$layout_info->flex_url_19}" class="icon {$layout_info->flex_icon_19}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_19}">{$layout_info->flex_text_19}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_20 === Y)-->
+						<a href="{$layout_info->flex_url_20}" class="icon {$layout_info->flex_icon_20}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_20}">{$layout_info->flex_text_20}</a></p>
+						<!--@end-->
+					</div>
+					<div>
+						<!--@if($layout_info->flex_pwr_21 === Y)-->
+						<a href="{$layout_info->flex_url_21}" class="icon {$layout_info->flex_icon_21}"><span class="label"></span></a>
+						<p><a href="{$layout_info->flex_url_21}">{$layout_info->flex_text_21}</a></p>
+						<!--@end-->
+					</div>
+
+				</div>
+
+
+			<!--@else-->
+
+			<body>
+				<div id="page-wrapper">
+
+					<!-- Header -->
+					<header id="header" style="background: #444; top: 0;">
+						<h1>
+							<a href="{$layout_info->logo_url}" cond="$layout_info->logo_text">{$layout_info->logo_text}</a>
+							<a href="{$layout_info->logo_image}" cond="$layout_info->logo_image"><img src="{$layout_info->logo_image}" alt="" /></a>
+						</h1>
+						<nav id="nav" cond="$GNB->list">
+			                <ul>
+			                    <li loop="$GNB->list => $key1, $val1">
+			                        <a href="{$val1['href']}" style="font-size: {$layout_info->menu_size}em; color : {$layout_info->menu_color};" target="_self" |cond="$val1['open_window'] == 'Y'">{$val1['link']}</a>
+			                        <block cond="$val1['selected']">{@ $_selected_menu = $val1}</block>
+			                        <ul cond="$val1['list']">
+			                            <li loop="$val1['list'] => $key2, $val2" |cond="$val2['list']">
+			                                <a href="{$val2['href']}" style="font-size: {$layout_info->menu_size}em;" target="_self" |cond="$val2['open_window'] == 'Y'">{$val2['link']}</a>
+			                            </li>
+			                        </ul>
+			                    </li>
+			                </ul>
+			            </nav>
+					</header>
+					<section id="main" class="container">
+						<header>
+							<h2>{$layout_info->sub_title}</h2>
+							<p>{$layout_info->sub_text}</p>
+						</header>
+						<div class="box">
+							{$content}
+						</div>
+					</section>
+
+				<!--@end-->
+
+				<!-- Footer -->
+				<footer id="footer">
+					{$content}
+					<ul class="icons">
+						<li><a href="{$layout_info->facebook}" class="icon fa-twitter" cond="$layout_info->facebook"><span class="label"></span></a></li>
+						<li><a href="{$layout_info->twitter}" class="icon fa-facebook" cond="$layout_info->twitter"><span class="label"></span></a></li>
+						<li><a href="{$layout_info->instargram}" class="icon fa-instagram" cond="$layout_info->instargram"><span class="label"></span></a></li>
+						<li><a href="{$layout_info->youtube}" class="icon fa-youtube" cond="$layout_info->youtube"><span class="label"></span></a></li>
+						<li><a href="{$layout_info->google_plus}" class="icon fa-google-plus" cond="$layout_info->google_plus"><span class="label"></span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>{$layout_info->address}</li><li>&copy; {$layout_info->copyright}</li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+		<script src="assets/js/mainfade.js"></script>
+		<script src="assets/js/jquery.dropotron.min.js"></script>
+		<script src="assets/js/jquery.scrollgress.min.js"></script>
+		<script src="assets/js/skel.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+		<script src="assets/js/main.js"></script>
+		<style>
+			@media screen and (max-width: 980px) {
+				#flexbox{
+				margin-top:30%;
+				margin-left: 0;
+				}
+			}
+			@media screen and (max-width: 840px) {
+				#flexbox{
+				margin-top:40%;
+				margin-left: 0;
+				}
+			}
+			@media screen and (max-width: 736px) {
+				.slide_ul>li{
+					padding: 7em 0 0 3em;
+				}
+				#flexbox{
+					margin-top:0;
+					padding: 0;
+				}
+			}
+			@media screen and (max-width: 480px) {
+				.slide_ul>li{
+					padding: 6em 0 0 2em;
+				}
+				#flexbox{
+					margin-top:0;
+					padding: 0;
+				}
+			}	
+			</style>
+	</body>
