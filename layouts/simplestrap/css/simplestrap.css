@@ -89,13 +89,13 @@ img{max-width:100%;height:auto;}/* .img-responsive */
 #jumbotron h1{font-weight:100}
 #jumbotron h1 a:hover{text-decoration:none}
 #jumbotron .icon-jumbotron-left,
-#jumbotron .icon-jumbotron-right{position:absolute;top:0;opacity:.2;filter:alpha(opacity=20);bottom:50px;font-size:60px;line-height:180px;display:block;}
+#jumbotron .icon-jumbotron-right{position:absolute;top:0;opacity:.2;filter:alpha(opacity=20);bottom:50px;font-size:180px;line-height:180px;display:block;}
 #jumbotron .icon-jumbotron-left{left:50px}
 #jumbotron .icon-jumbotron-right{right:50px}
 #jumbotron .btn-lg+.tooltip{font-size:12px;z-index:1029}
 #jumbotron .btn-lg.btn-default{border-color:transparent}
 #jumbotron .btn-lg.btn-default:hover{background-color:;border-color:#fff;color:#fff}
-#jumbotron .jumbotron-title-wrap{transition:max-height .25s ease, opacity .25s ease;-webkit-transition:max-height .25s ease, opacity .25s ease;-moz-transition:max-height .25s ease, opacity .25s ease;max-height:300px;overflow:hidden;}
+#jumbotron .jumbotron-title-wrap{transition:max-height .25s ease, opacity .25s ease;-webkit-transition:max-height .25s ease, opacity .25s ease;-moz-transition:max-height .25s ease, opacity .25s ease;max-height:300px;overflow:hidden;font-size:15px;}
 #jumbotron.jumbotron-hide .jumbotron-title-wrap{opacity:0}
 #jumbotron .popover .btn{margin-bottom:0}
 #jumbotron.jumbotron-hide{padding:20px 0}
