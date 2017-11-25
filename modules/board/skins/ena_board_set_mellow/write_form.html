@@ -53,7 +53,7 @@
 			<block cond="$is_logged">
 				<input type="checkbox" name="notify_message" class="iCheck" value="Y" checked="checked"|cond="$oDocument->useNotify()" id="notify_message" />
 				<label for="notify_message">{$lang->notify}</label>
-			</block><block cond="$logged_info->is_admin"><br />
+			</block><block cond="$logged_info->is_admin">
 			<input type="checkbox" name="title_bold" id="title_bold" value="Y" checked="checked"|cond="$oDocument->get('title_bold')=='Y'" />
 			<label for="title_bold">{$lang->title_bold}</label>
 			<label for="title_color"></label>
