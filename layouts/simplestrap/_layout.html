@@ -7,10 +7,10 @@
 			<button cond="!$is_logged && $li->navbar_login != 'N'" type="button" class="navbar-toggle" data-toggle="modal" data-target="#modal-login"><i class="fa fa-sign-in" area-hidden="true"></i> {$lang->cmd_login}</button>
 			<button cond="$is_logged && $li->navbar_login != 'N'" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sub-navbar"><i class="fa fa-ellipsis-h" area-hidden="true"></i></button>
 			<button cond="!$is_logged && $li->navbar_search != 'N'" type="button" class="navbar-toggle" data-toggle="modal" data-target="#modal-search"><i class="fa fa-search" area-hidden="true"></i> {$lang->cmd_search}</button>
-				<a class="navbar-brand<!--@if($li->logo_img)--> navbar-logo-img<!--@end-->" href="<!--@if(!$li->index_url)-->http://www.wincomi.com<!--@else-->{$li->index_url}<!--@end-->">
+				<a class="navbar-brand<!--@if($li->logo_img)--> navbar-logo-img<!--@end-->" href="<!--@if(!$li->index_url)-->http://jhwgnu.cafe24.com<!--@else-->{$li->index_url}<!--@end-->">
 					<!--@if($li->logo_img)--><img src="{$li->logo_img}" alt="{$li->logo_title}" />
 					<!--@else-->
-					<!--@if($li->logo_title)-->{$li->logo_title}<!--@else-->Simplestrap<!--@end-->
+					<!--@if($li->logo_title)-->{$li->logo_title}<!--@else-->OtherSelf<!--@end-->
 					<!--@end-->
 				</a>
 		</div>
@@ -85,7 +85,7 @@
 						<block cond="$li->navbar_member_point=='Y'">
 							{@
 								$member_srl = $logged_info->member_srl;
-								$oPointModel = getModel('point');   
+								$oPointModel = getModel('point');
 								$member_point = $oPointModel->getPoint($member_srl);
 							}
 							<block cond="$li->navbar_member_point=='Y2'">
@@ -194,7 +194,7 @@
 					</div>
 				</form>
 			</div>
-		</div>	
+		</div>
 	</div>
 </div>
 <div id="modal-login" class="modal fade" cond="!$is_logged && $li->navbar_login != 'N'">
@@ -218,7 +218,7 @@
 							if($val == 'google') $color = 'danger';
 							if($val == 'naver') $color = 'success';
 							if($val == 'kakao') $color = 'warning';
-							
+
 							$icon = $val;
 							if($icon == 'facebook') $icon = 'facebook-official';
 							if($icon == 'naver') $icon = 'graduation-cap';
@@ -238,7 +238,7 @@
 					<div class="form-group"><input type="<!--@if($identifierForm->name=='email_address')-->email<!--@else-->text<!--@end-->" name="user_id" id="uid" value=""  placeholder="<!--@if($identifierForm->name=='email_address')-->{$lang->email}<!--@else-->{$lang->user_id}<!--@end-->" class="form-control" required /></div>
 					<div class="form-group"><input type="password" name="password" id="upw" value="" placeholder="{$lang->password}" class="form-control" required /></div>
 					<div class="form-group">
-						<input type="checkbox" name="keep_signed" value="Y" onclick="if(this.checked) return confirm('{$lang->about_keep_signed}');" /> 
+						<input type="checkbox" name="keep_signed" value="Y" onclick="if(this.checked) return confirm('{$lang->about_keep_signed}');" />
 						<label for="keep_signed" onclick="jQuery('#modal-login input[name=\'keep_signed\']').click();" style="font-weight: normal">
 							{$lang->keep_signed}
 						</label>
