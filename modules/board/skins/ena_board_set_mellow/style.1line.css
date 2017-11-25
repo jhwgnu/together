@@ -1,0 +1,276 @@
+@charset "utf-8";
+
+/* 게시판 목록 / Board List */
+/* list.html */
+.no_document{
+margin:0;
+padding:10px 0;
+text-align:center;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+
+/* 게시글 읽기 / Board Read */
+/* _read.html */
+.board_read{
+overflow:hidden;
+width:100%;
+}
+.board_read tr.notice{
+background:rgba(0,0,0,0.015);
+}
+.board_read:last-child{
+border-bottom:0 !important;
+}
+.board_read th{
+border-bottom:1px solid #eee;
+color:#757575;
+font-size:15px;
+height:1.5em !important;
+}
+.board_read td, .board_read th{
+height:2em;
+overflow:hidden;
+padding:10px;
+}
+.board_read td:first-child, .board_read th:first-child{
+border-right:1px solid #eee;
+}
+.board_read .no, .board_read .name, .board_read td.iCheck{
+text-align:center;
+}
+.board_read .no{
+width:40px;
+max-width:40px;
+padding:10px 5px;
+}
+.board_read .no i{
+font-size:15px;
+}
+.board_read th.no i{
+color:#757575 !important;
+}
+.board_read .name{
+width:50px;
+max-width:50px;
+padding:10px 0;
+padding-left:5px;
+}
+.read_body{
+word-break:break-all;
+padding-right:0px !important;
+}
+.read_body .secret input[type="password"]{
+margin-top:5px;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.read_body .secret button[type="submit"]{
+margin:0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.read_body .secret button[type="submit"] i{
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.read_body .secret button[type="submit"] i:hover, .read_body .secret button[type="submit"] i:active{
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.read_body .plus{
+margin-left:3px;
+color:#aaa;
+}
+.read_body .more{
+display:inline-block;
+width:20px;
+text-align:center;
+}
+.read_body .more i{
+font-size:11px;
+color:#aaa;
+cursor:pointer;
+}
+.read_body .edit{
+display:none;
+position:absolute;
+border:1px solid #eee;
+padding:5px;
+background:white;
+margin-top:15px;
+margin-left:-55px;
+}
+.read_body .edit a{
+margin-left:5px;
+color:#757575 !important;
+}
+.read_body .edit a:first-child{
+margin-left:0;
+}
+.read_body .more:hover>.edit, .read_body .more:active>.edit, .read_body .edit:hover, .read_body .edit:active{
+display:inline-block;
+}
+.board_read .time{
+color:#757575;
+margin-left:7px;
+font-family:'Calibri';
+}
+.board_read td.iCheck, .board_read th.iCheck{
+width:20px;
+padding:10px 5px;
+}
+.board_read input.iCheck{
+display:none;
+}
+.board_read .iCheck label{
+font-size:15px;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.board_read .iCheck input[type="checkbox"]:checked+label{
+color:#757575;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+font-family:"xeicon";
+}
+
+
+/* 댓글 / Feedback (Comment) */
+/*  _comment.html */
+.feedback{}
+.feedback .fbHeader{}
+.feedback .fbList{
+margin:0;
+padding:0;
+}
+.feedback .fbItem{
+list-style:none;
+}
+.feedback .fbItem .commentWrap{
+overflow:hidden;
+width:100%;
+}
+.feedback .no{
+width: 40px;
+max-width: 40px;
+padding: 10px 5px;
+border-right: 1px solid #eee;
+text-align:center;
+font-family:'Calibri';
+}
+.feedback .no i{
+font-size:16px;
+color:#757575;
+}
+.feedback .meta{
+width: 50px;
+max-width: 50px;
+padding: 10px 0;
+padding-left: 5px;
+text-align:center;
+}
+.feedback .author{}
+.feedback .author a{}
+.feedback .time{
+color: #757575;
+margin-left: 7px;
+font-family:'Calibri';
+}
+.feedback .xe_content{}
+.feedback .secret_comment, .feedback .secret_comment>p{
+margin:0;
+}
+.feedback  p.secret_comment.desc, .feedback .secret_comment .desc label{
+font-size:12px;
+}
+.feedback .secret_comment input[type="password"]{
+margin-top:5px;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.feedback .secret_comment button[type="submit"]{
+margin:0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.feedback .more{
+display: inline-block;
+width: 20px;
+text-align: center;
+}
+.feedback .more i{
+font-size: 11px;
+color: #aaa;
+cursor: pointer;
+}
+.feedback .action{
+display: none;
+position: absolute;
+border: 1px solid #eee;
+padding: 5px;
+background: white;
+margin-top: 15px;
+margin-left: -55px;
+}
+.feedback .more:hover>.action, .feedback .more:active>.action, .feedback .more:hover, .feedback .action:active{
+display:inline-block;
+}
+.feedback .action a{
+margin-left:5px;
+}
+.feedback .action a:link, .feedback .action a:visited{
+color:#757575;
+}
+.feedback .action a:first-child{
+margin-left:0px;
+}
+.feedback .comment_body{
+padding-left:10px;
+padding-right:0;
+word-break: break-all;
+}
+.feedback .pagination{}
+
+/* 댓글 쓰기 / Write Comment */
+/* _read.html | comment_form.html */
+.write_comment{
+margin-top:0;
+padding-top:10px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}

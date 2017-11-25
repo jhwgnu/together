@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skin version="0.2">
+    <title xml:lang="ko">이나 통합 게시판 - mellow</title>
+    <title xml:lang="en">Ena board set - mellow</title>
+    <description xml:lang="ko">개인 홈페이지에 맞는 여러 스타일의 스킨을 통합한 스킨입니다.</description>
+    <description xml:lang="en">Simple board skin set for personal website.</description>
+    <version>1.1.1</version>
+    <date>2017-06-06</date>
+    <author email_address="applemintr@gmail.com" link="http://starlight01.tistory.com/">
+        <name xml:lang="ko">이나</name>
+        <name xml:lang="en">Ena</name>
+    </author>
+    <license>재수정, 원본 및 수정본 재배포 가능/원 저작자 표시 필수/폐쇄적인 라이센스로 재배포 금지/영리적 사용은 제작자 사이트 참고 혹은 개별 연락</license>
+	<extra_vars>
+        <!--// <var name="title" type="text">
+            <title xml:lang="ko">게시판 제목</title>
+            <title xml:lang="en">Board Title</title>
+			<description xml:lang="ko">작성하면 화면에 표시 됨</description>
+			<description xml:lang="en">This will be displayed on the screen as you write.</description>
+        </var>
+        <var name="comment" type="textarea">
+            <title xml:lang="ko">게시판 설명</title>
+            <title xml:lang="en">Board Details</title>
+			<description xml:lang="ko">작성하면 화면에 표시 됨</description>
+			<description xml:lang="en">This will be displayed on the screen as you write.</description>
+        </var> -->
+		<var name="default_style" type="radio"> 
+			<title xml:lang="ko">게시판 유형</title> 
+			<title xml:lang="en">Board Style</title> 
+			<options value="">
+				<title xml:lang="ko">일반</title> 
+				<title xml:lang="en">Normal</title> 
+			</options>
+			<options value="diary">
+				<title xml:lang="ko">일기장</title> 
+				<title xml:lang="en">Diary</title> 
+			</options>
+			<options value="memo">
+				<title xml:lang="ko">일반 메모장</title> 
+				<title xml:lang="en">Normal Memo</title> 
+			</options>
+			<options value="1line_memo">
+				<title xml:lang="ko">한 줄 메모장</title> 
+				<title xml:lang="en">One-line Memo</title> 
+			</options>
+			<options value="gallery">
+				<title xml:lang="ko">갤러리</title> 
+				<title xml:lang="en">Gallery</title> 
+			</options>
+			<options value="guestbook">
+				<title xml:lang="ko">방명록</title> 
+				<title xml:lang="en">Guestbook</title> 
+			</options>
+			<options value="link"> 
+				<title xml:lang="ko">링크</title> 
+				<title xml:lang="en">Link</title>
+				<description xml:lang="ko">(확장변수 link_url, link_img 필요)</description>
+				<description xml:lang="en">(required extra value link_url and link_img)</description>
+			</options>
+		</var>
+		<var name="point_color" type="text">
+            <title xml:lang="ko">포인트 색상</title>
+            <title xml:lang="en">Point color</title>
+			<description xml:lang="ko">예시 : #000000, black, rgba(0,0,0,0.5)</description>
+			<description xml:lang="en">example : #000000, black, rgba(0,0,0,0.5)</description>
+        </var>
+		<var name="notice_color" type="text">
+            <title xml:lang="ko">공지 배경 색상</title>
+            <title xml:lang="en">Notice background color</title>
+			<description xml:lang="ko">예시 : #000000, 0,0,0</description>
+			<description xml:lang="en">example : #000000, 0,0,0</description>
+        </var>
+		<var name="list_category" type="radio">
+            <title xml:lang="ko">목록에서 카테고리 출력</title>
+            <title xml:lang="en">List category</title>
+			<options value="seperate">
+				<title xml:lang="ko">예(제목셀에 표시, 미분류는 미표시)</title>
+				<title xml:lang="en">yes(in title cell)</title>
+			</options>
+			<options value="td">
+				<title xml:lang="ko">예(별도의 셀에 표시)</title>
+				<title xml:lang="en">yes(in new cell)</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="list_line" type="radio">
+            <title xml:lang="ko">목록에 가로줄 치기</title>
+            <title xml:lang="en">Horizontal line in list</title>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="use_taglist" type="radio">
+            <title xml:lang="ko">태그 목록 사용</title>
+            <title xml:lang="en">Use tag list</title>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="hide_comment_writer" type="radio">
+            <title xml:lang="ko">댓글 글쓴이 숨기기</title>
+            <title xml:lang="en">Hide comment writer</title>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="use_comment_up" type="radio">
+            <title xml:lang="ko">댓글 추천 사용</title>
+            <title xml:lang="en">Use comment vote up</title>
+			<description xml:lang="ko">추가 설정에서 댓글 추천을 사용으로 설정하세요</description>
+			<description xml:lang="en">please, set use comment vote up in accditional settings</description>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="use_comment_down" type="radio">
+            <title xml:lang="ko">댓글 비추천 사용</title>
+            <title xml:lang="en">Use comment vote down</title>
+			<description xml:lang="ko">추가 설정에서 댓글 비추천을 사용으로 설정하세요</description>
+			<description xml:lang="en">please, set use comment vote down in accditional settings</description>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="gallery_thumbwidth" type="text">
+            <title xml:lang="ko">갤러리 - 목록 썸네일 넓이(넓이와 높이를 같게 하는 것을 추천)</title>
+            <title xml:lang="en">Gallery - list thumbnail width</title>
+        </var>
+		<var name="gallery_thumbheight" type="text">
+            <title xml:lang="ko">갤러리 - 목록 썸네일 높이</title>
+            <title xml:lang="en">Gallery - list thumbnail height</title>
+        </var>
+		<var name="no_title" type="radio">
+            <title xml:lang="ko">메모, 일기장 - 제목 사용하지 않기</title>
+            <title xml:lang="en">Memo, Diary - no title</title>
+			<options value="yes">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+		<var name="link_no_category" type="radio">
+            <title xml:lang="ko">링크 - 카테고리 없는 링크 출력</title>
+            <title xml:lang="en">Link - disply no category</title>
+			<options value="">
+				<title xml:lang="ko">예</title>
+				<title xml:lang="en">yes</title>
+			</options>
+			<options value="no">
+				<title xml:lang="ko">아니오</title>
+				<title xml:lang="en">no</title>
+			</options>
+        </var>
+    </extra_vars>
+</skin>
+

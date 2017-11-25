@@ -1,0 +1,7 @@
+<include target="_header.html" />
+<div class="board context_message">
+    <h1>{$message}</h1>
+	<a cond="!$is_logged" href="{getUrl('act','dispMemberLoginForm')}" class="board_btn" style="color:#757575;">{$lang->cmd_login}</a>
+    <button type="button" onclick="history.back()" class="board_btn">{$lang->cmd_back}</button>
+</div>
+<include target="_footer.html" />

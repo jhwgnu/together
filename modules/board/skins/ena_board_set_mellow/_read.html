@@ -1,0 +1,16 @@
+<!--// 게시판 유형 --> 
+<!--@if($module_info->default_style=='diary')--> 
+	<include target="_read_diary.html" />
+<!--@elseif($module_info->default_style=='memo')--> 
+	<include target="_read_memo.html" /> 
+<!--@elseif($module_info->default_style=='1line_memo')--> 
+	<include target="_read_1line.html" />
+<!--@elseif($module_info->default_style=='guestbook')--> 
+	<include target="_read_guestbook.html" /> 
+<!--@elseif($module_info->default_style=='gallery')--> 
+	<include target="_read_normal.html" /> 
+<!--@elseif($module_info->default_style=='link')--> 
+	<include target="_read_normal.html" /> 
+<!--@else--> <!--// 일반형 -->
+	<include target="_read_normal.html" /> 
+<!--@end--> 

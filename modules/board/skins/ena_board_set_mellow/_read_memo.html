@@ -1,0 +1,112 @@
+<div class="board_read">
+	<!-- READ HEADER -->
+	<div class="read_header">
+		<h1 class="title">
+			<a cond="($module_info->no_title=='' && $oDocument->getTitle()) && ($oDocument->getTitle()!='memo' && $oDocument->getTitle()!='n')" href="{$oDocument->getPermanentUrl()}" style="color:{$oDocument->get('title_color')}"|cond="$oDocument->get('title_color')" style="font-weight:bold;"|cond="$oDocument->get('title_bold')=='Y'">{$oDocument->getTitle()}</a><span class="time">{$oDocument->getRegdate('Y.m.d H:i')}</span>
+			<span class="category" cond="$module_info->use_category=='Y' && $oDocument->get('category_srl')">
+				<i class="xi-tagged-book xi-fw"></i>
+				<a href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}">{$category_list[$oDocument->get('category_srl')]->title}</a>
+			</span>
+			<span class="meta">
+				<a cond="$oDocument->getNickName() && !$oDocument->getMemberSrl() && $oDocument->isExistsHomepage()" href="{$oDocument->getHomepageUrl()}" onclick="window.open(this.href);return false;" class="author">{$oDocument->getNickName()}</a>
+				<span cond="$oDocument->getNickName() && !$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()" class="author">{$oDocument->getNickName()}</span>
+				<a cond="$oDocument->getNickName() && $oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')} author" onclick="return false">{$oDocument->getNickName()}</a>
+			</span>
+		</h1>
+		<span class="edit">
+			<span cond="$oDocument->getCommentcount() || $oDocument->isEnableComment()"><a class="board_btn" href="#" onclick="jQuery('#comment_write_{$oDocument->document_srl}').slideToggle('fast'); return false;">{$lang->comment}</a></span> 
+			<a class="document_{$oDocument->document_srl}" href="#popup_menu_area" onclick="return false">추가메뉴<!--// {$lang->cmd_document_do} --></a> 
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a> 
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_delete}</a>
+			<!--// <input cond="$grant->manager" type="checkbox" name="cart" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /> 체크박스 오류시 대체용 -->
+			<input cond="$grant->manager" type="checkbox" id="ic_{$oDocument->document_srl}" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /><label cond="$grant->manager" for="ic_{$oDocument->document_srl}"></label>
+		</span>
+	</div>
+	<!-- /READ HEADER -->
+	<!-- READ BODY -->
+	<div class="read_body">
+		<!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
+			<!--@if(!$oDocument->get('member_srl'))-->
+			<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secret_document">
+				<i class="xi-lock xi-fw secret_mark"></i>
+				<p>
+					<input type="hidden" name="mid" value="{$mid}" />
+					<input type="hidden" name="page" value="{$page}" />
+					<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+					<input type="password" name="password" id="cpw" class="iText" placeholder="{$lang->password}" />
+				</p>
+			</form>
+			<!--@else-->
+			<div class="secret_document"><i class="xi-lock xi-fw secret_mark"></i></div>
+			<!--@end-->
+		<!--@else-->
+		{$oDocument->getContent(false)}
+		<!--@end-->
+	</div>
+	<!-- /READ BODY -->
+	<!-- READ FOOTER -->
+<block cond="!$document_srl">
+{@
+    if(count($tag_list)):
+        $tag_list = [];
+    endif;
+    $tagModel = &getModel('tag');
+    $args = new stdClass;
+    $args->document_srl = $oDocument->document_srl;
+    $output = $tagModel->getDocumentsTagList($args);
+    foreach($output->data as $key => $val):
+        $tag_list[$key] = $val->tag;
+    endforeach;
+}
+</block>
+<block cond="$document_srl">
+{@ $tag_list=$oDocument->get('tag_list') }
+</block>
+	<div class="read_footer" cond="$oDocument->hasUploadedFiles() || count($tag_list)">
+		<div class="fnt">
+			<div cond="$oDocument->hasUploadedFiles()" class="fileList">
+				<style type="text/css" cond="$oDocument->get('tag_list')">
+				.read_footer .fileList .files li{padding:10px 0;border-bottom:1px solid #eee;}
+				</style>
+				<button type="button" class="toggleFile" onclick="jQuery(this).next('ul.files').slideToggle('fast');"><i class="xi-clip xi-fw"></i> {$lang->uploaded_file} {$oDocument->get('uploaded_count')}</button>
+				<ul class="files">
+					<li loop="$oDocument->getUploadedFiles()=>$key,$file"><a href="{getUrl('')}{$file->download_url}">{$file->source_filename} <span class="fileSize">{FileHandler::filesize($file->file_size)}/{number_format($file->download_count)}hit</span></a></li>
+				</ul>
+			</div>
+			<div class="tag" cond="count($tag_list)">
+				<span class="tag_mark"><i class="xi-tags xi-fw xi-flip-vertical"></i> </span>
+				<span cond="count($tag_list)">
+					<!--@for($i=0;$i<count($tag_list);$i++)-->
+						{@ $tag = $tag_list[$i]; }
+						<a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}" class="tag" rel="tag">#{htmlspecialchars($tag)}</a><span> </span>
+					<!--@end-->
+				</span>
+			</div>
+		</div>
+	</div>
+	<!-- /READ FOOTER -->
+</div>
+  <form style="display:none;" cond="$grant->write_comment && $oDocument->isEnableComment()" action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_comment" id="comment_write_{$oDocument->document_srl}" style="border-top:0;"|cond="!$oDocument->getCommentcount()">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+	<input type="hidden" name="comment_srl" value="" />
+    <input type="hidden" name="content" value="" />
+      {$oDocument->getCommentEditor()}
+		<div class="write_item">
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="nick_name" id="userName" placeholder="{$lang->writer}" class="iText userName" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="password" name="password" id="userPw" placeholder="{$lang->password}" class="iText userPw" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="homepage" id="homePage" placeholder="{$lang->homepage}" class="iText homePage" />
+			</span>
+			<input cond="$is_logged" type="checkbox" name="notify_message" value="Y" id="notify_message" class="iCheck" />
+			<label cond="$is_logged" for="notify_message"><i class="xi-bell xi-fw"></i></label>
+			<input cond="$module_info->secret=='Y'" type="checkbox" name="is_secret" value="Y" id="is_secret" class="iCheck" />
+			<label cond="$module_info->secret=='Y'" for="is_secret"><i class="xi-lock xi-fw"></i></label>
+			<button type="submit"><i class="xi-check xi-fw"></i></button>
+		</div>
+	</form>
+<include cond="$oDocument->allowComment()" target="_comment_memo.html" />

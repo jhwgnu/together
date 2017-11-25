@@ -1,0 +1,89 @@
+<!-- COMMENT -->
+<div class="feedback" id="comment" cond="$oDocument->getCommentcount() || $oDocument->isEnableComment()">
+	<div class="secret_document_comment" cond="$oDocument->getCommentcount() && ($oDocument->isSecret() && !$oDocument->isGranted())">Thanks for your message!</div>
+	<ul cond="$oDocument->getCommentcount()" class="fbList">
+		<li loop="$oDocument->getComments()=>$key,$comment" class="fbItem"|cond="!$comment->get('depth')" class="fbItem indent indent{($comment->get('depth'))}"|cond="$comment->get('depth')" style="padding-left:{(($comment->get('depth'))-1)*15}px"|cond="$comment->get('depth')" id="comment_{$comment->comment_srl}">
+		<i class="xi-reply-l xi-fw xi-rotate-180" cond="$comment->get('depth')"></i>
+		<div class="commentWrap" style="margin-left:40px"|cond="$comment->get('depth')">
+			<div class="comment_header">
+			  <p class="meta">
+					<a class="author" cond="(!$comment->member_srl && $comment->homepage) && $module_info->hide_comment_writer==''" href="{$comment->getHomepageUrl()}">{$comment->getNickName()}</a>
+					<span class="author" cond="(!$comment->member_srl && !$comment->homepage) && $module_info->hide_comment_writer==''">{$comment->getNickName()}</span>
+					<a class="author member_{$comment->member_srl}" cond="$comment->member_srl && $module_info->hide_comment_writer==''" href="#popup_menu_area" onclick="return false">{$comment->getNickName()}</a>
+					<span class="time">{$comment->getRegdate('Y.m.d H:i')}</span>
+					<span class="action">
+						<a class="board_btn" href="{getUrl('act','dispBoardReplyComment','comment_srl',$comment->comment_srl)}'" onclick="jQuery('#write_comment_{$comment->get('comment_srl')}').slideToggle('fast'); return false;">{$lang->cmd_reply}</a>
+						<a cond="$comment->isGranted()||!$comment->get('member_srl')" href="{getUrl('act','dispBoardModifyComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_modify}</a>
+						<a cond="$comment->isGranted()||!$comment->get('member_srl')" href="{getUrl('act','dispBoardDeleteComment','comment_srl',$comment->comment_srl)}">{$lang->cmd_delete}</a>
+					</span>
+			  </p>
+			</div>
+			<div class="comment_body">
+			  <!--@if(!$comment->isAccessible())-->
+				<!--@if(!$comment->get('member_srl'))-->
+				<form action="./" method="get" class="secret_comment" onsubmit="return procFilter(this, input_password)">
+					<p class="desc"><label for="cpw_{$comment->comment_srl}"><i class="xi-lock xi-fw"></i> {$lang->msg_is_secret}</label></p>
+					<p>
+						<input type="password" name="password" id="cpw_{$comment->comment_srl}"  placeholder="{$lang->password}" class="iText" />
+						<button type="submit"><i class="xi-check xi-fw"></i></button>
+					</p>
+					<input type="hidden" name="mid" value="{$mid}" />
+					<input type="hidden" name="page" value="{$page}" />
+					<input type="hidden" name="document_srl" value="{$comment->get('document_srl')}" />
+					<input type="hidden" name="comment_srl" value="{$comment->get('comment_srl')}" />
+				</form>
+				<!--@else-->
+				<p class="secret_comment desc"><i class="xi-lock xi-fw"></i> {$lang->msg_is_secret}</p>
+				<!--@end-->
+			  <!--@else-->
+			    {nl2br($comment->getContent(false))}
+			    <div cond="$comment->hasUploadedFiles()" class="fileList">
+					<button type="button" class="toggleFile" onclick="jQuery(this).next('ul.files').slideToggle('fast');"><i class="xi-clip xi-fw"></i> {$lang->uploaded_file} {$comment->get('uploaded_count')}</button>
+				    <ul class="files">
+					    <li loop="$comment->getUploadedFiles()=>$key,$file"><a href="{getUrl('')}{$file->download_url}">{$file->source_filename} <span class="fileSize">{FileHandler::filesize($file->file_size)}/{number_format($file->download_count)}hit</span></a></li>
+				    </ul>
+			    </div>
+			  <!--@end-->
+			</div>
+		</div>
+		
+		<form cond="$grant->write_comment && $oDocument->isEnableComment()" action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_comment" id="write_comment_{$comment->get('comment_srl')}" style="display:none;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+	<h3><i class="xi-paper-plane xi-fw"></i> {$lang->comment} {$lang->cmd_write}</h3>
+	<input type="hidden" name="error_return_url" value="/{$comment->get('document_srl')}">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$comment->get('document_srl')}" />
+	<input type="hidden" name="parent_srl" value="{$comment->get('comment_srl')}" />
+    <input type="hidden" name="content" value="" />
+      {$comment->getEditor()}
+		<div class="write_item">
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="nick_name" id="userName" placeholder="{$lang->writer}" class="iText userName" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="password" name="password" id="userPw" placeholder="{$lang->password}" class="iText userPw" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="homepage" id="homePage" placeholder="{$lang->homepage}" class="iText homePage" />
+			</span>
+			<input cond="$is_logged" type="checkbox" name="notify_message" value="Y" id="notify_message" class="iCheck" />
+			<label cond="$is_logged" for="notify_message"><i class="xi-bell xi-fw"></i></label>
+			<input cond="$module_info->secret=='Y'" type="checkbox" name="is_secret" value="Y" id="is_secret" class="iCheck" />
+			<label cond="$module_info->secret=='Y'" for="is_secret"><i class="xi-lock xi-fw"></i></label>
+			<button type="submit"><i class="xi-check xi-fw"></i></button>
+		</div>
+	</form>
+		
+		</li>
+	</ul>
+  <div cond="$oDocument->comment_page_navigation" class="pagination">
+    <a cond="$cpage != $oDocument->comment_page_navigation->first_page" href="{getUrl('cpage',1)}#comment" class="prevEnd"><i class="xi-angle-double-left xi-fw"></i></a>
+	<a cond="$cpage != $oDocument->comment_page_navigation->first_page" href="{getUrl('cpage',$cpage-1)}#comment" class="direction prev"><i class="xi-angle-left xi-fw"></i></a>
+    <block loop="$page_no=$oDocument->comment_page_navigation->getNextPage()">
+			<strong cond="$cpage==$page_no" class="num">{$page_no}</strong> 
+			<a cond="$cpage!=$page_no" class="num" href="{getUrl('cpage',$page_no)}#comment">{$page_no}</a>
+    </block>
+	<a cond="$cpage != $oDocument->comment_page_navigation->last_page" href="{getUrl('cpage',$cpage+1)}#comment" class="direction next"><i class="xi-angle-right xi-fw"></i></a>
+    <a cond="$cpage != $oDocument->comment_page_navigation->last_page" href="{getUrl('cpage',$oDocument->comment_page_navigation->last_page)}#comment" class="nextEnd"><i class="xi-angle-double-right xi-fw"></i></a>
+  </div>
+</div>
+<!-- /COMMENT -->

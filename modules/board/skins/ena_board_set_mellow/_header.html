@@ -1,0 +1,163 @@
+<load target="style.default.css" />
+<load target="js.default.js" type="body" />
+<!--// 게시판 유형 css --> 
+<!--@if($module_info->default_style=='diary')--> 
+	<load target="style.diary.css" />
+<!--@elseif($module_info->default_style=='memo')--> 
+	<load target="style.memo.css" /> 
+<!--@elseif($module_info->default_style=='1line_memo')--> 
+	<load target="style.1line.css" />
+<!--@elseif($module_info->default_style=='guestbook')--> 
+	<load target="style.guestbook.css" /> 
+<!--@elseif($module_info->default_style=='gallery')--> 
+	<load target="style.gallery.css" /> 
+<!--@elseif($module_info->default_style=='link')--> 
+	<load target="style.link.css" /> 
+<!--@else--> <!--// 일반형 -->
+	<load target="style.normal.css" /> 
+<!--@end--> 
+<block cond="!$module_info->duration_new = (int)$module_info->duration_new">{@ $module_info->duration_new = 12 }</block>
+<!--@if($order_type == "desc")-->
+    {@ $order_type = "asc"; }
+<!--@else-->
+    {@ $order_type = "desc"; }
+<!--@end-->
+{@ $cate_list = array(); $current_key = null; }
+<!--@foreach($category_list as $key=>$val)-->
+	<!--@if(!$val->depth)-->
+		{@
+			$cate_list[$key] = $val;
+			$cate_list[$key]->children = array();
+			$current_key = $key;
+		}
+	<!--@elseif($current_key)-->
+		{@ $cate_list[$current_key]->children[] = $val }
+	<!--@end-->
+<!--@end-->
+{@
+	$oDB = &DB::getInstance();
+	$query = $oDB->_query('select count(*) as total from xe_documents where module_srl = '.$module_info->module_srl.'');
+	$result = $oDB->_fetch($query);
+}
+<!--@if($module_info->point_color)-->
+<style type="text/css" cond="$module_info->point_color">
+.board_content a:hover, .board_content a:active, 
+.board_list tr>.no:not(th) i, .board_list td.title .plus i, .board_list .check input[type="checkbox"]:checked+label, .board_content .pagination strong, .list_footer .board_search button i, 
+.gallery_list input[type="checkbox"]:checked+label, .gallery_list input[type="checkbox"]:hover, .gallery_list input[type="checkbox"]:active,
+.read_header h1>.category i, .read_header .sum .read i, .read_body .secret_document .secret_mark, .read_body .plus, .read_footer .fnt i, .read_footer .sign .sign_header i, 
+ .updown button>span, .updown button:hover,  .updown button:active,  
+.feedback .fbItem>i, .write_comment h3>i, .write_comment .write_item input[type="checkbox"]:checked+label, .write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active, .feedback .comment_body .fileList .toggleFile i, .feedback .secret_comment i, .feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active, 
+.write_check input[type="checkbox"]:checked+label:before, .exForm i, .board_write .exForm>table input[type="radio"]:checked+label:before, .board_write .exForm>table input[type="checkbox"]:checked+label:before, .board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active, .board_write .btnArea button:hover, .board_write .btnArea button:active, 
+.context_message h1,
+.tag_list .rank2:link, .tag_list .rank2:visited{
+color:{$module_info->point_color};
+}
+.board_header .board_category .category_list>ul a:hover, .board_header .board_category .category_list>ul a:active,
+.tag_list .rank1{
+background:{$module_info->point_color};
+}
+</style>
+<style type="text/css" cond="$module_info->point_color && $module_info->default_style=='1line_memo'">
+.board_read .no i, .read_body .secret i, .secretMark i, .board_read .iCheck input[type="checkbox"]:checked+label{color:{$module_info->point_color};}
+.read_body .secret button[type="submit"] i{color:#ccc;}
+.read_body .secret button[type="submit"] i:hover, .read_body .secret button[type="submit"] i:active, .feedback .no i{color:{$module_info->point_color};}
+</style>
+<style type="text/css" cond="$module_info->point_color && $module_info->default_style=='guestbook'"></style>
+<style type="text/css" cond="$module_info->point_color && $module_info->default_style=='diary'">
+.read_header .time{color:{$module_info->point_color};}
+</style>
+<style type="text/css" cond="$module_info->point_color && $module_info->default_style=='link'">
+.category_title,.category_title a:link, .category_title a:visited{color:{$module_info->point_color};}
+</style>
+<!--@end-->
+<script type="text/javascript" cond="$module_info->default_style=='diary' || $module_info->default_style=='memo' || $module_info->default_style=='1line_memo' || $module_info->default_style=='guestbook' || $module_info->default_style=='link'">
+//create and delete action
+function completeDocumentInserted(ret_obj)
+{
+    var error = ret_obj.error;
+    var message = ret_obj.message;
+    var mid = ret_obj.mid;
+    var document_srl = ret_obj.document_srl;
+    var category_srl = ret_obj.category_srl;
+    var url = request_uri+mid;
+    location.href = url;
+}
+function completeDocumentInserted(ret_obj)
+{
+    var error = ret_obj.error;
+    var message = ret_obj.message;
+    var mid = ret_obj.mid;
+    var document_srl = ret_obj.document_srl;
+    var category_srl = ret_obj.category_srl;
+    var url = request_uri+mid;
+    location.href = url;
+}
+function completeInsertComment(ret_obj) {
+    var error = ret_obj.error;
+    var message = ret_obj.message;
+    var mid = ret_obj.mid;
+    var document_srl = ret_obj.document_srl;
+    var comment_srl = ret_obj.comment_srl;
+    var url = request_uri+mid;
+    location.href = url;
+}
+function completeDeleteDocument(ret_obj) {
+    var error = ret_obj.error;
+    var message = ret_obj.message;
+    var mid = ret_obj.mid;
+    var page = ret_obj.page;
+    var url = request_uri+mid;
+    location.href = url;
+  }
+function completeDeleteComment(ret_obj) {
+    var error = ret_obj.error;
+    var message = ret_obj.message;
+    var mid = ret_obj.mid;
+    var document_srl = ret_obj.document_srl;
+    var page = ret_obj.page;
+    var url = request_uri+mid;
+    location.href = url;
+  }
+</script>
+<!-- skin title : 이나 통합 게시판 - mellow, ver : 1.0.0, by 이나( http://starlight01.tistory.com/ ) - 이 주석은 지우지 마세요 -->
+<div class="board_content">
+	<div class="board_header">
+		<div cond="$grant->write_document || $grant->manager" class="top_btn">
+			<a cond="$grant->write_document" href="{getUrl('act','dispBoardWrite','document_srl','')}">{$lang->cmd_write}</a>
+			<a cond="$grant->manager" class="setup" href="{getUrl('act','dispBoardAdminBoardInfo')}" title="{$lang->cmd_setup}">{$lang->cmd_setup}</a>
+		</div>
+		<div class="board_category" cond="$module_info->use_category=='Y' && $act == ''" style="display:none;"|cond="$module_info->default_style=='link'">
+			<script type="text/javascript">
+				jQuery(function($) {
+				var current = $("#current_category").text();
+				$("#current").prepend(current);
+				var category_width = $(".category_list>ul").width();
+				$("#current").css("width", category_width+3);
+				var category_width2 = Math.floor($(".category_list>ul").width());
+				$(".category_list>ul").css("width", category_width2+17);
+				$("#current").click(function(){
+					$(".category_list>ul").slideToggle("fast");
+				});
+				$("#current").toggle(function(){
+					$("#current").css("border", "1px solid #eee");
+					$("#current").css("border-bottom", "0");
+				}, function(){
+					$("#current").css("border", "1px solid transparent");
+				});
+				});
+			</script>
+			<div class="category_mark">Category<i class="xi-angle-right"></i></div>
+			<ul class="category_list">
+				<li id="current"><i class="xi-angle-down"></i></li>
+				<ul>
+					<li id="current_category"|cond="!$category"><a href="{getUrl('category','','page','')}">all<span cond="$result->total != 0">({$result->total})</span></a></li>
+					<li loop="$cate_list=>$key,$val">
+						<span id="current_category"|cond="$category==$val->category_srl"><a href="{getUrl(category,$val->category_srl,'document_srl','', 'page', '')}">{$val->title}<span cond="$val->document_count">({$val->document_count})</span></a></span>
+						<ul cond="count($val->children)">
+							<li loop="$val->children=>$idx,$item" id="current_category"|cond="$category==$item->category_srl"><a href="{getUrl(category,$item->category_srl,'document_srl','', 'page', '')}">- {$item->title}<span cond="$item->document_count">({$item->document_count})</span></a></li>
+						</ul>
+					</li>
+				</ul>
+			</ul>
+		</div>
+	</div>

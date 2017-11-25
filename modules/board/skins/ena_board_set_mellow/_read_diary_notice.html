@@ -1,0 +1,99 @@
+<!--@if($module_info->notice_color)-->
+<p id="notice_color" style="display:none;">{$module_info->notice_color}</p>
+<script type="text/javascript"> <!--// from https://www.sitepoint.com/jquery-convert-rgb-hex-color/ -->
+jQuery(function($) {
+function hexToRgb(h)
+{
+    var r = parseInt((cutHex(h)).substring(0,2),16), g = parseInt((cutHex(h)).substring(2,4),16), b = parseInt((cutHex(h)).substring(4,6),16)
+    return r+','+g+','+b+',0.015';
+}
+function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
+	var color = $("#notice_color").text()
+	if (color.indexOf("#") == 0){
+		var result = "rgba("+hexToRgb(color)+ ")";
+		$(".notice").css("background",  result);
+	} else{
+	var result = color+",0.015";
+	var result2 = "rgba("+ result + ")";
+	$(".notice").css("background", result2);
+	}
+});
+</script>
+<!--@end-->
+<div class="board_read notice" style="border-color:{$module_info->point_color};">
+	<!-- READ HEADER -->
+	<div class="read_header">
+		<span class="edit">
+			<a class="document_{$oDocument->document_srl}" href="#popup_menu_area" onclick="return false">추가메뉴<!--// {$lang->cmd_document_do} --></a> 
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a> 
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_delete}</a>
+			<!--// <input cond="$grant->manager" type="checkbox" name="cart" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /> 체크박스 오류시 대체용 -->
+			<!--// <input cond="$grant->manager" type="checkbox" onclick="XE.checkboxToggleAll({ doClick:true });" class="iCheck" title="Check All" /> 체크박스 오류시 대체용2 -->
+			<input cond="$grant->manager" type="checkbox" id="ic_{$oDocument->document_srl}" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /><label cond="$grant->manager" for="ic_{$oDocument->document_srl}"></label>
+			<span cond="$grant->manager" class="allc"><input cond="$grant->manager" type="checkbox" id="ic_all_{$oDocument->document_srl}" onclick="XE.checkboxToggleAll({ doClick:true });" class="iCheck" title="Check All" /><label cond="$grant->manager" for="ic_all_{$oDocument->document_srl}"></label></span>
+		</span>
+	</div>
+	<!-- /READ HEADER -->
+	<!-- READ BODY -->
+	<div class="read_body">
+		<!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
+			<!--@if(!$oDocument->get('member_srl'))-->
+			<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secret_document">
+				<i class="xi-lock xi-fw secret_mark"></i>
+				<p>
+					<input type="hidden" name="mid" value="{$mid}" />
+					<input type="hidden" name="page" value="{$page}" />
+					<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+					<input type="password" name="password" id="cpw" class="iText" placeholder="{$lang->password}" />
+				</p>
+			</form>
+			<!--@else-->
+			<div class="secret_document"><i class="xi-lock xi-fw secret_mark"></i></div>
+			<!--@end-->
+		<!--@else-->
+		{$oDocument->getContent(false)}
+		<!--@end-->
+	</div>
+	<!-- /READ BODY -->
+	<!-- READ FOOTER -->
+<block cond="!$document_srl">
+{@
+    if(count($tag_list)):
+        $tag_list = [];
+    endif;
+    $tagModel = &getModel('tag');
+    $args = new stdClass;
+    $args->document_srl = $oDocument->document_srl;
+    $output = $tagModel->getDocumentsTagList($args);
+    foreach($output->data as $key => $val):
+        $tag_list[$key] = $val->tag;
+    endforeach;
+}
+</block>
+<block cond="$document_srl">
+{@ $tag_list=$oDocument->get('tag_list') }
+</block>
+	<div class="read_footer" cond="$oDocument->hasUploadedFiles() || count($tag_list)">
+		<div class="fnt">
+			<div cond="$oDocument->hasUploadedFiles()" class="fileList">
+				<style type="text/css" cond="$oDocument->get('tag_list')">
+				.read_footer .fileList .files li{padding:10px 0;border-bottom:1px solid #eee;}
+				</style>
+				<button type="button" class="toggleFile" onclick="jQuery(this).next('ul.files').slideToggle('fast');"><i class="xi-clip xi-fw"></i> {$lang->uploaded_file} {$oDocument->get('uploaded_count')}</button>
+				<ul class="files">
+					<li loop="$oDocument->getUploadedFiles()=>$key,$file"><a href="{getUrl('')}{$file->download_url}">{$file->source_filename} <span class="fileSize">{FileHandler::filesize($file->file_size)}/{number_format($file->download_count)}hit</span></a></li>
+				</ul>
+			</div>
+			<div class="tag" cond="count($tag_list)">
+				<span class="tag_mark"><i class="xi-tags xi-fw xi-flip-vertical"></i> </span>
+				<span cond="count($tag_list)">
+					<!--@for($i=0;$i<count($tag_list);$i++)-->
+						{@ $tag = $tag_list[$i]; }
+						<a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}" class="tag" rel="tag">#{htmlspecialchars($tag)}</a><span> </span>
+					<!--@end-->
+				</span>
+			</div>
+		</div>
+	</div>
+	<!-- /READ FOOTER -->
+</div>

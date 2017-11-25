@@ -1,0 +1,21 @@
+<?php
+$lang->cmd_agree='찬성';
+$lang->cmd_disagree='반대';
+$lang->cmd_like='좋아요';
+$lang->cmd_dislike='싫어요';
+$lang->new_document='새로운 문서를 작성합니다.';
+$lang->modify_document='이 문서를 수정합니다.';
+$lang->delete_document='이 문서를 삭제합니다.';
+$lang->new_comment='새로운 댓글을 작성합니다.';
+$lang->modify_comment='이 댓글을 수정합니다.';
+$lang->delete_comment='이 댓글을 삭제합니다.';
+$lang->search_my_document='내 글';
+$lang->search_my_comment='내 답변';
+$lang->bonus_pang_pang='보너스 : %s포인트';
+$lang->my_point='내 포인트: %s';
+$lang->about_use_point='내 포인트를 걸고 사용자에게 포인트의 %s씩 받을 수 있습니다.';
+$lang->about_use_adopt='사용된 포인트는 채택시에 %s를 돌려 받을 수 있습니다. 꼭! 채택해 주세요.';
+$lang->about_author_adopt_info='<strong>%s</strong>님의 채택율은 <strong>%s</strong>입니다.<br />채택된 답변은 <strong>%s</strong>포인트를 받습니다.';
+$lang->nav_caption='%s의 다른 글';
+$lang->file_uploader_info='파일 크기 제한: %s<br />허용 확장자 : %s';
+$lang->confirm_declare='%s에게 이유를 설명해주십시오.';

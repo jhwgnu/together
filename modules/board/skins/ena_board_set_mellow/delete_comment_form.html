@@ -1,0 +1,19 @@
+<include target="_header.html" />
+<div cond="$oComment->isExists()" class="board context_data">
+	<h3 class="comment_header">
+		<a class="author" cond="$oComment->homepage" href="{$oComment->homepage}">{$oComment->getNickName()}</a>
+		<strong class="author" cond="!$oComment->homepage">{$oComment->getNickName()}</strong>
+		<span class="time">{$oComment->getRegdate('Y.m.d H:i')}</span>
+	</h3>
+	{$oComment->getContent(false)}
+</div>
+<form action="./" method="get" onsubmit="return procFilter(this, delete_comment)" class="board context_message">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="page" value="{$page}" />
+	<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
+	<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
+	<h1>{$lang->confirm_delete}</h1>
+	<button type="submit" class="board_btn" />{$lang->cmd_delete}</button>
+	<button type="button" onclick="history.back()" class="board_btn">{$lang->cmd_cancel}</button>
+</form>
+<include target="_footer.html" />

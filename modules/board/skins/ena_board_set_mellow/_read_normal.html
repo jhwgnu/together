@@ -1,0 +1,102 @@
+{@
+  $oDocumentModel = getModel('document');
+  $oModuleModel = &getModel('module');
+  $module_srl = $oDocument->get('module_srl');
+  $document_config = $oModuleModel->getModulePartConfig('document',$module_srl);
+}
+<load cond="$module_info->default_style=='link'" target="style.link.read.css" /> 
+<div class="board_read">
+	<!-- READ HEADER -->
+	<div class="read_header">
+		<h1 class="title">
+			<a href="{$oDocument->getPermanentUrl()}" style="color:{$oDocument->get('title_color')}"|cond="$oDocument->get('title_color')" style="font-weight:bold;"|cond="$oDocument->get('title_bold')=='Y'">{$oDocument->getTitle()}</a>
+			<span class="category" cond="$module_info->use_category=='Y' && $oDocument->get('category_srl')">
+				<i class="xi-tagged-book xi-fw"></i>
+				<a href="{getUrl('category',$oDocument->get('category_srl'), 'document_srl', '')}">{$category_list[$oDocument->get('category_srl')]->title}</a>
+			</span>
+		</h1>
+		<p class="meta">
+			<a cond="$module_info->display_author!='N' && !$oDocument->getMemberSrl() && $oDocument->isExistsHomepage()" href="{$oDocument->getHomepageUrl()}" onclick="window.open(this.href);return false;" class="author">{$oDocument->getNickName()}</a>
+			<span cond="$module_info->display_author!='N' && !$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</span>
+			<a cond="$module_info->display_author!='N' && $oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')} author" onclick="return false">{$oDocument->getNickName()}</a>
+			<span class="sum">
+				<span class="read"><i class="xi-eye xi-fw"></i> <span class="num">{$oDocument->get('readed_count')}</span></span>
+				<span class="vote" cond="$document_config->use_vote_up!='N' && $oDocument->get('voted_count')!=0"><i class="xi-thumbs-up xi-fw"></i> <span class="num">{$oDocument->get('voted_count')}</span></span>
+				<span class="blame" cond="$document_config->use_vote_down!='N' && $oDocument->get('blamed_count')!=0"><i class="xi-thumbs-down xi-fw"></i> <span class="num">{str_replace("-", "", $oDocument->get('blamed_count'))}</span></span>
+				<span class="time">{$oDocument->getRegdate('Y.m.d H:i')}</span>
+			</span>
+		</p>
+	</div>
+	<!-- /READ HEADER -->
+	<!-- Extra Output -->
+	<div class="extra_value" cond="$oDocument->isExtraVarsExists() && (!$oDocument->isSecret() || $oDocument->isGranted())">
+		<table border="1" cellspacing="0" summary="Extra Form Output">
+			<tr loop="$oDocument->getExtraVars() => $key,$val" cond="$val->getValueHTML()">
+				<th scope="row">{$val->name}</th>
+				<td>{$val->getValueHTML()}</td>
+			</tr>
+		</table>
+	</div>
+	<!-- /Extra Output -->
+	<!-- READ BODY -->
+	<div class="read_body">
+		<!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
+			<!--@if(!$oDocument->get('member_srl'))-->
+			<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secret_document">
+				<i class="xi-lock xi-fw secret_mark"></i>
+				<p>
+					<input type="hidden" name="mid" value="{$mid}" />
+					<input type="hidden" name="page" value="{$page}" />
+					<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+					<input type="password" name="password" id="cpw" class="iText" placeholder="{$lang->password}" />
+				</p>
+			</form>
+			<!--@else-->
+			<div class="secret_document"><i class="xi-lock xi-fw secret_mark"></i></div>
+			<!--@end-->
+		<!--@else-->
+		{$oDocument->getContent(false)}
+		<!--@end-->
+	</div>
+	<div class="updown"  cond="$document_config->use_vote_up=='S' || $document_config->use_vote_down=='S'">
+		<button cond="$document_config->use_vote_up=='S'" onclick="doCallModuleAction('document','procDocumentVoteUp','{$document_srl}');return false;"|cond="$is_logged"><span>{$oDocument->get('voted_count')}</span>{$lang->cmd_vote}</button> 
+		<button cond="$document_config->use_vote_down=='S'" onclick="doCallModuleAction('document','procDocumentVoteDown','{$document_srl}');return false;"|cond="$is_logged"><span>{str_replace("-", "", $oDocument->get('blamed_count'))}</span>{$lang->cmd_vote_down}</button>
+	</div>
+	<!-- /READ BODY -->
+	<!-- READ FOOTER -->
+	<div class="read_footer">
+		<div class="fnt" cond="$oDocument->hasUploadedFiles() || $oDocument->get('tag_list')">
+			<div cond="$oDocument->hasUploadedFiles()" class="fileList">
+				<style type="text/css" cond="$oDocument->get('tag_list')">
+				.read_footer .fileList .files li{padding:10px 0;border-bottom:1px solid #eee;}
+				</style>
+				<button type="button" class="toggleFile" onclick="jQuery(this).next('ul.files').slideToggle('fast');"><i class="xi-clip xi-fw"></i> {$lang->uploaded_file} {$oDocument->get('uploaded_count')}</button>
+				<ul class="files">
+					<li loop="$oDocument->getUploadedFiles()=>$key,$file"><a href="{getUrl('')}{$file->download_url}">{$file->source_filename} <span class="fileSize">{FileHandler::filesize($file->file_size)}/{number_format($file->download_count)}hit</span></a></li>
+				</ul>
+			</div>
+			<div class="tag" cond="$oDocument->get('tag_list')">
+				<span class="tag_mark"><i class="xi-tags xi-fw xi-flip-vertical"></i> {$lang->tag}</span>
+				{@ $tag_list = $oDocument->get('tag_list') }
+				<span cond="count($tag_list)">
+					<!--@for($i=0;$i<count($tag_list);$i++)-->
+						{@ $tag = $tag_list[$i]; }
+						<a href="{getUrl('search_target','tag','search_keyword',$tag,'document_srl','')}" class="tag" rel="tag">#{htmlspecialchars($tag)}</a><span> </span>
+					<!--@end-->
+				</span>
+			</div>
+		</div>
+		<div class="sign" cond="$module_info->display_sign!='N' && $oDocument->getSignature()">
+			<div class="sign_header"><i class="xi-pen xi-fw"></i> 글쓴이의 말</div>
+			<div class="sign_body">{$oDocument->getSignature()}</div>
+		</div>
+		<div class="btnArea">
+		  <a class="document_{$oDocument->document_srl} action" href="#popup_menu_area" onclick="return false">{$lang->cmd_document_do}…</a>
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a>
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_delete}</a>
+			<a href="{getUrl('document_srl','')}">{$lang->cmd_list}</a>
+		</div>
+	</div>
+	<!-- /READ FOOTER -->
+</div>
+<include cond="$oDocument->allowComment()" target="_comment.html" />

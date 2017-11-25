@@ -1,0 +1,638 @@
+@charset "utf-8";
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(//cdn.jsdelivr.net/xeicon/1.0.4/xeicon.min.css);
+
+/* 게시판 공통 구성요소 / Common Element */
+.board_content, .board_content label, .board_content table, .board_content input, .board_content button, .board_content textarea, .board_content select{
+font-family:'나눔고딕', 'Nanum Gothic';
+letter-spacing: -0.5px;
+font-size:11px;
+border-collapse:collapse;
+outline-style:none;
+line-height:1.5;
+background:transparent;
+border:0;
+}
+.board_content a, .board_content a:link, .board_content a:visited, .board_content a:hover, .board_content a:active{
+text-decoration:none;
+color:#000;
+}
+.board_content a:hover, .board_content a:active, .btnArea button:hover, .btnArea button:active{
+color:#aaa;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.board_content select{
+border:0;
+}
+.board_content input{
+background:transparent;
+border:0;
+}
+.board_content img{
+max-width:100%;
+}
+.xe_content{
+font-size:12px;
+line-height:1.5;
+}
+/* 게시판 / Board */
+.board_content{overflow:hidden;}
+
+/* 게시판 상단 / Board Header */
+.board_header{
+margin-bottom:20px;
+}
+.board_header .top_btn{
+text-align:right;
+}
+.board_header .top_btn a{
+padding-left: 10px;
+}
+.board_header .board_category{
+margin-top:20px;
+height:14px;
+}
+.board_header .board_category .category_mark{
+float:left;
+font-weight:bold;
+}
+.board_header .board_category .category_mark i{
+color:#aaa;
+margin-left:10px;
+margin-right:5px;
+}
+.board_header .board_category ul{
+margin:0;
+padding:0;
+list-style:none;
+}
+.board_header .board_category .category_list{
+position:relative;
+float:left;
+}
+.board_header .board_category .category_list #current{
+padding:2px 7px;
+position:relative;
+top:-2px;
+cursor:pointer;
+min-width:70px;
+}
+.board_header .board_category .category_list #current i{
+color:#aaa;
+float:right;
+margin-left:5px;
+}
+.board_header .board_category .category_list>ul{
+float:left;
+display:none;
+position:absolute;
+top:16px;
+width:auto;
+background:white;
+border:1px solid #eee;
+white-space:nowrap;
+min-width:70px;
+z-index:999;
+}
+.board_header .board_category .category_list>ul a{
+padding:2px 7px;
+display:block;
+}
+.board_header .board_category .category_list>ul a:first-child{
+padding-top:2px;
+}
+.board_header .board_category .category_list>ul a:last-child{
+padding-bottom:2px;
+}
+.board_header .board_category .category_list>ul a:hover, .board_header .board_category .category_list>ul a:active{
+color:#fff;
+background:rgba(0,0,0,0.3);
+-webkit-transition:none;
+-moz-transition:none;
+-ms-transition:none;
+-o-transition:none;
+transition:none;
+}
+.board_header h2{}
+.board_header p{}
+
+/* 게시판 목록 / Board List */
+/* list.html */
+.board_list .iCheck{
+display:none;
+}
+.board_list .check label{
+font-size:15px;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.board_list .check input[type="checkbox"]:checked+label{
+color:#757575;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+font-family:"xeicon";
+}
+.list_footer{}
+.list_footer .btnArea{}
+.list_footer .btnArea .left{}
+..list_footer .btnArea .right{
+float:right;
+}
+.list_footer .btnArea a{
+padding-left:10px;
+}
+.list_footer .board_search{
+float:left;
+display:none;
+width:100%;
+text-align:left;
+}
+.list_footer #search_open{
+padding:0;
+padding-right:10px;
+float:left;
+cursor:pointer;
+}
+.list_footer .board_search select{
+width:76px;
+}
+.list_footer .board_search input[type="text"]{
+width:70px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+}
+.list_footer .board_search button{
+font-size:13px;
+color:#757575;
+}
+
+/* 게시판 글쓰기 / Board Write */
+/* write_form.html */
+.board_write{
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.board_write input[type="text"], .board_write input[type="password"]{}
+.write_header{
+padding:10px 0;
+border-bottom: 1px solid #eee;
+line-height:2em;
+}
+.write_title{
+margin:0;
+}
+.write_title span.title{
+display:inline-block;
+min-width:200px;
+width:70%;
+}
+.write_title input[type="text"]{
+width:85%;
+}
+.write_title i{
+font-size:17px;
+color:#757575;
+margin-right:5px;
+}
+.write_check {
+margin:0;
+}
+.write_check input[type="checkbox"]{
+display:none;
+}
+.fbItem .write_comment .write_item input[type="checkbox"]{
+display:inline;
+}
+.write_check label{
+margin-right:10px;
+color:#757575;
+display:inline-block;
+cursor:pointer;
+}
+.write_check label:before{
+padding-right:7px;
+}
+.write_check input[type="checkbox"]+label:before{
+font-size:15px;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+font-family:"xeicon";
+}
+.write_check input[type="checkbox"]:checked+label:before{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_check label[for="is_notice"]:before{
+content:"\e608";
+}
+.write_check label[for="is_secret"]:before{
+content:"\e66b";
+}
+.write_check label[for="comment_status"]:before{
+content:"\e6de";
+}
+.write_check label[for="notify_message"]:before{
+content:"\e798";
+}
+.write_check label[for="title_bold"]:before{
+content:"";
+}
+.write_check label[for="title_color"]:before{
+content:"";
+font-size:15px;
+font-family:'xeicon';
+}
+.write_check label[for="title_color"]{
+margin-right:0 !important;
+}
+.write_check input[id="title_color"]{
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+width:50px;
+}
+.board_write .exForm{
+padding:10px 0;
+border-bottom:1px solid #eee;
+}
+.board_write .exForm i{
+font-size:15px;
+font-weight:normal;
+color:#757575;
+}
+.board_write .exForm>table{
+width:100%;
+}
+.board_write .exForm>table, .board_write .exForm>table tr, .board_write .exForm>table th, .board_write .exForm>table td{
+border:0;
+}
+.board_write .exForm>table th, .board_write .exForm>table td{
+padding:10px;
+}
+.board_write .exForm>table thead th, .board_write .exForm>table thead td{
+border-bottom:1px solid #eee;
+}
+.board_write .exForm>table th{
+border-right:1px solid #eee;
+color:#757575;
+font-weight:normal;
+}
+.board_write .exForm>table input[type="text"], .board_write .exForm>table textarea{
+max-width:90%;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.board_write .exForm>table input[type="checkbox"], .board_write .exForm>table input[type="radio"]{
+display:none;
+}
+.board_write .exForm>table input[type="checkbox"]+label, .board_write .exForm>table input[type="radio"]+label{}
+.board_write .exForm>table label:before{
+padding-right:7px;
+font-size:15px;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+font-family:"xeicon";
+}
+.board_write .exForm>table input[type="checkbox"]+label:before{
+content:"\e6e2";
+}
+.board_write .exForm>table input[type="checkbox"]:checked+label:before{
+content:"\e6e2";
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.board_write .exForm>table input[type="radio"]+label:before{
+content:"\e6e4";
+}
+.board_write .exForm>table input[type="radio"]:checked+label:before{
+content:"\e6e4";
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.board_write .exForm>table select{
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.board_write .exForm>table td p{
+margin:0;
+margin-top:5px;
+font-style:italic;
+color:#757575;
+}
+.board_write .exForm caption{
+color:#757575;
+}
+.write_editor{
+padding:10px 0;
+border-bottom: 1px solid #eee;
+}
+.write_tag{
+margin:0;
+padding:10px 0;
+border-bottom: 1px solid #eee;
+min-width:200px;
+}
+.write_tag i{
+font-size:17px;
+color:#757575;
+margin-right:5px;
+}
+.write_tag input[type="text"]{
+width:85%;
+}
+.board_write .write_author{
+padding:10px 0;
+border-bottom:1px solid #eee;
+line-height:2em;
+}
+.board_write .write_author>span{
+display:inline-block;
+min-width:200px;
+width:45%;
+}
+.board_write .write_author>span.home{
+width:100%;
+}
+.board_write .write_author i{
+font-size:17px;
+color:#757575;
+margin-right:5px;
+}
+.board_write .write_author .userName{
+width:80%;
+margin-right:10px;
+}
+.board_write .write_author .userPw{
+width:80%;
+}
+.board_write .write_author .homePage{
+width:80%;
+}
+.board_write .btnArea{
+margin:0;
+padding:10px 0;
+}
+.board_write .btnArea button, .board_write .btnArea a{
+margin:0;
+padding:0;
+padding-left:5px;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.board_write .btnArea a{
+float:left;
+}
+.board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+
+/* 목록 페이지네이션 / Pagination */
+/* list.html | _comment.html */
+.board_content .pagination{
+text-align:center;
+font-size:13px;
+}
+.board_content .list_footer .pagination{
+margin:20px 0;
+margin-top:40px;
+}
+.board_content .feedback .pagination{
+padding-bottom:10px;
+}
+.board_content .pagination a:link, .board_content .pagination a:visited{
+color:#757575;
+}
+.board_content .pagination a.prevEnd{}
+.board_content .pagination a.nextEnd{}
+.board_content .pagination .num{
+padding:0 7px;
+}
+.board_content .pagination strong{}
+
+/* 댓글 쓰기 / Write Comment */
+/* _read.html | comment_form.html */
+.write_comment{
+margin-top:0;
+border-top:1px solid #eee;
+}
+.write_comment h3{
+margin:0;
+padding:10px 0;
+font-size:12px;
+font-weight:bold;
+color:#757575;
+}
+.write_comment h3>i{
+font-size:20px;
+}
+.write_comment textarea{
+border:1px solid #eee;
+}
+.write_comment .write_item{}
+.write_comment input[type="text"], .write_comment input[type="password"]{
+margin:10px 0;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.write_comment .userName, .write_comment .userPw{
+width:70px
+}
+.write_comment .write_item input[type="checkbox"]{
+display:none;
+}
+.write_comment .write_item input[type="checkbox"]+label{
+display:inline-block;
+margin:10px 3px;
+font-size:15px;
+cursor:pointer;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item input[type="checkbox"]:checked+label{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item button[type="submit"]{
+float:right;
+margin:10px 0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+
+/* Tag List */
+/* tag_list.html */
+.tag_title{
+margin-bottom:10px;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+font-weight:bold;
+font-size:12px;
+}
+.tag_count{
+margin-bottom:10px;
+color:#757575;
+}
+.tag_list{
+padding:10px 0;
+line-height;2em;
+}
+.tag_list a{
+margin-right:5px;
+}
+.tag_list .rank1{
+font-size:17px;
+font-weight:bold;
+background:#ccc;
+}
+.tag_list .rank1:link, .tag_list .rank1:visited{
+color:#fff;
+}
+.tag_list .rank2{
+font-size:15px;
+font-weight:bold;
+}
+.tag_list .rank3{
+font-size:13px;
+font-weight:bold;
+}
+.tag_list .rank4{}
+.tag_list .rank5:link, .tag_list .rank5:visited{
+color:#757575;
+}
+.tag_footer{
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+text-align:right;
+}
+.tag_footer .board_btn:link, .tag_footer .board_btn:visited{
+color:#757575;
+}
+
+/* Context Data | Context Message */
+/* comment_form.html | delete_form.html | delete_comment_form.html | input_password_form.html | message.html */
+.context_data{
+margin-bottom:15px;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.context_data .comment_header{
+margin:0;
+padding-bottom:10px;
+font-size:11px;
+}
+.context_data  .comment_header a{
+margin-right:10px;
+font-weight:bold;
+}
+.context_data  .comment_header strong{
+margin-right:10px;
+font-weight:bold;
+}
+.context_data h3.title{
+margin:0;
+margin-bottom:10px;
+font-size:12px;
+}
+.context_data p.author{
+margin:0;
+}
+.context_data p.author strong{}
+.context_data .time{
+color:#757575;
+font-size:10px;
+font-weight:normal;
+}
+.context_data .xe_content{}
+.context_message{
+padding:30px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+text-align:center;
+}
+.context_message h1{
+font-size:inherit;
+font-weight:bold;
+}
+.context_message .secret_mark{
+font-size:30px;
+}
+.context_message  input[type="password"]{
+padding:5px 0;
+border-bottom:1px solid #eee;
+}
+.context_message .iText{}
+.context_message .btnArea{
+border-top:1px solid #eee;
+text-align:right;
+margin:0;
+padding:10px 0;
+color:#ccc;
+}
+.context_data button, .context_message button{
+margin-left:10px;
+padding:0;
+color:#757575;
+cursor:pointer;
+}

@@ -1,0 +1,313 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(//cdn.jsdelivr.net/xeicon/1.0.4/xeicon.min.css);
+
+/* 게시판 목록 / Board List */
+/* list.html */
+.no_document{
+margin:0;
+padding:10px 0;
+text-align:center;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+
+/* 게시글 읽기 / Board Read */
+/* _read.html */
+.board_read{
+padding:15px;
+border:1px solid #eee;
+margin-bottom:15px;
+}
+.notice{
+background:rgba(0,0,0,0.015);
+}
+.read_header{
+position:relative;
+font-size:11px;
+font-weight:bold;
+padding-bottom:4px;
+}
+.read_header .meta{margin-right:10px;}
+.read_header .author{}
+.read_header a.author, .read_header a.author:link, .read_header a.author:visited{}
+.read_header .time{
+color:#757575;
+font-family:'Calibri';
+font-weight:normal;
+}
+.read_header .edit{
+position:absolute;
+top:0;
+right:0;
+font-size:10.5px;
+background:white;
+border:1px solid #eee;
+padding:5px;
+display:none;
+font-weight:normal;
+}
+.board_read:hover .edit, .board_read:active .edit{
+display:inline-block;
+}
+.read_header .edit a{margin-left:5px;}
+.read_header .edit a:first-child{margin-left:0px;}
+.read_header .edit a, .read_header .edit a:link, .read_header .edit a:visited{
+color:#757575;
+}
+.read_header .edit input[type='checkbox'] + label:before {
+content:"선택";
+}
+.read_header .edit input[type='checkbox']:checked + label:before {
+content:"선택됨";
+font-weight:bold;
+}
+.read_header .edit .allc input[type='checkbox'] + label:before {
+content:"전체선택";
+}
+.read_header .edit .allc input[type='checkbox']:checked + label:before {
+content:"전체선택됨";
+font-weight:bold;
+}
+.read_header .edit input[type='checkbox'] {
+display:none;
+}
+.read_header .edit label {
+cursor:pointer;
+margin-top:-1px;
+color:#757575;
+margin-left:5px;
+}
+.read_body{}
+.read_body .secret_document{
+text-align:center;
+margin-top:10px;
+}
+.read_body .secret_document .secret_mark{
+font-size:30px;
+}
+.read_body .secret_document input[type="password"]{
+padding:5px 0;
+border-bottom:1px solid #eee;
+}
+.read_body .xe_content{}
+.read_footer{}
+.read_footer .fnt{
+padding-top:5px;
+line-height:2em;
+}
+.read_footer .fileList{}
+.read_footer .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.read_footer .fileList .toggleFile i{
+margin-right:3px;
+font-size:13px;
+}
+.read_footer .fileList .files{
+display:none;
+margin:0;
+padding:0;
+}
+.read_footer .fileList .files li{
+list-style:none;
+}
+.read_footer .fileList .files li .fileSize{
+margin-left:5px;
+}
+.read_footer .fileList .files li a:link .fileSize, .read_footer .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+
+/* 댓글 / Feedback (Comment) */
+/*  _comment.html */
+.feedback{}
+.feedback .fbHeader{}
+.feedback .fbList{
+margin:0;
+padding:0;
+}
+.feedback .fbItem{
+list-style:none;
+}
+.feedback .fbItem>i{
+margin-left:10px;
+margin-top:-1px;
+padding:10px 0;
+float:left;
+font-size:16px;
+color:#757575;
+}
+.feedback .fbItem .commentWrap, .feedback .secret_document_comment{
+overflow:hidden;
+padding:15px;
+margin-bottom:15px;
+border:1px solid #ddd;
+}
+.feedback .secret_document_comment{
+font-family:'Calibri';
+letter-spacing:3px;
+color:#757575;
+text-align:center;
+}
+.feedback .fbItem .comment_header{}
+.feedback .meta{
+margin:0;
+margin-bottom:4px;
+position:relative;
+}
+.feedback .author{
+margin-right:10px;
+font-weight:bold;
+}
+.feedback .author a{}
+.feedback .time{
+color:#757575;
+font-family:'Calibri';
+}
+.feedback .xe_content{padding-top:2px;}
+.feedback .secret_comment, .feedback .secret_comment>p{
+margin:0;
+}
+.feedback  p.secret_comment.desc, .feedback .secret_comment .desc label{
+font-size:12px;
+}
+.feedback .secret_comment input[type="password"]{
+margin-top:5px;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.feedback .secret_comment button[type="submit"]{
+margin:0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.feedback .action{
+display:none;
+position:absolute;
+right:0;
+top:0;
+padding:5px;
+background:white;
+border:1px solid #eee;
+}
+.feedback .fbItem:hover .action, .feedback .fbItem:active .action{
+display:block;
+}
+.feedback .action a{
+margin-left:5px;
+}
+.feedback .action a:first-child{
+margin-left:0;
+}
+.feedback .action a:link, .feedback .action a:visited{
+color:#757575;
+}
+.feedback .comment_body .fileList{
+padding-top:5px;
+line-height:2em;
+}
+.feedback .comment_body .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.feedback .comment_body .fileList .toggleFile i{
+margin-right:3px;
+font-size:13px;
+}
+.feedback .comment_body .fileList .files{
+display:none;
+margin:0;
+padding:0;
+}
+.feedback .comment_body .fileList .files li{
+list-style:none;
+}
+.feedback .comment_body .fileList .files li .fileSize{
+margin-left:5px;
+}
+.feedback .comment_body .fileList .files li a:link .fileSize, .feedback .comment_body .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+.feedback .pagination{
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+
+/* 댓글 쓰기 / Write Comment */
+/* _read.html | comment_form.html */
+.write_comment{
+margin-top:0;
+border:0;
+}
+.write_comment textarea{
+border:1px solid #eee;
+}
+.write_comment .write_item{}
+.write_comment input[type="text"], .write_comment input[type="password"]{
+margin:10px 0;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.write_comment .userName, .write_comment .userPw{
+width:70px
+}
+.write_comment .write_item input[type="checkbox"]{
+display:none;
+}
+.write_comment .write_item input[type="checkbox"]+label{
+display:inline-block;
+margin:10px 3px;
+font-size:15px;
+cursor:pointer;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item input[type="checkbox"]:checked+label{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item button[type="submit"]{
+float:right;
+margin:10px 0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}

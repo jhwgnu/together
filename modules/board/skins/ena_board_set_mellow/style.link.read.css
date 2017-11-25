@@ -1,0 +1,406 @@
+/* 게시글 읽기 / Board Read */
+/* _read.html */
+.board_read{
+margin-bottom:20px;
+}
+.read_header{}
+.read_header h1{
+margin:0;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+font-size:12px;
+font-weight:bold;
+}
+.read_header h1 a{}
+.read_header h1>.category{
+float:right;
+color:#757575;
+}
+.read_header h1>.category i{
+font-size:13px;
+}
+.read_header h1>.category a{
+font-size:11px;
+}
+.read_header h1>.category a:link, .read_header h1>.category a:visited{
+font-weight:normal;
+color:#757575;
+}
+.read_header .meta{
+margin:0;
+padding:10px 0;
+}
+.read_header .author{}
+.read_header .sum{
+float:right;
+color:#757575;
+}
+.read_header .sum .read{
+padding-left:10px;
+}
+.read_header .sum .vote{
+padding-left:10px;
+}
+.read_header .sum .blame{
+padding-left:10px;
+}
+.read_header .sum .time{
+padding-left:10px;
+}
+.board_read .extra_value>table{
+width:100%;
+}
+.board_read .extra_value>table, .board_read .extra_value>table, tr, .board_read .extra_value>table th, .board_read .extra_value>table td{
+border:0;
+}
+.board_read .extra_value>table th{
+width:30%;
+border-right:1px solid #eee;
+}
+.board_read .extra_value>table td{
+padding:10px;
+}
+.read_body{
+margin:15px 0;
+}
+.read_body .secret_document{
+text-align:center;
+margin:30px 0;
+}
+.read_body .secret_document .secret_mark{
+font-size:30px;
+}
+.read_body .secret_document input[type="password"]{
+padding:5px 0;
+border-bottom:1px solid #eee;
+}
+.read_body .xe_content{}
+.board_read .updown{
+margin:0 auto;
+margin-bottom:20px;
+text-align:center;
+}
+.board_read .updown button{
+min-width:48px;
+height:48px;
+text-align:center;
+border:1px solid #eee;
+line-height:1.7em;
+white-space:nowrap;
+}
+.board_read .updown button:nth-of-type(2){
+border-left:1px solid #eee;
+}
+.board_read .updown button>span{
+display:block;
+font-weight:bold;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+ .board_read .updown button:hover,  .updown button:active{
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+ }
+.read_footer{}
+.read_footer .fnt{
+padding-top:10px;
+border-top:1px solid #eee;
+}
+.read_footer .fileList{
+padding-bottom:10px;
+}
+.read_footer .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.read_footer .fileList .toggleFile i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .fileList .files{
+display:none;
+margin:0;
+padding:0;
+}
+.read_footer .fileList .files li{
+list-style:none;
+padding-top:10px;
+}
+.read_footer .fileList .files li .fileSize{
+margin-left:5px;
+}
+.read_footer .fileList .files li a:link .fileSize, .read_footer .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+.read_footer .tag{
+padding-bottom:10px;
+}
+.read_footer .tag .tag_mark{
+margin-right:7px;
+color:#757575;
+}
+.read_footer .tag .tag_mark i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .tag a{
+margin-right:3px;
+}
+.read_footer .sign{
+border-top:1px solid #eee;
+}
+.read_footer .sign .sign_header{
+padding-top:10px;
+color:#757575;
+}
+.read_footer .sign .sign_header i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .sign .sign_body{
+padding:10px 0;
+}
+.read_footer .sign .sign_body p:first-child{
+margin-top:0;
+}
+.read_footer .sign .sign_body p:last-child{
+margin-bottom:0;
+}
+.read_footer .btnArea{
+margin:0;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.read_footer .btnArea a:link, .read_footer .btnArea a:visited{
+color:#757575;
+}
+.read_footer .btnArea .action{
+float:left;
+}
+.read_footer .btnArea a:not(.action){
+margin-left:10px;
+}
+
+/* 댓글 / Feedback (Comment) */
+/*  _comment.html */
+.feedback{
+margin-top:20px;
+margin-bottom:20px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.feedback .fbHeader{}
+.feedback .fbHeader h2{
+margin:0;
+padding:10px 0;
+border-bottom:1px solid #eee;
+font-size:12px;
+font-weight:bold;
+color:#757575;
+}
+.feedback .fbList{
+margin:0;
+padding:0;
+}
+.feedback .fbItem{
+list-style:none;
+}
+.feedback .fbItem>i{
+margin-left:10px;
+margin-top:-1px;
+padding:10px 0;
+float:left;
+font-size:16px;
+color:#757575;
+}
+.feedback .fbItem .commentWrap{
+overflow:hidden;
+}
+.feedback .fbItem .comment_header{
+padding:10px;
+padding-right:0;
+padding-bottom:0;
+}
+.feedback .meta{
+margin:0;
+}
+.feedback .author{
+margin-right:10px;
+font-weight:bold;
+}
+.feedback .author a{}
+.feedback .time{
+color:#757575;
+font-size:10px;
+}
+.feedback .updown button:first-of-type{
+padding-right:2px;
+}
+.feedback .updown button:nth-of-type(2){
+padding-left:2px;
+}
+.feedback .updown i{
+color:#757575;
+}
+.feedback .updown span{
+font-weight:bold;
+}
+.feedback .xe_content{}
+.feedback .secret_comment, .feedback .secret_comment>p{
+margin:0;
+}
+.feedback  p.secret_comment.desc, .feedback .secret_comment .desc label{
+font-size:12px;
+}
+.feedback .secret_comment input[type="password"]{
+margin-top:5px;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.feedback .secret_comment button[type="submit"]{
+margin:0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.feedback .action{
+float:right;
+display:none;
+}
+.feedback .fbItem:hover .action, .feedback .fbItem:active .action{
+display:block;
+}
+.feedback .action a{
+margin-left:5px;
+}
+.feedback .action a:link, .feedback .action a:visited{
+color:#757575;
+}
+.feedback .comment_body{
+padding:10px;
+padding-right:0;
+}
+.feedback .fbItem:last-of-type .comment_body{
+border-bottom:1px solid transparent;
+}
+.feedback .comment_body .fileList{
+padding-top:5px;
+}
+.feedback .comment_body .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.feedback .comment_body .fileList .toggleFile i{
+margin-right:3px;
+font-size:15px;
+}
+.feedback .comment_body .fileList .files{
+display:none;
+margin:0;
+padding:0;
+border-bottom:1px solid #eee;
+}
+.feedback .comment_body .fileList .files li{
+list-style:none;
+padding:10px 0;
+}
+.feedback .comment_body .fileList .files li .fileSize{
+margin-left:5px;
+}
+.feedback .comment_body .fileList .files li a:link .fileSize, .feedback .comment_body .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+.feedback .pagination{}
+
+/* 댓글 쓰기 / Write Comment */
+/* _read.html | comment_form.html */
+.write_comment{
+margin-top:0;
+border-top:1px solid #eee;
+}
+.write_comment h3{
+margin:0;
+padding:10px 0;
+font-size:12px;
+font-weight:bold;
+color:#757575;
+}
+.write_comment h3>i{
+font-size:20px;
+}
+.write_comment textarea{
+border:1px solid #eee;
+}
+.write_comment .write_item{}
+.write_comment input[type="text"], .write_comment input[type="password"]{
+margin:10px 0;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.write_comment .userName, .write_comment .userPw{
+width:70px
+}
+.write_comment .write_item input[type="checkbox"]{
+display:none;
+}
+.write_comment .write_item input[type="checkbox"]+label{
+display:inline-block;
+margin:10px 3px;
+font-size:15px;
+cursor:pointer;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item input[type="checkbox"]:checked+label{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.write_comment .write_item button[type="submit"]{
+float:right;
+margin:10px 0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}

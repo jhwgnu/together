@@ -1,0 +1,546 @@
+@charset "utf-8";
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(//cdn.jsdelivr.net/xeicon/1.0.4/xeicon.min.css);
+
+/* 게시판 목록 / Board List */
+/* list.html */
+.no_document{
+margin:0;
+padding:10px 0;
+text-align:center;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.board_list{
+border:0;
+width:100%;
+border-spacing:0;
+table-layout:fixed;
+border-bottom:1px solid #eee !important;
+}
+.board_list tr{
+overflow:hidden;
+}
+.board_list tr:first-child>td{
+border-top:0;
+}
+.board_list tr:last-child>td{
+border-bottom:0 !important;
+}
+.board_list tr.notice{
+background:rgba(0,0,0,0.015);
+}
+.board_list th{
+padding:0 5px;
+text-align:center;
+font-size:15px;
+color:#757575;
+border:0;
+border-bottom:1px solid #eee;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+height:2.8em;
+}
+.board_list th a:link, .board_list th a:visited{
+color:#757575;
+}
+.board_list tr>th:first-child:not(.title){
+border-right:1px solid #eee;
+}
+.board_list tr>th:last-child{}
+.board_list td{
+padding:0 5px;
+text-align:center;
+border:0;
+overflow: hidden;
+text-overflow: ellipsis;
+height:4em;
+line-height: 1.5em;
+}
+.board_list tr>td:first-child:not(.title){
+border-right:1px solid #eee;
+}
+.board_list tr>td:last-child{
+border-right:0;
+}
+.board_list tr>.no{
+width:40px;
+white-space:normal;
+}
+.board_list tr>.no>i{
+font-size:15px;
+}
+.board_list tr>th.title{
+text-align:center;
+}
+.board_list tr>.category{
+width:50px;
+border-right:1px solid #eee;
+color:#757575;
+}
+.board_list tr>.title{
+text-align:left;
+padding:0 10px;
+padding-right:5px;
+white-space:normal;
+}
+.board_list .notice td.title{
+font-weight:bold;
+}
+.board_list tr>.title>.category{
+padding-right:10px;
+color:#757575;
+font-weight:normal;
+}
+.board_list td.title a{}
+.board_list td.title .plus{
+padding-left:7px;
+}
+.board_list td.title .plus i{
+font-size:7px;
+color:#757575;
+}
+.board_list td.title a.replyNum{
+color:#757575;
+}
+.board_list tr>.author{
+width: 70px;
+}
+.board_list tr>.time{
+width:60px;
+}
+.board_list tr>.lastReply{
+width:60px;
+}
+.board_list td.lastReply a{}
+.board_list td.lastReply span{}
+.board_list td.lastReply sub{}
+.board_list tr>.readNum{
+width:40px;
+white-space:normal;
+}
+.board_list tr>.voteNum{
+width:40px;
+white-space:normal;
+}
+.board_list tr>.check{
+width:20px;
+}
+
+/* Board List gallery */
+.gallery_list{
+margin-top:10px;
+padding:0;
+text-align:center;
+}
+.gallery_list .item, .gallery_list .item .thumbnail{
+display:inline-block;
+}
+.gallery_list .item{
+margin:7px;
+position:relative;
+border:1px solid #eee;
+}
+.gallery_list .info{
+position:absolute;
+top:0;
+left:0;
+display:none;
+z-index:999;
+color:rgba(0,0,0,0);
+text-align:center;
+word-break:break-all;
+}
+.gallery_list .item:hover .info{
+display:table;
+}
+.gallery_list .info:hover{
+color:rgba(255,255,255,1);
+background:rgba(0,0,0,0.5);
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.gallery_list .info .info_content{
+display:table-cell;
+vertical-align:middle;
+}
+.gallery_list .info p{
+margin:0;
+}
+.gallery_list .info .category{
+font-weight:normal;
+}
+.gallery_list .info .title{
+text-align:center;
+font-weight:bold;
+padding:10px;
+}
+.gallery_list .info .nickname{
+font-style:italic;
+}
+.gallery_list .info .date{
+font-size:10px;
+letter-spacing:-1px;
+}
+.gallery_list .iCheck{
+display:none;
+}
+.gallery_list label{
+font-size:15px;
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.gallery_list input[type="checkbox"]:checked+label{
+color:#ccc;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+font-family:"xeicon";
+}
+
+/* 게시글 읽기 / Board Read */
+/* _read.html */
+.board_read{
+margin-bottom:20px;
+}
+.read_header{}
+.read_header h1{
+margin:0;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+font-size:12px;
+font-weight:bold;
+}
+.read_header h1 a{}
+.read_header h1>.category{
+float:right;
+color:#757575;
+}
+.read_header h1>.category i{
+font-size:13px;
+}
+.read_header h1>.category a{
+font-size:11px;
+}
+.read_header h1>.category a:link, .read_header h1>.category a:visited{
+font-weight:normal;
+color:#757575;
+}
+.read_header .meta{
+margin:0;
+padding:10px 0;
+}
+.read_header .author{}
+.read_header .sum{
+float:right;
+color:#757575;
+}
+.read_header .sum .read{
+padding-left:10px;
+}
+.read_header .sum .vote{
+padding-left:10px;
+}
+.read_header .sum .blame{
+padding-left:10px;
+}
+.read_header .sum .time{
+padding-left:10px;
+}
+.board_read .extra_value>table{
+width:100%;
+}
+.board_read .extra_value>table, .board_read .extra_value>table, tr, .board_read .extra_value>table th, .board_read .extra_value>table td{
+border:0;
+}
+.board_read .extra_value>table th{
+width:30%;
+border-right:1px solid #eee;
+}
+.board_read .extra_value>table td{
+padding:10px;
+}
+.read_body{
+margin:15px 0;
+}
+.read_body .secret_document{
+text-align:center;
+margin:30px 0;
+}
+.read_body .secret_document .secret_mark{
+font-size:30px;
+}
+.read_body .secret_document input[type="password"]{
+padding:5px 0;
+border-bottom:1px solid #eee;
+}
+.read_body .xe_content{}
+.board_read .updown{
+margin:0 auto;
+margin-bottom:20px;
+text-align:center;
+}
+.board_read .updown button{
+min-width:48px;
+height:48px;
+text-align:center;
+border:1px solid #eee;
+line-height:1.7em;
+white-space:nowrap;
+}
+.board_read .updown button:nth-of-type(2){
+border-left:1px solid #eee;
+}
+.board_read .updown button>span{
+display:block;
+font-weight:bold;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+ .board_read .updown button:hover,  .updown button:active{
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+ }
+.read_footer{}
+.read_footer .fnt{
+padding-top:10px;
+border-top:1px solid #eee;
+}
+.read_footer .fileList{
+padding-bottom:10px;
+}
+.read_footer .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.read_footer .fileList .toggleFile i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .fileList .files{
+display:none;
+margin:0;
+padding:0;
+}
+.read_footer .fileList .files li{
+list-style:none;
+padding-top:10px;
+}
+.read_footer .fileList .files li .fileSize{
+margin-left:5px;
+}
+.read_footer .fileList .files li a:link .fileSize, .read_footer .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+.read_footer .tag{
+padding-bottom:10px;
+}
+.read_footer .tag .tag_mark{
+margin-right:7px;
+color:#757575;
+}
+.read_footer .tag .tag_mark i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .tag a{
+margin-right:3px;
+}
+.read_footer .sign{
+border-top:1px solid #eee;
+}
+.read_footer .sign .sign_header{
+padding-top:10px;
+color:#757575;
+}
+.read_footer .sign .sign_header i{
+margin-right:3px;
+font-size:15px;
+}
+.read_footer .sign .sign_body{
+padding:10px 0;
+}
+.read_footer .sign .sign_body p:first-child{
+margin-top:0;
+}
+.read_footer .sign .sign_body p:last-child{
+margin-bottom:0;
+}
+.read_footer .btnArea{
+margin:0;
+padding:10px 0;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.read_footer .btnArea a:link, .read_footer .btnArea a:visited{
+color:#757575;
+}
+.read_footer .btnArea .action{
+float:left;
+}
+.read_footer .btnArea a:not(.action){
+margin-left:10px;
+}
+
+/* 댓글 / Feedback (Comment) */
+/*  _comment.html */
+.feedback{
+margin-top:20px;
+margin-bottom:20px;
+border-top:1px solid #eee;
+border-bottom:1px solid #eee;
+}
+.feedback .fbHeader{}
+.feedback .fbHeader h2{
+margin:0;
+padding:10px 0;
+border-bottom:1px solid #eee;
+font-size:12px;
+font-weight:bold;
+color:#757575;
+}
+.feedback .fbList{
+margin:0;
+padding:0;
+}
+.feedback .fbItem{
+list-style:none;
+}
+.feedback .fbItem>i{
+margin-left:10px;
+margin-top:-1px;
+padding:10px 0;
+float:left;
+font-size:16px;
+color:#757575;
+}
+.feedback .fbItem .commentWrap{
+overflow:hidden;
+}
+.feedback .fbItem .comment_header{
+padding:10px;
+padding-right:0;
+padding-bottom:0;
+}
+.feedback .meta{
+margin:0;
+}
+.feedback .author{
+margin-right:10px;
+font-weight:bold;
+}
+.feedback .author a{}
+.feedback .time{
+color:#757575;
+font-size:10px;
+}
+.feedback .updown button:first-of-type{
+padding-right:2px;
+}
+.feedback .updown button:nth-of-type(2){
+padding-left:2px;
+}
+.feedback .updown i{
+color:#757575;
+}
+.feedback .updown span{
+font-weight:bold;
+}
+.feedback .xe_content{}
+.feedback .secret_comment, .feedback .secret_comment>p{
+margin:0;
+}
+.feedback  p.secret_comment.desc, .feedback .secret_comment .desc label{
+font-size:12px;
+}
+.feedback .secret_comment input[type="password"]{
+margin-top:5px;
+margin-right:5px;
+padding:5px;
+background:rgba(0,0,0,0.015);
+border:1px solid #eee;
+}
+.feedback .secret_comment button[type="submit"]{
+margin:0;
+padding:0;
+font-size:15px;
+color:#ccc;
+cursor:pointer;
+}
+.feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active{
+color:#000;
+-webkit-transition: all .3s ease;
+-moz-transition: all .3s ease;
+-ms-transition: all .3s ease;
+-o-transition: all .3s ease;
+transition: all .3s ease;
+}
+.feedback .action{
+float:right;
+display:none;
+}
+.feedback .fbItem:hover .action, .feedback .fbItem:active .action{
+display:block;
+}
+.feedback .action a{
+margin-left:5px;
+}
+.feedback .action a:link, .feedback .action a:visited{
+color:#757575;
+}
+.feedback .comment_body{
+padding:10px;
+padding-right:0;
+}
+.feedback .fbItem:last-of-type .comment_body{
+border-bottom:1px solid transparent;
+}
+.feedback .comment_body .fileList{
+padding-top:5px;
+}
+.feedback .comment_body .fileList .toggleFile{
+padding:0;
+color:#757575;
+cursor:pointer;
+}
+.feedback .comment_body .fileList .toggleFile i{
+margin-right:3px;
+font-size:15px;
+}
+.feedback .comment_body .fileList .files{
+display:none;
+margin:0;
+padding:0;
+border-bottom:1px solid #eee;
+}
+.feedback .comment_body .fileList .files li{
+list-style:none;
+padding:10px 0;
+}
+.feedback .comment_body .fileList .files li .fileSize{
+margin-left:5px;
+}
+.feedback .comment_body .fileList .files li a:link .fileSize, .feedback .comment_body .fileList .files li a:visited .fileSize{
+font-size:10px;
+color:#757575;
+}
+.feedback .pagination{}

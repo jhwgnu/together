@@ -1,0 +1,48 @@
+<include target="_header.html" />
+<include cond="$oDocument->isExists()" target="_read.html" />
+<p cond="!$document_list && !$notice_list" class="no_document">{$lang->no_documents}</p>
+
+
+<block cond="!$oDocument->isExists()"><!--// 글 본문만 따로 볼 때는 리스트 출력 안 함 -->
+    <!--@if($grant->list)-->
+        <!--// notice-->
+        <!--@if($notice_list)-->
+            <!--@foreach($notice_list as $no => $oDocument)-->
+                <div class="noticeDocument"><include target="_read_guestbook_notice.html" /></div>
+            <!--@end-->
+        <!--@end-->
+        <!--// document lists -->
+        <!--@foreach($document_list as $no => $oDocument)-->
+			<div class="viewDocument"><include target="_read_guestbook.html" /></div>
+        <!--@end-->
+    <!--@end-->
+	</block>
+
+<div class="list_footer">
+    <div class="pagination" cond="$document_list || $notice_list">
+        <a cond="$page != $page_navigation->first_page" href="{getUrl('page','','document_srl','','division',$division,'last_division',$last_division)}" class="prevEnd"><i class="xi-angle-double-left xi-fw"></i></a> 
+		<a cond="$page != $page_navigation->first_page" href="{getUrl('page',$page-1,'document_srl','','division',$division,'last_division',$last_division)}" class="direction prev"><i class="xi-angle-left xi-fw"></i></a>
+        <block loop="$page_no=$page_navigation->getNextPage()">
+			<strong cond="$page==$page_no" class="num">{$page_no}</strong> 
+			<a cond="$page!=$page_no" class="num" href="{getUrl('page',$page_no,'document_srl','','division',$division,'last_division',$last_division)}">{$page_no}</a>
+        </block>
+		<a cond="$page != $page_navigation->last_page" href="{getUrl('page',$page+1,'document_srl','','division',$division,'last_division',$last_division)}" class="direction next"><i class="xi-angle-right xi-fw"></i></a>
+        <a cond="$page != $page_navigation->last_page" href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" class="nextEnd"><i class="xi-angle-double-right xi-fw"></i></a>
+    </div>
+	<div class="btnArea">
+		<button type="button" id="search_open" onclick="jQuery(this).next('#board_search').slideToggle('fast'); return false;">{$lang->cmd_search}</button>
+		<form cond="$grant->view" action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" class="board_search">
+			<select name="search_target">
+				<option loop="$search_option=>$key,$val" value="{$key}" selected="selected"|cond="$search_target==$key">{$val}</option>
+			</select>
+			<input type="hidden" name="vid" value="{$vid}" />
+			<input type="hidden" name="mid" value="{$mid}" />
+			<input type="hidden" name="category" value="{$category}" />
+			<input type="text" name="search_keyword" value="{htmlspecialchars($search_keyword)}" accesskey="S" title="{$lang->cmd_search}" class="iText" />
+			<button type="submit" onclick="xGetElementById('board_search').submit();return false;"><i class="xi-magnifier xi-fw"></i></button>
+		</form>
+		<a cond="$grant->write_document" href="{getUrl('act','dispBoardWrite','document_srl','')}">{$lang->cmd_write}</a>
+		<a cond="$grant->manager" href="{getUrl('','module','document','act','dispDocumentManageDocument')}"  onclick="popopen(this.href,'manageDocument'); return false;">{$lang->cmd_manage_document}</a>
+	</div>
+</div>
+<include target="_footer.html" />

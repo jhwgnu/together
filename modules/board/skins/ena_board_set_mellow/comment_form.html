@@ -1,0 +1,39 @@
+<include target="_header.html" />
+<div cond="$oSourceComment->isExists()" class="board context_data">
+	<h3 class="comment_header">
+		<a cond="$oSourceComment->homepage" href="{$oSourceComment->homepage}">{$oSourceComment->getNickName()}</a>
+		<span cond="!$oSourceComment->homepage">{$oSourceComment->getNickName()}</span>
+		<span class="time">{$oSourceComment->getRegdate('Y.m.d H:i')}</span>
+	</h3>
+	{$oSourceComment->getContent(false)}
+</div>
+<!-- WRITE COMMENT -->
+<div>
+	<form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="feedback write_comment">
+		<h3><i class="xi-paper-plane xi-fw"></i> {$lang->comment} {$lang->cmd_write}</h3>
+		<input type="hidden" name="mid" value="{$mid}" />
+		<input type="hidden" name="document_srl" value="{$oComment->get('document_srl')}" />
+		<input type="hidden" name="comment_srl" value="{$oComment->get('comment_srl')}" />
+		<input type="hidden" name="parent_srl" value="{$oComment->get('parent_srl')}" />
+		<input type="hidden" name="content" value="{htmlspecialchars($oComment->get('content'))}" />
+      {$oComment->getEditor()}
+		<div class="write_item">
+		  <span class="item" cond="!$is_logged">
+				<input type="text" name="nick_name" id="userName" placeholder="{$lang->writer}" class="iText userName" value="{htmlspecialchars($oComment->get('nick_name'))}" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="password" name="password" id="userPw" placeholder="{$lang->password}" class="iText userPw" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="homepage" id="homePage" placeholder="{$lang->homepage}" class="iText homePage" value="{htmlspecialchars($oComment->get('homepage'))}" />
+			</span>
+			<input cond="$is_logged" type="checkbox" name="notify_message" value="Y" checked="checked"|cond="$oComment->get('notify_message')=='Y'" id="notify_message" class="iCheck" />
+			<label cond="$is_logged" for="notify_message"><i class="xi-bell xi-fw"></i></label>
+			<input cond="$module_info->secret=='Y'" type="checkbox" name="is_secret" value="Y" id="is_secret" checked="checked"|cond="$oComment->get('is_secret')=='Y'" class="iCheck" />
+			<label cond="$module_info->secret=='Y'" for="is_secret"><i class="xi-lock xi-fw"></i></label>
+			<button type="submit"><i class="xi-check xi-fw"></i></button>
+		</div>
+	</form>
+</div>
+<!-- /WRITE COMMENT -->
+<include target="_footer.html" />

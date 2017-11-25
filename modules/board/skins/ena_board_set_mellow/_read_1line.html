@@ -1,0 +1,79 @@
+<table class="board_read">
+	<tr>
+	<!-- READ HEADER -->
+		<td class="no">
+			<!--@if($document_srl)-->
+			{$oDocument->get('document_srl')}
+			<!--@else-->
+			{$no}
+			<!--@end-->
+		</td>
+		<td class="name" cond="$oDocument->getNickName()">
+			<a cond="$module_info->display_author!='N' && !$oDocument->getMemberSrl() && $oDocument->isExistsHomepage()" href="{$oDocument->getHomepageUrl()}" onclick="window.open(this.href);return false;" class="author">{$oDocument->getNickName()}</a>
+			<block cond="$module_info->display_author!='N' && !$oDocument->getMemberSrl() && !$oDocument->isExistsHomepage()">{$oDocument->getNickName()}</block>
+			<a cond="$module_info->display_author!='N' && $oDocument->getMemberSrl()" href="#popup_menu_area" class="member_{$oDocument->get('member_srl')} author" onclick="return false">{$oDocument->getNickName()}</a>
+		</td>
+	<!-- /READ HEADER -->
+	<!-- READ BODY -->
+	<td class="read_body">
+		<!--@if($oDocument->isSecret() && !$oDocument->isGranted())-->
+			<!--@if(!$oDocument->get('member_srl'))-->
+			<form action="./" method="get" onsubmit="return procFilter(this, input_password)" class="secret" style="margin-left:3px;">
+				<input type="hidden" name="mid" value="{$mid}" />
+				<input type="hidden" name="page" value="{$page}" />
+				<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+				<div class="desc"><label for="cpw" class="secret"><i class="xi-lock xi-fw"></i> {$lang->msg_is_secret}</label></div>
+				<input type="password" name="password" id="cpw"  placeholder="{$lang->password}" class="iText" />
+				<button type="submit"><i class="xi-check xi-fw"></i></button>
+			</form>
+			<!--@else-->
+			<span class="secret"><i class="xi-lock xi-fw"></i> {$lang->msg_is_secret}</span>
+			<!--@end-->
+		<!--@else-->
+		<span class="xe_content">
+			{preg_replace("/<br>+$/", "", str_replace("</p>", "<br>", preg_replace("/<p[^>]*?>/", "", strip_tags($oDocument->getContent(false), "<img><a><strong><b><em><u><s><span><br><p>"))))}
+		</span>
+		<span class="time">{$oDocument->getRegdate('Y.m.d H:i')}</span>
+		<span class="secretMark" cond="$oDocument->isSecret() && $oDocument->isGranted()"><i class="xi-lock xi-fw"></i></span>
+		<!--@if((int)($oDocument->getRegdate('YmdHis')>date("YmdHis", time()-$module_info->duration_new*60*60)))--><span class="new plus"><i class="xi-star xi-fw"></i></span><!--@end-->
+		<span class="more">
+		<i class="xi-angle-down xi-fw"></i>
+		<span class="edit">
+			<span cond="$oDocument->getCommentcount() || $oDocument->isEnableComment()"><a class="board_btn" href="#" onclick="jQuery('#comment_write_{$oDocument->document_srl}').slideToggle('fast'); return false;">{$lang->comment}</a></span> 
+			<a class="document_{$oDocument->document_srl}" href="#popup_menu_area" onclick="return false">추가메뉴<!--// {$lang->cmd_document_do} --></a>
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a>
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_delete}</a>
+		</span>
+		</span>
+		<!--@end-->
+	</td>
+	<!-- /READ BODY -->
+	<td class="iCheck" cond="$grant->manager">
+		<input type="checkbox" id="ic_{$oDocument->document_srl}" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /><label cond="$grant->manager" for="ic_{$oDocument->document_srl}"><i class="xi-check xi-fw"></i></label>
+	</td>
+	</tr>
+</table>
+  <form style="display:none;" cond="$grant->write_comment && $oDocument->isEnableComment()" action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_comment" id="comment_write_{$oDocument->document_srl}" style="border-top:0;"|cond="!$oDocument->getCommentcount()">
+	<input type="hidden" name="mid" value="{$mid}" />
+	<input type="hidden" name="document_srl" value="{$oDocument->document_srl}" />
+	<input type="hidden" name="comment_srl" value="" />
+    <input type="hidden" name="content" value="" />
+      {$oDocument->getCommentEditor()}
+		<div class="write_item">
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="nick_name" id="userName" placeholder="{$lang->writer}" class="iText userName" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="password" name="password" id="userPw" placeholder="{$lang->password}" class="iText userPw" />
+			</span>
+			<span class="item" cond="!$is_logged">
+				<input type="text" name="homepage" id="homePage" placeholder="{$lang->homepage}" class="iText homePage" />
+			</span>
+			<input cond="$is_logged" type="checkbox" name="notify_message" value="Y" id="notify_message" class="iCheck" />
+			<label cond="$is_logged" for="notify_message"><i class="xi-bell xi-fw"></i></label>
+			<input cond="$module_info->secret=='Y'" type="checkbox" name="is_secret" value="Y" id="is_secret" class="iCheck" />
+			<label cond="$module_info->secret=='Y'" for="is_secret"><i class="xi-lock xi-fw"></i></label>
+			<button type="submit"><i class="xi-check xi-fw"></i></button>
+		</div>
+	</form>
+<include cond="$oDocument->allowComment()" target="_comment_1line.html" />
