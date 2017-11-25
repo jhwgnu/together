@@ -172,7 +172,7 @@ img{max-width:100%;height:auto;}/* .img-responsive */
 /* #content */
 #content>article.panel>.panel-body{padding:10px}
 #content>article.panel>.panel-heading{padding:7px 10px;line-height:16px}
-#content>article.panel>.panel-heading>.close{font-size:16px;padding:7px 20px;margin:-7px -10px;opacity:.7}
+#content>article.panel>.panel-heading>.close{font-size:36px;padding:7px 20px;margin:-7px -10px;opacity:.7}
 
 /* #sidebar */
 #sidebar .sidebar-link{color:#444}
