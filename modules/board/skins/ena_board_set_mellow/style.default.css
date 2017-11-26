@@ -404,6 +404,7 @@ width:80%;
 .board_write .btnArea{
 margin:0;
 padding:10px 0;
+float:left;
 }
 .board_write .btnArea button, .board_write .btnArea a{
 margin:0;
