@@ -7,7 +7,7 @@
 		<value xml:lang="de"><![CDATA[Hilfe]]></value>
 	</item>
 	<item name="cmd_write">
-		<value xml:lang="ko"><![CDATA[쓰기]]></value>
+		<value xml:lang="ko"><![CDATA[행사 등록]]></value>
 		<value xml:lang="en"><![CDATA[Write]]></value>
 		<value xml:lang="jp"><![CDATA[書き込む]]></value>
 		<value xml:lang="zh-CN"><![CDATA[发表新帖]]></value>
@@ -2633,7 +2633,7 @@
 		<value xml:lang="en"><![CDATA[IP address input format<br />You can use wildcard(*) (ex: 192.168.0.*)<br />You can use hyphen(*) for ip range  (you can't use wild card with hyphen, ex: 192.168.0.1-192.168.0.254)<br />]]></value>
 		<value xml:lang="jp"><![CDATA[IPアドレス入力方法<br />１．ワイルドカード（＊）使用可能（例：192.168.0.*)<br />２．ハイフン（-）を使用して帯域で入力可能<br />（ただし、帯域幅で入力する場合、ワイルドカードは使用不可。例：192.168.0.1-192.168.0.254）<br />３．複数の項目は行を変えて入力してください。]]></value>
 		<value xml:lang="de"><![CDATA[IP adresse eingabeformat<br />Sie können Platzhalter (*) verwenden (zB:. 192.168.0 *)<br />Sie können Bindestrich (*) für IP-Bereich nutzen (können Sie nicht wild card mit Bindestrich, ex: 192.168.0.1-192.168.0.254)]]></value>
-		
+
 	</item>
 	<item name="msg_invalid_ip">
 		<value xml:lang="ko"><![CDATA[잘못된 IP주소 형식입니다.]]></value>

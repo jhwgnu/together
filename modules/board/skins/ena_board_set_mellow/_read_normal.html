@@ -4,7 +4,7 @@
   $module_srl = $oDocument->get('module_srl');
   $document_config = $oModuleModel->getModulePartConfig('document',$module_srl);
 }
-<load cond="$module_info->default_style=='link'" target="style.link.read.css" /> 
+<load cond="$module_info->default_style=='link'" target="style.link.read.css" />
 <div class="board_read">
 	<!-- READ HEADER -->
 	<div class="read_header">
@@ -59,7 +59,7 @@
 		<!--@end-->
 	</div>
 	<div class="updown"  cond="$document_config->use_vote_up=='S' || $document_config->use_vote_down=='S'">
-		<button cond="$document_config->use_vote_up=='S'" onclick="doCallModuleAction('document','procDocumentVoteUp','{$document_srl}');return false;"|cond="$is_logged"><span>{$oDocument->get('voted_count')}</span>{$lang->cmd_vote}</button> 
+		<button cond="$document_config->use_vote_up=='S'" onclick="doCallModuleAction('document','procDocumentVoteUp','{$document_srl}');return false;"|cond="$is_logged"><span>{$oDocument->get('voted_count')}</span>{$lang->cmd_vote}</button>
 		<button cond="$document_config->use_vote_down=='S'" onclick="doCallModuleAction('document','procDocumentVoteDown','{$document_srl}');return false;"|cond="$is_logged"><span>{str_replace("-", "", $oDocument->get('blamed_count'))}</span>{$lang->cmd_vote_down}</button>
 	</div>
 	<!-- /READ BODY -->
