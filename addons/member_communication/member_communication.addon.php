@@ -29,7 +29,7 @@ if($this->module != 'member' && $called_position == 'before_module_init')
 	Context::loadLang(_XE_PATH_ . 'modules/communication/lang');
 	// Add menus on the member login information
 	$oMemberController = getController('member');
-	$oMemberController->addMemberMenu('dispCommunicationFriend', 'cmd_view_friend');
+	// $oMemberController->addMemberMenu('dispCommunicationFriend', 'cmd_view_friend');
 	$oMemberController->addMemberMenu('dispCommunicationMessages', 'cmd_view_message_box');
 
 	$flag_file = _XE_PATH_ . 'files/member_extra_info/new_message_flags/' . getNumberingPath($logged_info->member_srl) . $logged_info->member_srl;

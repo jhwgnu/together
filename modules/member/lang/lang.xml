@@ -1155,7 +1155,7 @@
 		<value xml:lang="vi"><![CDATA[Theo dõi thảo luận]]></value>
 	</item>
 	<item name="cmd_view_scrapped_document">
-		<value xml:lang="ko"><![CDATA[가고싶은 행사 목록]]></value>
+		<value xml:lang="ko"><![CDATA[가고 싶은 행사]]></value>
 		<value xml:lang="en"><![CDATA[Scraps]]></value>
 		<value xml:lang="jp"><![CDATA[スクラップ]]></value>
 		<value xml:lang="zh-CN"><![CDATA[我的收藏]]></value>
