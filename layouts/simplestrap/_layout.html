@@ -14,42 +14,6 @@
 					<!--@end-->
 				</a>
 		</div>
-		<div class="collapse navbar-collapse navbar-left" id="main-navbar">
-			<ul class="navbar-nav nav">
-				<block loop="$main_menu->list=>$key1,$val1" cond="$val1['text']">
-				<!--@if($val1['link']!="||||")-->
-				<li class="<!--@if($val1['list'])-->dropdown <!--@end--><!--@if($val1['selected'])-->active<!--@end-->"|cond="$val1['list'] || $val1['selected']">
-					<a href="{$val1['href']}"<!--@if($val1['list'])--> class="dropdown-toggle" data-toggle="dropdown" <!--@end--> target="_blank"|cond="$val1['open_window']=='Y'">
-					{@
-						$_val1_link = explode('|fa-', $val1['link']);
-					}
-					<i class="fa fa-{$_val1_link[1]}" cond="$_val1_link[1]"></i> {$_val1_link[0]}
-					<!--@if($val1['list'])--> <span class="caret"></span><!--@end--></a>
-					<ul cond="$val1['list']" class="dropdown-menu">
-						<block loop="$val1['list']=>$key2,$val2" cond="$val2['link']">
-						<!--@if(strpos($val2['href'],'dropdown-header')!== false)-->
-						<li class="dropdown-header">{$val2['link']}</li>
-						<!--@elseif($val2['link']!="----")-->
-						<li class="<!--@if($val2['list'])-->dropdown-submenu <!--@end--><!--@if($val2['selected'])-->active<!--@end-->"|cond="$val2['list'] || $val2['selected']">
-							<a tabindex="-1" href="{$val2['href']}" target="_blank"|cond="$val2['open_window']=='Y'">
-								{@
-									$_val2_link = explode('|fa-', $val2['link']);
-								}
-								<i class="fa fa-{$_val2_link[1]}" cond="$_val2_link[1]"></i> {$_val2_link[0]}
-							</a>
-						</li>
-						<!--@else-->
-						<li class="divider"></li>
-						<!--@end-->
-						</block>
-					</ul>
-				</li>
-				<!--@else-->
-				<li class="divider"></li>
-				<!--@end-->
-				</block>
-			</ul>
-		</div>
 		<div class="collapse navbar-collapse navbar-right" id="sub-navbar">
 			<form class="navbar-form navbar-left" action="{getUrl()}" method="get" cond="$li->navbar_search=='Y2'">
 				<input type="hidden" name="vid" value="{$vid}" />
