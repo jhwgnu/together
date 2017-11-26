@@ -144,9 +144,7 @@ transition: all .3s ease;
 font-family:"xeicon";
 }
 .list_footer{}
-.list_footer .btnArea{
-float:center;
-}
+.list_footer .btnArea{}
 .list_footer .btnArea .left{}
 ..list_footer .btnArea .right{
 float:right;

@@ -1,21 +1,21 @@
 <load target="style.default.css" />
 <load target="js.default.js" type="body" />
-<!--// 게시판 유형 css --> 
-<!--@if($module_info->default_style=='diary')--> 
+<!--// 게시판 유형 css -->
+<!--@if($module_info->default_style=='diary')-->
 	<load target="style.diary.css" />
-<!--@elseif($module_info->default_style=='memo')--> 
-	<load target="style.memo.css" /> 
-<!--@elseif($module_info->default_style=='1line_memo')--> 
+<!--@elseif($module_info->default_style=='memo')-->
+	<load target="style.memo.css" />
+<!--@elseif($module_info->default_style=='1line_memo')-->
 	<load target="style.1line.css" />
-<!--@elseif($module_info->default_style=='guestbook')--> 
-	<load target="style.guestbook.css" /> 
-<!--@elseif($module_info->default_style=='gallery')--> 
-	<load target="style.gallery.css" /> 
-<!--@elseif($module_info->default_style=='link')--> 
-	<load target="style.link.css" /> 
+<!--@elseif($module_info->default_style=='guestbook')-->
+	<load target="style.guestbook.css" />
+<!--@elseif($module_info->default_style=='gallery')-->
+	<load target="style.gallery.css" />
+<!--@elseif($module_info->default_style=='link')-->
+	<load target="style.link.css" />
 <!--@else--> <!--// 일반형 -->
-	<load target="style.normal.css" /> 
-<!--@end--> 
+	<load target="style.normal.css" />
+<!--@end-->
 <block cond="!$module_info->duration_new = (int)$module_info->duration_new">{@ $module_info->duration_new = 12 }</block>
 <!--@if($order_type == "desc")-->
     {@ $order_type = "asc"; }
@@ -41,13 +41,13 @@
 }
 <!--@if($module_info->point_color)-->
 <style type="text/css" cond="$module_info->point_color">
-.board_content a:hover, .board_content a:active, 
-.board_list tr>.no:not(th) i, .board_list td.title .plus i, .board_list .check input[type="checkbox"]:checked+label, .board_content .pagination strong, .list_footer .board_search button i, 
+.board_content a:hover, .board_content a:active,
+.board_list tr>.no:not(th) i, .board_list td.title .plus i, .board_list .check input[type="checkbox"]:checked+label, .board_content .pagination strong, .list_footer .board_search button i,
 .gallery_list input[type="checkbox"]:checked+label, .gallery_list input[type="checkbox"]:hover, .gallery_list input[type="checkbox"]:active,
-.read_header h1>.category i, .read_header .sum .read i, .read_body .secret_document .secret_mark, .read_body .plus, .read_footer .fnt i, .read_footer .sign .sign_header i, 
- .updown button>span, .updown button:hover,  .updown button:active,  
-.feedback .fbItem>i, .write_comment h3>i, .write_comment .write_item input[type="checkbox"]:checked+label, .write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active, .feedback .comment_body .fileList .toggleFile i, .feedback .secret_comment i, .feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active, 
-.write_check input[type="checkbox"]:checked+label:before, .exForm i, .board_write .exForm>table input[type="radio"]:checked+label:before, .board_write .exForm>table input[type="checkbox"]:checked+label:before, .board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active, .board_write .btnArea button:hover, .board_write .btnArea button:active, 
+.read_header h1>.category i, .read_header .sum .read i, .read_body .secret_document .secret_mark, .read_body .plus, .read_footer .fnt i, .read_footer .sign .sign_header i,
+ .updown button>span, .updown button:hover,  .updown button:active,
+.feedback .fbItem>i, .write_comment h3>i, .write_comment .write_item input[type="checkbox"]:checked+label, .write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active, .feedback .comment_body .fileList .toggleFile i, .feedback .secret_comment i, .feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active,
+.write_check input[type="checkbox"]:checked+label:before, .exForm i, .board_write .exForm>table input[type="radio"]:checked+label:before, .board_write .exForm>table input[type="checkbox"]:checked+label:before, .board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active, .board_write .btnArea button:hover, .board_write .btnArea button:active,
 .context_message h1,
 .tag_list .rank2:link, .tag_list .rank2:visited{
 color:{$module_info->point_color};
@@ -123,7 +123,7 @@ function completeDeleteComment(ret_obj) {
 <div class="board_content">
 	<div class="board_header">
 		<div cond="$grant->write_document || $grant->manager" class="top_btn">
-			<a cond="$grant->write_document" href="{getUrl('act','dispBoardWrite','document_srl','')}">{$lang->cmd_write}</a>
+			<a cond="$grant->write_document" href="{getUrl('act','dispBoardWrite','document_srl','')}">{$lang->cmd_request}</a>
 			<a cond="$grant->manager" class="setup" href="{getUrl('act','dispBoardAdminBoardInfo')}" title="{$lang->cmd_setup}">{$lang->cmd_setup}</a>
 		</div>
 		<div class="board_category" cond="$module_info->use_category=='Y' && $act == ''" style="display:none;"|cond="$module_info->default_style=='link'">
