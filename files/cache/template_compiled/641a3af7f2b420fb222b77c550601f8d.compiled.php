@@ -19,47 +19,6 @@ echo $__Context->li->logo_title;
 					<?php } ?>
 				</a>
 		</div>
-		<div class="collapse navbar-collapse navbar-left" id="main-navbar">
-			<ul class="navbar-nav nav">
-				<?php if($__Context->main_menu->list&&count($__Context->main_menu->list))foreach($__Context->main_menu->list as $__Context->key1=>$__Context->val1){;
-if($__Context->val1['text']){ ?>
-				<?php if($__Context->val1['link']!="||||"){ ?>
-				<li<?php if($__Context->val1['list'] || $__Context->val1['selected']){ ?> class="<?php if($__Context->val1['list']){ ?>dropdown <?php };
-if($__Context->val1['selected']){ ?>active<?php } ?>"<?php } ?>>
-					<a href="<?php echo $__Context->val1['href'] ?>"<?php if($__Context->val1['list']){ ?> class="dropdown-toggle" data-toggle="dropdown" <?php };
-if($__Context->val1['open_window']=='Y'){ ?> target="_blank"<?php } ?>>
-					<?php 
-						$__Context->_val1_link = explode('|fa-', $__Context->val1['link']);
-					 ?>
-					<?php if($__Context->_val1_link[1]){ ?><i class="fa fa-<?php echo $__Context->_val1_link[1] ?>"></i><?php } ?> <?php echo $__Context->_val1_link[0] ?>
-					<?php if($__Context->val1['list']){ ?> <span class="caret"></span><?php } ?></a>
-					<?php if($__Context->val1['list']){ ?><ul class="dropdown-menu">
-						<?php if($__Context->val1['list']&&count($__Context->val1['list']))foreach($__Context->val1['list'] as $__Context->key2=>$__Context->val2){;
-if($__Context->val2['link']){ ?>
-						<?php if(strpos($__Context->val2['href'],'dropdown-header')!== false){ ?>
-						<li class="dropdown-header"><?php echo $__Context->val2['link'] ?></li>
-						<?php }elseif($__Context->val2['link']!="----"){ ?>
-						<li<?php if($__Context->val2['list'] || $__Context->val2['selected']){ ?> class="<?php if($__Context->val2['list']){ ?>dropdown-submenu <?php };
-if($__Context->val2['selected']){ ?>active<?php } ?>"<?php } ?>>
-							<a tabindex="-1" href="<?php echo $__Context->val2['href'] ?>"<?php if($__Context->val2['open_window']=='Y'){ ?> target="_blank"<?php } ?>>
-								<?php 
-									$__Context->_val2_link = explode('|fa-', $__Context->val2['link']);
-								 ?>
-								<?php if($__Context->_val2_link[1]){ ?><i class="fa fa-<?php echo $__Context->_val2_link[1] ?>"></i><?php } ?> <?php echo $__Context->_val2_link[0] ?>
-							</a>
-						</li>
-						<?php }else{ ?>
-						<li class="divider"></li>
-						<?php } ?>
-						<?php }} ?>
-					</ul><?php } ?>
-				</li>
-				<?php }else{ ?>
-				<li class="divider"></li>
-				<?php } ?>
-				<?php }} ?>
-			</ul>
-		</div>
 		<div class="collapse navbar-collapse navbar-right" id="sub-navbar">
 			<?php if($__Context->li->navbar_search=='Y2'){ ?><form class="navbar-form navbar-left" action="<?php echo getUrl() ?>" method="get"><input type="hidden" name="error_return_url" value="<?php echo htmlspecialchars(getRequestUriByServerEnviroment(), ENT_COMPAT | ENT_HTML401, 'UTF-8', false) ?>" />
 				<input type="hidden" name="vid" value="<?php echo $__Context->vid ?>" />

@@ -5,7 +5,9 @@ $__Context->module = $__Context->module_info->module; ?>
 	<div class="container">
 		<button type="button" id="jumbotron-hide" class="close" data-toggle="tooltip" data-title="<?php echo $__Context->lang->ss_hide_show ?>" data-placement="left"><i class="fa fa-angle-up" area-hidden="true"></i></button>
 		<div class="jumbotron-title-wrap">
-			<h1><a href="<?php echo getUrl('','mid',$__Context->mid) ?>"><?php echo $__Context->module_info->browser_title ?></a></h1>
+			<h1><a href="<?php echo getUrl('','mid',$__Context->mid) ?>">교내 행사에 대한 정보를 교환해요:)
+				<br/>자신이 참석한 행사에 대한 정보를 공유하고,
+				<br/>가고 싶었으나 가지 못했던 행사에 대한 정보를 요청해보세요!</a></h1>
 			<?php if($__Context->main_menu->list&&count($__Context->main_menu->list))foreach($__Context->main_menu->list as $__Context->key1=>$__Context->val1){ ?>
 				<?php if($__Context->val1['selected'] && !$__Context->val1['list']){ ?><p><?php echo $__Context->val1['desc'];
 break;  ?></p><?php } ?>
@@ -76,7 +78,7 @@ if($__Context->act=='dispKinWrite'){ ?> disabled<?php } ?>><i class="fa fa-searc
 					<div class="col-sm-6">
 						<select name="search_target" class="form-control">
 							<?php if($__Context->search_option&&count($__Context->search_option))foreach($__Context->search_option as $__Context->key=>$__Context->val){ ?><option value="<?php echo $__Context->key ?>"<?php if($__Context->search_target==$__Context->key){ ?> selected="selected"<?php } ?>><?php echo $__Context->val ?></option><?php } ?>
-						</select>					
+						</select>
 					</div>
 					<div class="col-sm-6">
 				<?php } ?>
@@ -109,7 +111,7 @@ if($__Context->act=='dispKinWrite'){ ?> disabled<?php } ?>><i class="fa fa-searc
 			<?php if($__Context->logged_info->menu_list&&count($__Context->logged_info->menu_list))foreach($__Context->logged_info->menu_list as $__Context->key=>$__Context->val){;
 if($__Context->key==$__Context->act){ ?>
 				<a href="<?php echo getUrl('', 'act',$__Context->key, 'mid', $__Context->mid, 'vid', $__Context->vid) ?>"><?php echo Context::getLang($__Context->val) ?></a>
-			<?php }} ?>	
+			<?php }} ?>
 		</h1>
 	</div><?php } ?>
 </header>

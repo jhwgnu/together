@@ -6,7 +6,7 @@
 if(!$__Context->li->slide_c1_img){ ?> src="<?php echo $__Context->li->path ?>img/demo3.jpg"<?php } ?> alt="" />
 			<?php if($__Context->li->slide_c1_url){ ?></a><?php } ?>
 			<div class="carousel-caption">
-				<?php if(!$__Context->li->slide_c1_img && !$__Context->li->slide_c1_text){ ?><h1>Welcome to OtherSelf</h1><?php } ?>
+				<?php if(!$__Context->li->slide_c1_img && !$__Context->li->slide_c1_text){ ?><h1>Welcome!</h1><?php } ?>
 				<?php if($__Context->li->slide_c1_text){ ?><h1><?php echo $__Context->li->slide_c1_text ?></h1><?php } ?>
 				<?php if(!$__Context->li->slide_c1_img && !$__Context->li->slide_c1_desc){ ?><p>교내 행사에 대한 정보를 교환해요:) </br>자신이 참석한 행사에 대한 정보를 공유하고,</br> 가고 싶었으나 가지 못했던 행사에 대한 정보를 요청해보세요!</p><?php } ?>
 				<?php if($__Context->li->slide_c1_desc){ ?><p><?php echo $__Context->li->slide_c1_desc ?></p><?php } ?>

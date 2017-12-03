@@ -158,10 +158,10 @@ if($__Context->grant->manager){ ?><label for="ic_<?php echo $__Context->document
 	</ul>
 <div class="list_footer">
     <?php if($__Context->document_list || $__Context->notice_list){ ?><div class="pagination">
-        <?php if($__Context->page != $__Context->page_navigation->first_page){ ?><a href="<?php echo getUrl('page','','document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>" class="prevEnd"><i class="xi-angle-double-left xi-fw"></i></a><?php } ?> 
+        <?php if($__Context->page != $__Context->page_navigation->first_page){ ?><a href="<?php echo getUrl('page','','document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>" class="prevEnd"><i class="xi-angle-double-left xi-fw"></i></a><?php } ?>
 		<?php if($__Context->page != $__Context->page_navigation->first_page){ ?><a href="<?php echo getUrl('page',$__Context->page-1,'document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>" class="direction prev"><i class="xi-angle-left xi-fw"></i></a><?php } ?>
         <?php while($__Context->page_no=$__Context->page_navigation->getNextPage()){ ?>
-			<?php if($__Context->page==$__Context->page_no){ ?><strong class="num"><?php echo $__Context->page_no ?></strong><?php } ?> 
+			<?php if($__Context->page==$__Context->page_no){ ?><strong class="num"><?php echo $__Context->page_no ?></strong><?php } ?>
 			<?php if($__Context->page!=$__Context->page_no){ ?><a class="num" href="<?php echo getUrl('page',$__Context->page_no,'document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>"><?php echo $__Context->page_no ?></a><?php } ?>
         <?php } ?>
 		<?php if($__Context->page != $__Context->page_navigation->last_page){ ?><a href="<?php echo getUrl('page',$__Context->page+1,'document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>" class="direction next"><i class="xi-angle-right xi-fw"></i></a><?php } ?>
@@ -180,7 +180,7 @@ if($__Context->grant->manager){ ?><label for="ic_<?php echo $__Context->document
 			<button type="submit" onclick="xGetElementById('board_search').submit();return false;"><i class="xi-magnifier xi-fw"></i></button>
 		</form><?php } ?>
 		<?php if($__Context->module_info->use_taglist=='yes'){ ?><a href="<?php echo getUrl('act','dispBoardTagList') ?>" class="tagSearch" title="<?php echo $__Context->lang->tag ?>"><?php echo $__Context->lang->tag ?></a><?php } ?>
-		<?php if($__Context->grant->write_document){ ?><a href="<?php echo getUrl('act','dispBoardWrite','document_srl','') ?>"><?php echo $__Context->lang->cmd_write ?></a><?php } ?>
+		<!-- <?php if($__Context->grant->write_document){ ?><a href="<?php echo getUrl('act','dispBoardWrite','document_srl','') ?>"><?php echo $__Context->lang->cmd_write ?></a><?php } ?> -->
 		<?php if($__Context->grant->manager){ ?><a href="<?php echo getUrl('','module','document','act','dispDocumentManageDocument') ?>"  onclick="popopen(this.href,'manageDocument'); return false;"><?php echo $__Context->lang->cmd_manage_document ?></a><?php } ?>
 	</div>
 </div>

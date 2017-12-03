@@ -1,12 +1,11 @@
 (function($,v){
 v=xe.getApp('validator')[0];if(!v)return;
 
-v.cast('ADD_FILTER',['@insertMember', {'email_address':{required:true,rule:'email'},'user_id':{required:true,rule:'userid',minlength:'3',maxlength:'20'},'password':{'if':[{test:'$act == \'procMemberInsert\'', attr:'required', value:'true'},{test:'$act == \'procMemberInsert\'', attr:'length', value:'4:60'}]},'password2':{'if':[{test:'$act == \'procMemberInsert\'', attr:'required', value:'true'},{test:'$act == \'procMemberInsert\'', attr:'equalto', value:'password'}]},'user_name':{required:true},'nick_name':{required:true,minlength:'2',maxlength:'20'},'find_account_question':{required:true},'find_account_answer':{required:true,maxlength:'250'}}]);
-v.cast('ADD_MESSAGE',['email_address','이메일 주소']);
+v.cast('ADD_FILTER',['@insertMember', {'user_id':{required:true,rule:'userid',minlength:'3',maxlength:'20'},'email_address':{required:true,rule:'email'},'password':{'if':[{test:'$act == \'procMemberInsert\'', attr:'required', value:'true'},{test:'$act == \'procMemberInsert\'', attr:'length', value:'4:60'}]},'password2':{'if':[{test:'$act == \'procMemberInsert\'', attr:'required', value:'true'},{test:'$act == \'procMemberInsert\'', attr:'equalto', value:'password'}]},'nick_name':{required:true,minlength:'2',maxlength:'20'},'find_account_question':{'if':[{test:'$modify_find_account_answer', attr:'required', value:'true'}]},'find_account_answer':{maxlength:'250','if':[{test:'$modify_find_account_answer', attr:'required', value:'true'}]}}]);
 v.cast('ADD_MESSAGE',['user_id','아이디']);
+v.cast('ADD_MESSAGE',['email_address','이메일 주소']);
 v.cast('ADD_MESSAGE',['password','비밀번호']);
 v.cast('ADD_MESSAGE',['password2','새 비밀번호 확인']);
-v.cast('ADD_MESSAGE',['user_name','이름']);
 v.cast('ADD_MESSAGE',['nick_name','닉네임']);
 v.cast('ADD_MESSAGE',['find_account_question','비밀번호 찾기 질문/답변']);
 v.cast('ADD_MESSAGE',['find_account_answer','비밀번호 찾기 답변']);

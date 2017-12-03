@@ -1,7 +1,7 @@
 (function($,v){
 v=xe.getApp('validator')[0];if(!v)return;
 
-v.cast('ADD_FILTER',['@login', {'user_id':{required:true,rule:'email'},'password':{required:true}}]);
+v.cast('ADD_FILTER',['@login', {'user_id':{required:true,rule:'userid'},'password':{required:true}}]);
 v.cast('ADD_MESSAGE',['user_id','아이디']);
 v.cast('ADD_MESSAGE',['password','비밀번호']);
 v.cast('ADD_MESSAGE',['isnull','%s 값은 필수입니다.']);

@@ -1,6 +1,7 @@
 <?php
 $lang->help='도움말';
 $lang->cmd_write='쓰기';
+$lang->cmd_request='후기 요청';
 $lang->cmd_reply='댓글';
 $lang->cmd_delete='삭제';
 $lang->cmd_modify='수정';
@@ -56,7 +57,7 @@ $lang->cmd_apply='적용';
 $lang->cmd_open_calendar='날짜 선택';
 $lang->cmd_send='발송';
 $lang->cmd_print='인쇄';
-$lang->cmd_scrap='스크랩';
+$lang->cmd_scrap='가고 싶어요';
 $lang->cmd_preview='미리 보기';
 $lang->cmd_reset='초기화';
 $lang->cmd_remake_cache='캐시파일 재생성';

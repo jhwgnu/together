@@ -55,7 +55,7 @@ $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/
 				<input type="checkbox" name="notify_message" class="iCheck" value="Y"<?php if($__Context->oDocument->useNotify()){ ?> checked="checked"<?php } ?> id="notify_message" />
 				<label for="notify_message"><?php echo $__Context->lang->notify ?></label>
 			<?php };
-if($__Context->logged_info->is_admin){ ?><br />
+if($__Context->logged_info->is_admin){ ?>
 			<input type="checkbox" name="title_bold" id="title_bold" value="Y"<?php if($__Context->oDocument->get('title_bold')=='Y'){ ?> checked="checked"<?php } ?> />
 			<label for="title_bold"><?php echo $__Context->lang->title_bold ?></label>
 			<label for="title_color"></label>

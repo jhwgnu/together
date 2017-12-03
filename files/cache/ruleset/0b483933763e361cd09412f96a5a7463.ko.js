@@ -1,7 +1,8 @@
 (function($,v){
 v=xe.getApp('validator')[0];if(!v)return;
 
-v.cast('ADD_FILTER',['@find_member_account_by_question', {'email_address':{required:true,rule:'email'},'find_account_question':{required:true},'find_account_answer':{required:true,maxlength:'250'}}]);
+v.cast('ADD_FILTER',['@find_member_account_by_question', {'user_id':{required:true,rule:'userid'},'email_address':{required:true,rule:'email'},'find_account_question':{required:true},'find_account_answer':{required:true,maxlength:'250'}}]);
+v.cast('ADD_MESSAGE',['user_id','아이디']);
 v.cast('ADD_MESSAGE',['email_address','이메일 주소']);
 v.cast('ADD_MESSAGE',['find_account_question','비밀번호 찾기 질문/답변']);
 v.cast('ADD_MESSAGE',['find_account_answer','비밀번호 찾기 답변']);

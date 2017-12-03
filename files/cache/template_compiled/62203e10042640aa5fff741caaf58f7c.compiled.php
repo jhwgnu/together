@@ -5,7 +5,7 @@ $__Context->oDocumentModel = getModel('document');
   $__Context->document_config = $__Context->oModuleModel->getModulePartConfig('document',$__Context->module_srl);
  ?>
 <?php if($__Context->module_info->default_style=='link'){ ?><!--#Meta:modules/board/skins/ena_board_set_mellow/style.link.read.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.link.read.css','','','');Context::loadFile($__tmp);unset($__tmp);
-} ?> 
+} ?>
 <div class="board_read">
 	<!-- READ HEADER -->
 	<div class="read_header">
@@ -62,7 +62,7 @@ if($__Context->val->getValueHTML()){ ?><tr>
 		<?php } ?>
 	</div>
 	<?php if($__Context->document_config->use_vote_up=='S' || $__Context->document_config->use_vote_down=='S'){ ?><div class="updown" >
-		<?php if($__Context->document_config->use_vote_up=='S'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('document','procDocumentVoteUp','<?php echo $__Context->document_srl ?>');return false;"<?php } ?>><span><?php echo $__Context->oDocument->get('voted_count') ?></span><?php echo $__Context->lang->cmd_vote ?></button><?php } ?> 
+		<?php if($__Context->document_config->use_vote_up=='S'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('document','procDocumentVoteUp','<?php echo $__Context->document_srl ?>');return false;"<?php } ?>><span><?php echo $__Context->oDocument->get('voted_count') ?></span><?php echo $__Context->lang->cmd_vote ?></button><?php } ?>
 		<?php if($__Context->document_config->use_vote_down=='S'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('document','procDocumentVoteDown','<?php echo $__Context->document_srl ?>');return false;"<?php } ?>><span><?php echo str_replace("-", "", $__Context->oDocument->get('blamed_count')) ?></span><?php echo $__Context->lang->cmd_vote_down ?></button><?php } ?>
 	</div><?php } ?>
 	<!-- /READ BODY -->

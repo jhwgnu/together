@@ -24,7 +24,7 @@ $db_info = (object)array (
     ),
   ),
   'default_url' => 'http://jhwgnu.cafe24.com/',
-  'use_mobile_view' => 'Y',
+  'use_mobile_view' => 'N',
   'use_rewrite' => 'Y',
   'time_zone' => '+0900',
   'use_prepared_statements' => 'Y',

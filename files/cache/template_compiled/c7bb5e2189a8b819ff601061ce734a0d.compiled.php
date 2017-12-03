@@ -1,21 +1,20 @@
 <?php if(!defined("__XE__"))exit;?><!--#Meta:modules/board/skins/ena_board_set_mellow/style.default.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.default.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
 <!--#Meta:modules/board/skins/ena_board_set_mellow/js.default.js--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/js.default.js','body','','');Context::loadFile($__tmp);unset($__tmp); ?>
- 
-<?php if($__Context->module_info->default_style=='diary'){ ?> 
+<?php if($__Context->module_info->default_style=='diary'){ ?>
 	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.diary.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.diary.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
-<?php }elseif($__Context->module_info->default_style=='memo'){ ?> 
-	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.memo.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.memo.css','','','');Context::loadFile($__tmp);unset($__tmp); ?> 
-<?php }elseif($__Context->module_info->default_style=='1line_memo'){ ?> 
+<?php }elseif($__Context->module_info->default_style=='memo'){ ?>
+	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.memo.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.memo.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
+<?php }elseif($__Context->module_info->default_style=='1line_memo'){ ?>
 	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.1line.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.1line.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
-<?php }elseif($__Context->module_info->default_style=='guestbook'){ ?> 
-	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.guestbook.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.guestbook.css','','','');Context::loadFile($__tmp);unset($__tmp); ?> 
-<?php }elseif($__Context->module_info->default_style=='gallery'){ ?> 
-	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.gallery.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.gallery.css','','','');Context::loadFile($__tmp);unset($__tmp); ?> 
-<?php }elseif($__Context->module_info->default_style=='link'){ ?> 
-	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.link.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.link.css','','','');Context::loadFile($__tmp);unset($__tmp); ?> 
+<?php }elseif($__Context->module_info->default_style=='guestbook'){ ?>
+	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.guestbook.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.guestbook.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
+<?php }elseif($__Context->module_info->default_style=='gallery'){ ?>
+	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.gallery.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.gallery.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
+<?php }elseif($__Context->module_info->default_style=='link'){ ?>
+	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.link.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.link.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
 <?php }else{ ?> 
-	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.normal.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.normal.css','','','');Context::loadFile($__tmp);unset($__tmp); ?> 
-<?php } ?> 
+	<!--#Meta:modules/board/skins/ena_board_set_mellow/style.normal.css--><?php $__tmp=array('modules/board/skins/ena_board_set_mellow/style.normal.css','','','');Context::loadFile($__tmp);unset($__tmp); ?>
+<?php } ?>
 <?php if(!$__Context->module_info->duration_new = (int)$__Context->module_info->duration_new){;
 $__Context->module_info->duration_new = 12;
 } ?>
@@ -43,13 +42,13 @@ $__Context->module_info->duration_new = 12;
  ?>
 <?php if($__Context->module_info->point_color){ ?>
 <?php if($__Context->module_info->point_color){ ?><style type="text/css">
-.board_content a:hover, .board_content a:active, 
-.board_list tr>.no:not(th) i, .board_list td.title .plus i, .board_list .check input[type="checkbox"]:checked+label, .board_content .pagination strong, .list_footer .board_search button i, 
+.board_content a:hover, .board_content a:active,
+.board_list tr>.no:not(th) i, .board_list td.title .plus i, .board_list .check input[type="checkbox"]:checked+label, .board_content .pagination strong, .list_footer .board_search button i,
 .gallery_list input[type="checkbox"]:checked+label, .gallery_list input[type="checkbox"]:hover, .gallery_list input[type="checkbox"]:active,
-.read_header h1>.category i, .read_header .sum .read i, .read_body .secret_document .secret_mark, .read_body .plus, .read_footer .fnt i, .read_footer .sign .sign_header i, 
- .updown button>span, .updown button:hover,  .updown button:active,  
-.feedback .fbItem>i, .write_comment h3>i, .write_comment .write_item input[type="checkbox"]:checked+label, .write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active, .feedback .comment_body .fileList .toggleFile i, .feedback .secret_comment i, .feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active, 
-.write_check input[type="checkbox"]:checked+label:before, .exForm i, .board_write .exForm>table input[type="radio"]:checked+label:before, .board_write .exForm>table input[type="checkbox"]:checked+label:before, .board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active, .board_write .btnArea button:hover, .board_write .btnArea button:active, 
+.read_header h1>.category i, .read_header .sum .read i, .read_body .secret_document .secret_mark, .read_body .plus, .read_footer .fnt i, .read_footer .sign .sign_header i,
+ .updown button>span, .updown button:hover,  .updown button:active,
+.feedback .fbItem>i, .write_comment h3>i, .write_comment .write_item input[type="checkbox"]:checked+label, .write_comment .write_item button[type="submit"]:hover, .write_comment .write_item button[type="submit"]:active, .feedback .comment_body .fileList .toggleFile i, .feedback .secret_comment i, .feedback .secret_comment button[type="submit"]:hover, .feedback .secret_comment button[type="submit"]:active,
+.write_check input[type="checkbox"]:checked+label:before, .exForm i, .board_write .exForm>table input[type="radio"]:checked+label:before, .board_write .exForm>table input[type="checkbox"]:checked+label:before, .board_write .btnArea button[type="submit"]:hover, .board_write .btnArea button[type="submit"]:active, .board_write .btnArea button:hover, .board_write .btnArea button:active,
 .context_message h1,
 .tag_list .rank2:link, .tag_list .rank2:visited{
 color:<?php echo $__Context->module_info->point_color ?>;
@@ -125,7 +124,7 @@ function completeDeleteComment(ret_obj) {
 <div class="board_content">
 	<div class="board_header">
 		<?php if($__Context->grant->write_document || $__Context->grant->manager){ ?><div class="top_btn">
-			<?php if($__Context->grant->write_document){ ?><a href="<?php echo getUrl('act','dispBoardWrite','document_srl','') ?>"><?php echo $__Context->lang->cmd_write ?></a><?php } ?>
+			<?php if($__Context->grant->write_document){ ?><a href="<?php echo getUrl('act','dispBoardWrite','document_srl','') ?>"><?php echo $__Context->lang->cmd_request ?></a><?php } ?>
 			<?php if($__Context->grant->manager){ ?><a class="setup" href="<?php echo getUrl('act','dispBoardAdminBoardInfo') ?>" title="<?php echo $__Context->lang->cmd_setup ?>"><?php echo $__Context->lang->cmd_setup ?></a><?php } ?>
 		</div><?php } ?>
 		<?php if($__Context->module_info->use_category=='Y' && $__Context->act == ''){ ?><div class="board_category"<?php if($__Context->module_info->default_style=='link'){ ?> style="display:none;"<?php } ?>>
