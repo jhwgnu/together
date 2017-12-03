@@ -427,7 +427,7 @@ font-size:15px;
 color:#ccc;
 cursor:pointer;
 }
-.board_write .btnArea button, .board_write .btnArea .to_list{
+.board_write .btnArea button, .board_write .btnArea .check{
 font-size:50px;
 }
 .board_write .btnArea a{
