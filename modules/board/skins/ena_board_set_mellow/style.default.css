@@ -161,11 +161,9 @@ font-family:"xeicon";
     text-align: center;
 }
 .list_footer .btnArea{
-    /*justify-content: center;*/
+    text-align: center;
 }
 .list_footer .btnArea .search{
-    margin: auto;
-    display: block;
     background: #72C5D6;
     padding: 10px;
     text-align: center;
