@@ -160,6 +160,12 @@ font-family:"xeicon";
 .list_footer{}
 .list_footer .btnArea{}
 .list_footer .btnArea .search{
+    background: #72C5D6;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
     font-size:50px;
 }
 .list_footer .btnArea .left{}
