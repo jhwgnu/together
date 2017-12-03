@@ -54,8 +54,9 @@ padding-left: 10px;
 }
 .board_header .top_btn .button{
     /*display: block;*/
-    width: 115px;
-    height: 25px;
+    margin-top:10px;
+    width: 200px;
+    height: 50px;
     background: #4E9CAF;
     padding: 10px;
     text-align: center;
