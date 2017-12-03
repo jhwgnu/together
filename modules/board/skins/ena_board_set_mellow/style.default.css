@@ -164,6 +164,7 @@ font-family:"xeicon";
     text-align: center;
 }
 .list_footer .btnArea .search{
+    position: absolute;
     background: #72C5D6;
     padding: 10px;
     text-align: center;
