@@ -162,7 +162,7 @@ function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
         <a cond="$page != $page_navigation->last_page" href="{getUrl('page',$page_navigation->last_page,'document_srl','','division',$division,'last_division',$last_division)}" class="nextEnd"><i class="xi-angle-double-right xi-fw"></i></a>
     </div>
 	<div class="btnArea">
-		<button type="button" class="search" style="display: block; margin: 0 auto;" id="search_open" onclick="jQuery(this).next('#board_search').slideToggle('fast'); return false;">{$lang->cmd_search}</button>
+		<button type="button" class="search" id="search_open" onclick="jQuery(this).next('#board_search').slideToggle('fast'); return false;">{$lang->cmd_search}</button>
 		<form cond="$grant->view" action="{getUrl()}" method="get" onsubmit="return procFilter(this, search)" id="board_search" class="board_search">
 			<select name="search_target">
 				<option loop="$search_option=>$key,$val" value="{$key}" selected="selected"|cond="$search_target==$key">{$val}</option>

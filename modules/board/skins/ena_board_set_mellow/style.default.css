@@ -180,7 +180,7 @@ float:right;
 padding-left:10px;
 }
 .list_footer .board_search{
-float:left;
+/*float:left;*/
 display:none;
 width:100%;
 text-align:left;
