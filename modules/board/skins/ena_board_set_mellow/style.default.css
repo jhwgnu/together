@@ -53,7 +53,7 @@ text-align:center;
 padding-left: 10px;
 }
 .board_header .top_btn .button{
-    display: block;
+    /*display: block;*/
     width: 115px;
     height: 25px;
     background: #4E9CAF;
