@@ -159,6 +159,9 @@ font-family:"xeicon";
 }
 .list_footer{}
 .list_footer .btnArea{}
+.list_footer .btnArea .search{
+    font-size:50px;
+}
 .list_footer .btnArea .left{}
 ..list_footer .btnArea .right{
 float:right;
