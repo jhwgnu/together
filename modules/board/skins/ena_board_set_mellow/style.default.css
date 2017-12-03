@@ -52,6 +52,9 @@ text-align:center;
 .board_header .top_btn a{
 padding-left: 10px;
 }
+.board_header .top_btn .button{
+background: #4E9CAF;
+}
 .board_header .board_category{
 margin-top:20px;
 height:14px;
