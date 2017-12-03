@@ -123,6 +123,7 @@ function completeDeleteComment(ret_obj) {
 <div class="board_content">
 	<div class="board_header">
 		<div cond="$grant->write_document || $grant->manager" class="top_btn">
+                                    <button type="button">Click Me!</button>
 			<a cond="$grant->write_document" href="{getUrl('act','dispBoardWrite','document_srl','')}">{$lang->cmd_request}</a>
 			<a cond="$grant->manager" class="setup" href="{getUrl('act','dispBoardAdminBoardInfo')}" title="{$lang->cmd_setup}">{$lang->cmd_setup}</a>
 		</div>
