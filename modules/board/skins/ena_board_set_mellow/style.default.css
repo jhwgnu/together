@@ -158,7 +158,9 @@ transition: all .3s ease;
 font-family:"xeicon";
 }
 .list_footer{}
-.list_footer .btnArea{}
+.list_footer .btnArea{
+    text-align:center;
+}
 .list_footer .btnArea .search{
     background: #72C5D6;
     padding: 10px;
