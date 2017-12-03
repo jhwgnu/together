@@ -498,6 +498,9 @@ font-size:20px;
 border:1px solid #eee;
 }
 .write_comment .write_item{}
+.write_comment .write_item .check{
+    font-size: 50px;
+}
 .write_comment input[type="text"], .write_comment input[type="password"]{
 margin:10px 0;
 margin-right:5px;
