@@ -54,15 +54,16 @@ padding-left: 10px;
 }
 .board_header .top_btn .button{
     /*display: block;*/
-    margin-top:10px;
+    /*margin-top:10px;
     width: 200px;
-    height: 50px;
+    height: 50px;*/
     background: #4E9CAF;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    font-size:25px;
 }
 .board_header .board_category{
 margin-top:20px;
