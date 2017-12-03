@@ -157,9 +157,11 @@ color:#757575;
 transition: all .3s ease;
 font-family:"xeicon";
 }
-.list_footer{}
+.list_footer{
+    text-align: center;
+}
 .list_footer .btnArea{
-    justify-content: center;
+    /*justify-content: center;*/
 }
 .list_footer .btnArea .search{
     background: #72C5D6;
