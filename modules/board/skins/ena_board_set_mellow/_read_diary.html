@@ -2,7 +2,7 @@
 	<!-- READ HEADER -->
 	<div class="read_header">
 		<h1 class="title">
-			<span class="time">{$oDocument->getRegdate('Ymd')} </span> 
+			<span class="time">{$oDocument->getRegdate('Ymd')} </span>
 			<a cond="($module_info->no_title=='' && $oDocument->getTitle()) && ($oDocument->getTitle()!='memo' && $oDocument->getTitle()!='n')" href="{$oDocument->getPermanentUrl()}" style="color:{$oDocument->get('title_color')}"|cond="$oDocument->get('title_color')" style="font-weight:bold;"|cond="$oDocument->get('title_bold')=='Y'">{$oDocument->getTitle()}</a>
 			<span class="category" cond="$module_info->use_category=='Y' && $oDocument->get('category_srl')">
 				<i class="xi-tagged-book xi-fw"></i>
@@ -10,9 +10,9 @@
 			</span>
 		</h1>
 		<span class="edit">
-			<span cond="$oDocument->getCommentcount() || $oDocument->isEnableComment()"><a class="board_btn" href="#" onclick="jQuery('#comment_write_{$oDocument->document_srl}').slideToggle('fast'); return false;">{$lang->comment}</a></span> 
-			<a class="document_{$oDocument->document_srl}" href="#popup_menu_area" onclick="return false">추가메뉴<!--// {$lang->cmd_document_do} --></a> 
-			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a> 
+			<span cond="$oDocument->getCommentcount() || $oDocument->isEnableComment()"><a class="board_btn" href="#" onclick="jQuery('#comment_write_{$oDocument->document_srl}').slideToggle('fast'); return false;">{$lang->comment}</a></span>
+			<a class="document_{$oDocument->document_srl}" href="#popup_menu_area" onclick="return false">추가메뉴<!--// {$lang->cmd_document_do} --></a>
+			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardWrite','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_modify}</a>
 			<a cond="$oDocument->isEditable()" href="{getUrl('act','dispBoardDelete','document_srl',$oDocument->document_srl,'comment_srl','')}">{$lang->cmd_delete}</a>
 			<!--// <input cond="$grant->manager" type="checkbox" name="cart" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /> 체크박스 오류시 대체용 -->
 			<input cond="$grant->manager" type="checkbox" id="ic_{$oDocument->document_srl}" name="cart" value="{$oDocument->document_srl}" class="iCheck" title="Check This Article" onclick="doAddDocumentCart(this)" checked="checked"|cond="$oDocument->isCarted()" /><label cond="$grant->manager" for="ic_{$oDocument->document_srl}"></label>
@@ -103,7 +103,7 @@
 			<label cond="$is_logged" for="notify_message"><i class="xi-bell xi-fw"></i></label>
 			<input cond="$module_info->secret=='Y'" type="checkbox" name="is_secret" value="Y" id="is_secret" class="iCheck" />
 			<label cond="$module_info->secret=='Y'" for="is_secret"><i class="xi-lock xi-fw"></i></label>
-			<button type="submit"><i class="xi-check xi-fw"></i></button>
+			<button class="check" type="submit"><i class="xi-check xi-fw"></i></button>
 		</div>
 	</form>
 <include cond="$oDocument->allowComment()" target="_comment_diary.html" />
