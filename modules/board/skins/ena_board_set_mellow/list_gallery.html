@@ -1,5 +1,6 @@
 <include target="_header.html" />
 <include cond="$oDocument->isExists()" target="_read.html" />
+<block cond="!$oDocument->isExists()">
 {@
 	$notice_length = count($notice_list);
 }
@@ -178,4 +179,5 @@ function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 		<a cond="$grant->manager" href="{getUrl('','module','document','act','dispDocumentManageDocument')}"  onclick="popopen(this.href,'manageDocument'); return false;">{$lang->cmd_manage_document}</a>
 	</div>
 </div>
+</block>
 <include target="_footer.html" />
