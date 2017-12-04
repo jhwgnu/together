@@ -1,7 +1,8 @@
 <include target="_header2.html" />
 <form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="board_write">
 	<input type="hidden" name="mid" value="{$mid}" />
-	<input type="hidden" name="content" value="{$oDocument->getContentText()}" />
+	<!-- <input type="hidden" name="content" value="{$oDocument->getContentText()}" /> -->
+	<input type="hidden" name="content" value="{$oDocument->getContentText()?$oDocument->getContentText():nl2br($module_info->embeddedContent)}" />
 	<input type="hidden" name="document_srl" value="{$document_srl}" />
 	<input type="hidden" name="allow_comment" value="Y" />
 	<input type="hidden" name="allow_trackback" value="Y" />

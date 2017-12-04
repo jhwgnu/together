@@ -24,35 +24,35 @@
 			<description xml:lang="ko">작성하면 화면에 표시 됨</description>
 			<description xml:lang="en">This will be displayed on the screen as you write.</description>
         </var> -->
-		<var name="default_style" type="radio"> 
-			<title xml:lang="ko">게시판 유형</title> 
-			<title xml:lang="en">Board Style</title> 
+		<var name="default_style" type="radio">
+			<title xml:lang="ko">게시판 유형</title>
+			<title xml:lang="en">Board Style</title>
 			<options value="">
-				<title xml:lang="ko">일반</title> 
-				<title xml:lang="en">Normal</title> 
+				<title xml:lang="ko">일반</title>
+				<title xml:lang="en">Normal</title>
 			</options>
 			<options value="diary">
-				<title xml:lang="ko">일기장</title> 
-				<title xml:lang="en">Diary</title> 
+				<title xml:lang="ko">일기장</title>
+				<title xml:lang="en">Diary</title>
 			</options>
 			<options value="memo">
-				<title xml:lang="ko">일반 메모장</title> 
-				<title xml:lang="en">Normal Memo</title> 
+				<title xml:lang="ko">일반 메모장</title>
+				<title xml:lang="en">Normal Memo</title>
 			</options>
 			<options value="1line_memo">
-				<title xml:lang="ko">한 줄 메모장</title> 
-				<title xml:lang="en">One-line Memo</title> 
+				<title xml:lang="ko">한 줄 메모장</title>
+				<title xml:lang="en">One-line Memo</title>
 			</options>
 			<options value="gallery">
-				<title xml:lang="ko">갤러리</title> 
-				<title xml:lang="en">Gallery</title> 
+				<title xml:lang="ko">갤러리</title>
+				<title xml:lang="en">Gallery</title>
 			</options>
 			<options value="guestbook">
-				<title xml:lang="ko">방명록</title> 
-				<title xml:lang="en">Guestbook</title> 
+				<title xml:lang="ko">방명록</title>
+				<title xml:lang="en">Guestbook</title>
 			</options>
-			<options value="link"> 
-				<title xml:lang="ko">링크</title> 
+			<options value="link">
+				<title xml:lang="ko">링크</title>
 				<title xml:lang="en">Link</title>
 				<description xml:lang="ko">(확장변수 link_url, link_img 필요)</description>
 				<description xml:lang="en">(required extra value link_url and link_img)</description>
@@ -181,6 +181,9 @@
 				<title xml:lang="ko">아니오</title>
 				<title xml:lang="en">no</title>
 			</options>
+        </var>
+        <var name="embeddedContent" type="textarea">
+            <title xml:lang="ko">글쓰기 기본입력 내용</title>
         </var>
     </extra_vars>
 </skin>
