@@ -2260,14 +2260,14 @@
 			<value xml:lang="ko"><![CDATA[]]></value>
 			<value xml:lang="jp"><![CDATA[]]></value>
 		</item>
-		<item name="1">
+<!-- 		<item name="1">
 			<value xml:lang="ko"><![CDATA[다른 이메일 주소는?]]></value>
 			<value xml:lang="en"><![CDATA[What is your alternate email address?]]></value>
 			<value xml:lang="jp"><![CDATA[他のメールアドレスは？]]></value>
 			<value xml:lang="zh-TW"><![CDATA[其他電子郵件?]]></value>
 			<value xml:lang="zh-CN"><![CDATA[其他电子邮件地址？]]></value>
 			<value xml:lang="tr"><![CDATA[Diğer e-posta adresiniz nedir?]]></value>
-		</item>
+		</item> -->
 		<item name="2">
 			<value xml:lang="ko"><![CDATA[나의 보물 1호는?]]></value>
 			<value xml:lang="en"><![CDATA[What is your favorite thing?]]></value>
