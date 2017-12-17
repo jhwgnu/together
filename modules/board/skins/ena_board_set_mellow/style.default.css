@@ -199,7 +199,7 @@ cursor:pointer;
 width:76px;
 }
 .list_footer .board_search input[type="text"]{
-width:70px;
+width:200px;
 padding:5px;
 background:rgba(0,0,0,0.015);
 }
