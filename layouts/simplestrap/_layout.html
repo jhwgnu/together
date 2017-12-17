@@ -24,7 +24,7 @@
 				<button type="submit" class="sr-only btn btn-{$colorset} btn-block"><i class="fa fa-search" area-hidden="true"></i> {$lang->cmd_search}</button>
 			</form>
 			<ul class="navbar-nav nav">
-				<li cond="$li->navbar_search!='N' && $li->navbar_search!='Y2'" class="dropdown" id="dropdown-toggle-search">
+<!-- 				<li cond="$li->navbar_search!='N' && $li->navbar_search!='Y2'" class="dropdown" id="dropdown-toggle-search">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search" area-hidden="true"></i><span class="visible-xs-inline-block"> {$lang->cmd_search}</span></a>
 					<div class="dropdown-menu dropdown-form" role="search">
 						<form action="{getUrl()}" method="get">
@@ -35,7 +35,7 @@
 							<button type="submit" class="sr-only btn btn-{$colorset} btn-block"><i class="fa fa-search" area-hidden="true"></i> {$lang->cmd_search}</button>
 						</form>
 					</div>
-				</li>
+				</li> -->
 				<li class="dropdown" id="dropdown-toggle-login" cond="!$is_logged && $li->navbar_login != 'N'">
 					<a href="#" data-toggle="modal" data-target="#modal-login"><i class="fa fa-sign-in" area-hidden="true"></i> {$lang->cmd_login}</a>
 				</li>
