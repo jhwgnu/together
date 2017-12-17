@@ -172,6 +172,9 @@ font-family:"xeicon";
     font-weight: bold;
     font-size:50px;
 }
+.list_footer .btnArea .search{
+    font-size:12px;
+}
 .list_footer .btnArea .left{}
 ..list_footer .btnArea .right{
 float:right;
