@@ -1,8 +1,9 @@
 <?php if(!defined("__XE__"))exit;
-$__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/ena_board_set_mellow','_header.html') ?>
+$__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/ena_board_set_mellow','_header2.html') ?>
 <form action="./" method="post" onsubmit="return procFilter(this, window.insert)" class="board_write"><input type="hidden" name="error_return_url" value="<?php echo htmlspecialchars(getRequestUriByServerEnviroment(), ENT_COMPAT | ENT_HTML401, 'UTF-8', false) ?>" /><input type="hidden" name="act" value="<?php echo $__Context->act ?>" /><input type="hidden" name="vid" value="<?php echo $__Context->vid ?>" />
 	<input type="hidden" name="mid" value="<?php echo $__Context->mid ?>" />
-	<input type="hidden" name="content" value="<?php echo $__Context->oDocument->getContentText() ?>" />
+	<!-- <input type="hidden" name="content" value="<?php echo $__Context->oDocument->getContentText() ?>" /> -->
+	<input type="hidden" name="content" value="<?php echo $__Context->oDocument->getContentText()?$__Context->oDocument->getContentText():nl2br($__Context->module_info->embeddedContent) ?>" />
 	<input type="hidden" name="document_srl" value="<?php echo $__Context->document_srl ?>" />
 	<input type="hidden" name="allow_comment" value="Y" />
 	<input type="hidden" name="allow_trackback" value="Y" />
@@ -95,10 +96,10 @@ if($__Context->logged_info->is_admin){ ?>
 	</p>
 	<?php } ?>
 	<div class="btnArea">
-		<a href="<?php echo getUrl('mid', $__Context->module_info->mid, act, '') ?>"><i class="xi-file-text xi-fw"></i></a>
-		<?php if($__Context->is_logged){ ?><button class="board_btn" type="button" onclick="doDocumentSave(this);"><i class="xi-file-download xi-fw"></i></button><?php } ?>
-		<?php if($__Context->is_logged){ ?><button class="board_btn" type="button" onclick="doDocumentLoad(this);"><i class="xi-file-upload xi-fw"></i></button><?php } ?>
-		<button type="submit"><i class="xi-check xi-fw"></i></button>
+		<a href="<?php echo getUrl('mid', $__Context->module_info->mid, act, '') ?>" class="to_list"><i class="xi-list-ul xi-fw"></i></a>
+		<!-- <?php if($__Context->is_logged){ ?><button class="board_btn" type="button" onclick="doDocumentSave(this);"><i class="xi-file-download xi-fw"></i></button><?php } ?>
+		<?php if($__Context->is_logged){ ?><button class="board_btn" type="button" onclick="doDocumentLoad(this);"><i class="xi-file-upload xi-fw"></i></button><?php } ?> -->
+		<button class="check" type="submit"><i class="xi-check xi-fw"></i></button>
 	</div>
 </form>
 <?php $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/ena_board_set_mellow','_footer.html') ?>

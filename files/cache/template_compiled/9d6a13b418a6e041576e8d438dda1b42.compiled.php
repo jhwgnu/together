@@ -16,7 +16,7 @@ if($__Context->comment->get('depth')){ ?> style="padding-left:<?php echo (($__Co
 					<?php if($__Context->comment->member_srl && $__Context->module_info->hide_comment_writer==''){ ?><a class="author member_<?php echo $__Context->comment->member_srl ?>" href="#popup_menu_area" onclick="return false"><?php echo $__Context->comment->getNickName() ?></a><?php } ?>
 					<span class="time"><?php echo $__Context->comment->getRegdate('Y.m.d H:i') ?></span>
 					<?php if($__Context->module_info->use_comment_up=='yes' || $__Context->module_info->use_comment_down=='yes'){ ?><span class="updown">
-						<?php if($__Context->module_info->use_comment_up=='yes'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('comment','procCommentVoteUp','<?php echo $__Context->comment->comment_srl ?>');return false;"<?php } ?>><i class="xi-thumbs-up xi-fw"></i><span><?php echo $__Context->comment->get('voted_count') ?></span></button><?php } ?> 
+						<?php if($__Context->module_info->use_comment_up=='yes'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('comment','procCommentVoteUp','<?php echo $__Context->comment->comment_srl ?>');return false;"<?php } ?>><i class="xi-thumbs-up xi-fw"></i><span><?php echo $__Context->comment->get('voted_count') ?></span></button><?php } ?>
 						<?php if($__Context->module_info->use_comment_down=='yes'){ ?><button<?php if($__Context->is_logged){ ?> onclick="doCallModuleAction('comment','procCommentVoteDown','<?php echo $__Context->comment->comment_srl ?>');return false;"<?php } ?>><i class="xi-thumbs-down xi-fw"></i><span><?php echo str_replace("-", "", $__Context->comment->get('blamed_count')) ?></span></button><?php } ?>
 					</span><?php } ?>
 					<span class="action">
@@ -55,7 +55,6 @@ echo $__Context->file->download_url ?>"><?php echo $__Context->file->source_file
 			  <?php } ?>
 			</div>
 		</div>
-		
 		<?php if($__Context->grant->write_comment && $__Context->oDocument->isEnableComment()){ ?><form action="./" method="post" onsubmit="return procFilter(this, insert_comment)" class="write_comment" id="write_comment_<?php echo $__Context->comment->get('comment_srl') ?>" style="display:none;border-top:1px solid #eee;border-bottom:1px solid #eee;"><input type="hidden" name="act" value="<?php echo $__Context->act ?>" /><input type="hidden" name="vid" value="<?php echo $__Context->vid ?>" />
 	<h3><i class="xi-paper-plane xi-fw"></i> <?php echo $__Context->lang->comment ?> <?php echo $__Context->lang->cmd_write ?></h3>
 	<input type="hidden" name="error_return_url" value="/<?php echo $__Context->comment->get('document_srl') ?>">
@@ -81,14 +80,13 @@ echo $__Context->file->download_url ?>"><?php echo $__Context->file->source_file
 			<button type="submit"><i class="xi-check xi-fw"></i></button>
 		</div>
 	</form><?php } ?>
-		
 		</li><?php } ?>
 	</ul><?php } ?>
   <?php if($__Context->oDocument->comment_page_navigation){ ?><div class="pagination">
     <?php if($__Context->cpage != $__Context->oDocument->comment_page_navigation->first_page){ ?><a href="<?php echo getUrl('cpage',1) ?>#comment" class="prevEnd"><i class="xi-angle-double-left xi-fw"></i></a><?php } ?>
 	<?php if($__Context->cpage != $__Context->oDocument->comment_page_navigation->first_page){ ?><a href="<?php echo getUrl('cpage',$__Context->cpage-1) ?>#comment" class="direction prev"><i class="xi-angle-left xi-fw"></i></a><?php } ?>
     <?php while($__Context->page_no=$__Context->oDocument->comment_page_navigation->getNextPage()){ ?>
-			<?php if($__Context->cpage==$__Context->page_no){ ?><strong class="num"><?php echo $__Context->page_no ?></strong><?php } ?> 
+			<?php if($__Context->cpage==$__Context->page_no){ ?><strong class="num"><?php echo $__Context->page_no ?></strong><?php } ?>
 			<?php if($__Context->cpage!=$__Context->page_no){ ?><a class="num" href="<?php echo getUrl('cpage',$__Context->page_no) ?>#comment"><?php echo $__Context->page_no ?></a><?php } ?>
     <?php } ?>
 	<?php if($__Context->cpage != $__Context->oDocument->comment_page_navigation->last_page){ ?><a href="<?php echo getUrl('cpage',$__Context->cpage+1) ?>#comment" class="direction next"><i class="xi-angle-right xi-fw"></i></a><?php } ?>
@@ -115,7 +113,7 @@ echo $__Context->file->download_url ?>"><?php echo $__Context->file->source_file
 			<?php if($__Context->is_logged){ ?><label for="notify_message"><i class="xi-bell xi-fw"></i></label><?php } ?>
 			<?php if($__Context->module_info->secret=='Y'){ ?><input type="checkbox" name="is_secret" value="Y" id="is_secret" class="iCheck" /><?php } ?>
 			<?php if($__Context->module_info->secret=='Y'){ ?><label for="is_secret"><i class="xi-lock xi-fw"></i></label><?php } ?>
-			<button type="submit"><i class="xi-check xi-fw"></i></button>
+			<button class="check" type="submit" style="font-size: 50px;"><i class="xi-pen xi-fw"></i></button>
 		</div>
 	</form><?php } ?>
 </div><?php } ?>

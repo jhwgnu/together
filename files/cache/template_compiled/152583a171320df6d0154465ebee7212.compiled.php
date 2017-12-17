@@ -124,7 +124,6 @@ function completeDeleteComment(ret_obj) {
 <div class="board_content">
 	<div class="board_header">
 		<?php if($__Context->grant->write_document || $__Context->grant->manager){ ?><div class="top_btn">
-			<?php if($__Context->grant->write_document){ ?><a class ="button" href="<?php echo getUrl('act','dispBoardWrite','document_srl','') ?>"><?php echo $__Context->lang->cmd_request ?></a><?php } ?>
 			<?php if($__Context->grant->manager){ ?><a class="setup" href="<?php echo getUrl('act','dispBoardAdminBoardInfo') ?>" title="<?php echo $__Context->lang->cmd_setup ?>"><?php echo $__Context->lang->cmd_setup ?></a><?php } ?>
 		</div><?php } ?>
 		<?php if($__Context->module_info->use_category=='Y' && $__Context->act == ''){ ?><div class="board_category"<?php if($__Context->module_info->default_style=='link'){ ?> style="display:none;"<?php } ?>>

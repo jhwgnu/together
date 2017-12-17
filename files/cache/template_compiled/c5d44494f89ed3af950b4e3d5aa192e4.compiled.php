@@ -3,6 +3,7 @@ $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/
 <?php if($__Context->oDocument->isExists()){;
 $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/ena_board_set_mellow','_read.html');
 } ?>
+<?php if(!$__Context->oDocument->isExists()){ ?>
 <?php 
 	$__Context->notice_length = count($__Context->notice_list);
  ?>
@@ -168,7 +169,7 @@ if($__Context->grant->manager){ ?><label for="ic_<?php echo $__Context->document
         <?php if($__Context->page != $__Context->page_navigation->last_page){ ?><a href="<?php echo getUrl('page',$__Context->page_navigation->last_page,'document_srl','','division',$__Context->division,'last_division',$__Context->last_division) ?>" class="nextEnd"><i class="xi-angle-double-right xi-fw"></i></a><?php } ?>
     </div><?php } ?>
 	<div class="btnArea">
-		<button type="button" id="search_open" onclick="jQuery(this).next('#board_search').slideToggle('fast'); return false;"><?php echo $__Context->lang->cmd_search ?></button>
+		<button type="button" class="search" id="search_open" onclick="jQuery(this).next('#board_search').slideToggle('fast'); return false;"><?php echo $__Context->lang->cmd_search ?></button>
 		<?php if($__Context->grant->view){ ?><form action="<?php echo getUrl() ?>" method="get" onsubmit="return procFilter(this, search)" id="board_search" class="board_search"><input type="hidden" name="error_return_url" value="<?php echo htmlspecialchars(getRequestUriByServerEnviroment(), ENT_COMPAT | ENT_HTML401, 'UTF-8', false) ?>" /><input type="hidden" name="act" value="<?php echo $__Context->act ?>" />
 			<select name="search_target">
 				<?php if($__Context->search_option&&count($__Context->search_option))foreach($__Context->search_option as $__Context->key=>$__Context->val){ ?><option value="<?php echo $__Context->key ?>"<?php if($__Context->search_target==$__Context->key){ ?> selected="selected"<?php } ?>><?php echo $__Context->val ?></option><?php } ?>
@@ -184,4 +185,5 @@ if($__Context->grant->manager){ ?><label for="ic_<?php echo $__Context->document
 		<?php if($__Context->grant->manager){ ?><a href="<?php echo getUrl('','module','document','act','dispDocumentManageDocument') ?>"  onclick="popopen(this.href,'manageDocument'); return false;"><?php echo $__Context->lang->cmd_manage_document ?></a><?php } ?>
 	</div>
 </div>
+<?php } ?>
 <?php $__tpl=TemplateHandler::getInstance();echo $__tpl->compile('modules/board/skins/ena_board_set_mellow','_footer.html') ?>
