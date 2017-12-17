@@ -162,6 +162,7 @@ font-family:"xeicon";
 }
 .list_footer .btnArea{
     text-align: center;
+    font-size:12px;
 }
 .list_footer .btnArea .search{
     background: #EAF514;
@@ -172,9 +173,9 @@ font-family:"xeicon";
     font-weight: bold;
     font-size:50px;
 }
-.list_footer .btnArea .board_search{
+./*list_footer .btnArea .board_search{
     font-size:12px;
-}
+}*/
 .list_footer .btnArea .left{}
 ..list_footer .btnArea .right{
 float:right;
